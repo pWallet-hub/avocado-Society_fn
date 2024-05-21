@@ -1,0 +1,129 @@
+
+.active-hub {
+    display: grid;
+    position: relative;
+     z-index: 0;
+   }
+   
+   .active-img{
+       width: 100%;
+       height: 70vh;
+       object-fit: cover;
+   }
+   .active-content h3{
+     font-size: 32px;
+     margin-top: -200px;
+     position: absolute;
+     margin-left: 84px;
+     color: white;
+   }
+   .about{
+    
+    margin-left: 2rem;
+    margin-top: 1rem;
+   }
+   .about h4{
+    color: #599217;
+    font-size: 25px;
+    font-family: Just Another Hand;
+   }
+   .about-content h1{
+    color: #000000;
+    font-family: Poppins;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+   }
+   .about-content h5{
+    font-size: 20px;
+   }
+   .about-content{
+    margin-left: 1rem;
+   }
+   .about-content p{
+    color: black;
+    font-family: Poppins;
+    line-height: 1.5rem;
+    font-size: 18px;
+    margin-right: 4rem;
+   }
+   .about-content ul{
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    line-height: 1.4rem;
+   }
+   .team1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .team1 h2{
+    font-family: Just Another Hand;
+    font-size: 40px;
+    color: #599217;
+    text-transform: capitalize;
+   }
+   .team1 h1{
+    color: black;
+    font-family: poppins;
+    font-size: 20px;
+   }
+   .image{
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: space-around;
+   margin-right: 2rem;
+   }
+   .image1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+   
+   }
+   .image1 img{
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 5px;
+   }
+   .image1 h3{
+    font-size: 18px;
+    font-family: poppins;
+    margin: 8px;
+    color: #000000;
+   }
+   .image1 p{
+    font-size: 18px;
+    font-family: poppins;
+    color: #000000;
+   }
+   .partner{
+    background: #599217AB;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+   }
+   .parterner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   }
+
+  
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo img{
+    width: 100%;
+    height: 63%;
+    object-fit: cover;
+  }
+  

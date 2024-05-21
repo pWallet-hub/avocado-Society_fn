@@ -35,3 +35,17 @@
     border: 2px solid #EECF39;
     cursor: pointer;
 }
+.icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+}
+.icon1{
+    font-size: 30px;
+   color: #070707;
+    padding-right: 0.5rem;
+}
+.icon p{
+    color: #070707;
+}
