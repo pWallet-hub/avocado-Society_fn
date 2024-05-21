@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=poppins&display=swap');
+
+
+.style {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.story-head{
+   font-family: 'Viga', sans-serif;
+   font-size: 3rem;
+   margin-bottom: 2rem;
+} 
+
+.story-content {
+  text-align: center;
+  font-size: 2rem;
+  padding-left: 15%;
+  padding-right: 15%;
+  font-family: sans-serif;
+  
+}
+
+.slide-button{
+    background-color:  #EECF39;
+    text-align: center;
+    width:fit-content;
+    text-align: center;
+    padding: 0.5rem;
+    font: 1.5rem sans-serif;
+    margin-left: 45%;
+    margin-top:3rem;   
+}
+
+.bio{
+    display: flex;
+    margin: 2rem;
+    gap: 2rem;
+}

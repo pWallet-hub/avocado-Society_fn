@@ -1,0 +1,37 @@
+.header{
+    height: 10vh;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    font-family: sans-serif;
+    margin-bottom: 0.3rem;
+    z-index: 100;
+}
+
+.logo{
+    height: 3rem;
+    width: 3rem;
+}
+
+.header-nav{
+    flex: 3;
+}
+.header-nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;  
+}
+
+.header-nav a{
+     color: #070707;
+     text-decoration: none;
+    font-weight: 00;
+}
+
+.header-button{
+    background-color: none;
+    padding: 0.5rem;
+    border: 2px solid #EECF39;
+    cursor: pointer;
+}
