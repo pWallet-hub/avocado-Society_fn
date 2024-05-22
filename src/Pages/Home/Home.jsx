@@ -74,24 +74,29 @@ function Home() {
           Avocado Society Rwanda</h1>
         <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size. This is accomplished through tailored finance models, extension services, information sharing, and t.
         </p>
-        <div>
-          <span>
-            <FaSprayCan />
-            Pest
-            Management
-          </span>
-          <span>
-            <FaBasketShopping />
-            Awesome
-            Harvesting
-          Extension Services
-         </span>
-          <span>
-            <FaMountainSun />
-            Farm Property
-            Evaluation
-          </span>
+        <div className="benefits-list">
+          <div className="icon1">
+            <FaSprayCan className="icon2" />
+            <p>Pest
+            Management</p>
+          </div>
+          <div className="icon1">
+            <FaBasketShopping className="icon2" />
+            <p>Awesome
+            Harvesting <br />
+          Extension Services</p>
+            
+         </div>
+          <div className="icon1">
+            <FaMountainSun  className="icon2" />
+            <p>Farm Property <br />
+            Evaluation</p>
+            
+          </div>
+          
         </div>
+        <div className="button"><button>explore</button></div>
+        
         </div>
     </div>
 

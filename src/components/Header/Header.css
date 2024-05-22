@@ -8,6 +8,9 @@
     margin-bottom: 0.3rem;
     z-index: 100;
 }
+.close{
+    display: none;
+}
 
 .logo{
     height: 3rem;
@@ -17,16 +20,20 @@
 .header-nav{
     flex: 3;
 }
-.header-nav ul{
+.header-nav ul {
     display: flex;
     list-style: none;
     justify-content: space-around;  
+    color: #599217;
 }
 
 .header-nav a{
      color: #070707;
      text-decoration: none;
     font-weight: 00;
+}
+.header-nav a :hover{
+    color: #599217;
 }
 
 .header-button{
@@ -49,3 +56,81 @@
 .icon p{
     color: #070707;
 }
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+@media (max-width: 768px) {
+    .header-nav {
+        z-index: 1;
+      position: absolute;
+      top: 71px;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #1F310A;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      flex-direction: column;
+      padding-top: 60px;
+    }
+  
+    .header-nav.open {
+      transform: translateX(0);
+    }
+  
+    .header-nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      font-family: poppins;
+      font-size: 25px;
+    
+    }
+    .menu-button {
+        display: block;
+      }
+  
+    .header-nav li  {
+      margin-left: 2rem;
+      
+      
+    }
+    .header-nav li a{
+        color: #ffffff;
+       
+    }
+  
+    .header-nav button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+     
+    }
+    .icon{
+        margin-left: 1rem;
+    }
+    .icon1{
+        color: #EECF39;
+        
+    }
+    .icon p{
+        color: #ffffff;
+    }
+    .close{
+        color: #EECF39;
+        margin-left: 2rem;
+        font-size: 40px;
+    }
+  }

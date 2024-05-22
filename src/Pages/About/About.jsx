@@ -65,10 +65,10 @@ function About() {
 
           </div>
         </div>
-        
+
       </div>
       <div className='parterner'>
-      <div className='partner'>
+        <div className='partner'>
           <h1>Our PArtners</h1>
         </div>
         <div className='logo'>
@@ -77,9 +77,9 @@ function About() {
           <img src={logo} alt="" />
           <img src={logo} alt="" />
         </div>
+      </div>
     </div>
-    </div>
-    
+
 
   )
 }
