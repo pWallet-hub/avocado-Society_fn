@@ -1,0 +1,254 @@
+.membership{
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+.membership h2{
+    color: #EECF39;
+    font-size: 60px;
+    font-family: Just Another Hand;
+}
+.membership h1{
+    font-size: 25px;
+    font-family: poppins;
+    color: #000000;
+    display: flex;
+    align-items: center;
+}
+.membership-content{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+    margin-bottom: 1.5rem;
+}
+.membericon{
+    color: #EECF39;
+    padding-right: 2rem;
+    font-size: 25px;
+}
+.member-text{
+    font-family: poppins;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.8rem;
+    font-size: 18px;
+}
+.member{
+    text-align: center;
+    font-size: 20px;
+    font-family: poppins;
+    color: #23370B;
+    padding: 1rem;
+}
+.member-logo{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: #1F310A;
+    margin-bottom: 0rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.member-logo img{
+    width: 9%;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 1rem;
+
+}
+.members-text{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+   
+}
+.members-text h1{
+    margin-top: 0rem;
+    font-size: 30px;
+    font-family: poppins;
+}
+.members-text h4{
+    font-size: 16px;
+    font-family: poppins;
+    line-height: 1.5rem;
+    
+}
+.member-form{
+    background:#599217AB;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+.member-form h3{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.member-form-content{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content label{
+    font-size: 20px;
+}
+.member-form-content input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 10rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content1{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content1 label{
+    font-size: 20px;
+}
+.member-form-content1 input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 10rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content2{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content2 label{
+    font-size: 20px;
+}
+.member-form-content2 input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 11rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content3{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content3 label{
+    font-size: 20px;
+}
+.member-form-content3 input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 13rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content4{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content4 label{
+    font-size: 20px;
+}
+.member-form-content4 input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 7.2rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content5{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content5 label{
+    font-size: 20px;
+}
+.member-form-content5 input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 15rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content6{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content6 label{
+    font-size: 20px;
+}
+.member-form-content6 input{
+    width: 55%;
+    height: 2rem;
+    margin-left: 6rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form-content7{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    gap: 1rem;
+    text-align: left;
+}
+.member-form-content7 label{
+    font-size: 20px;
+}
+.member-form-content7 select{
+    width: 55%;
+    height: 2rem;
+    margin-left: 11rem;
+    border: none;
+    border-radius: 4px;
+}
+.comment input{
+    width: 76%;
+    height: 105px;
+    margin-left: 2rem;
+    border: none;
+    border-radius: 4px;
+}
+.member-form h3{
+    margin-top: 2rem;
+    font-family: poppins;
+    font-size: 18px;
+    color: #000000;
+}
+.member-form label{
+    color: #FFFFFF;
+    font-size: 20px;
+    font-family: poppins;
+}
+.member-form  input{
+    font-size: 20px;
+}
+.radio{
+    display: flex;
+    gap: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-bottom: 4rem;
+}
