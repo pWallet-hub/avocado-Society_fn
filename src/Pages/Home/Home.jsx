@@ -45,7 +45,7 @@ function Home() {
          <span className="bio-button">Explore More</span>
       </div>
       <div className="bio-sector2">
-        <h1>Empowering Avocado Farmers for Market Success Through Enhanced Production Quality and Access</h1>
+        <h1>Empowering Rwandan small scale avocado producers for the Global market access, quality standards, and tailored financial modeling.</h1>
         <p>The society supports all avocado producers by helping <br/> them meet quality standards and access markets,<br/> regardless of farm size. This is accomplished through<br/> tailored finance models, extension services, information<br/> sharing, and contract farming agreements.</p>
       </div>
     </div>
