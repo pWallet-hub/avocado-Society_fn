@@ -134,6 +134,7 @@ function Membeship() {
             <label htmlFor="text">Saving:</label>
             <input type="radio" />
           </div>
+          <div className='buto'><button>send</button></div>
         </div>
       </div>
     </div>

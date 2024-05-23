@@ -263,6 +263,20 @@
     margin-right: 2rem;
     padding-bottom: 4rem;
 }
+.buto{
+    display: flex;
+    align-items: flex-end;
+
+}
+.buto button{
+    width: 8rem;
+    height: 2rem;
+    background: #1F310A;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    margin-left: 1rem; 
+}
 @media (max-width: 768px){
     .active-content h3{
         font-size: 40px;
@@ -282,5 +296,9 @@
     }
     .member h1{
         font-size: 27px;
+    }
+    .member-form-content{
+        display: flex;
+        flex-direction: column;
     }
 }
