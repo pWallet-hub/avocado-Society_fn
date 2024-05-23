@@ -1,9 +1,8 @@
-import React from 'react'
 import avocado5 from '../../assets/avocado5.jpeg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import './Membership.css'
 import { FaCheckCircle } from "react-icons/fa";
-import { FormControl } from '@mui/base/FormControl';
+
 
 function Membeship() {
   return (
