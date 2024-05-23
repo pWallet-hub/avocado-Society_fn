@@ -11,7 +11,7 @@ function Footer() {
     <div className='footer'>
       <div className='left'>
         <img src={logo} alt="logo" />
-        <p>Empowering local small scale  <br /> producers for the  <br />  Global market access.</p>
+        <p>Empowering local small scale  <br /> producers for the  <br />  Global market access.</p>
         <div className='icons'>
           <FaTwitter />
           <FaLinkedin />
