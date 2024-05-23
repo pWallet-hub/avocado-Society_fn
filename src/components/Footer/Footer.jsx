@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
@@ -12,7 +11,7 @@ function Footer() {
     <div className='footer'>
       <div className='left'>
         <img src={logo} alt="logo" />
-        <p>Empowering Avocado <br /> Enthusiasts for <br /> Sustainable Growth.</p>
+        <p>Empowering local small scale  <br /> producers for the  <br />  Global market access.</p>
         <div className='icons'>
           <FaTwitter />
           <FaLinkedin />
