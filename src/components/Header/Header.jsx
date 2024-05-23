@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IoCall } from "react-icons/io5";
-import { MdClose } from "react-icons/md";
 import { MdMenu } from "react-icons/md";
 import image from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import './Header.css'
