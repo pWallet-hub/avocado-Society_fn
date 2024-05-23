@@ -1,10 +1,13 @@
-import React from 'react'
 import avacados from '../../assets/avocados.jpeg'
 import image1 from '../../assets/image1.jpeg'
 import image2 from '../../assets/image2.jpeg'
 import image3 from '../../assets/image3.jpeg'
 import image4 from '../../assets/image4.jpeg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
+import gnf from "../../assets/gfn.jpg";
+import rgg from "../../assets/rgg.jpg";
+import ryaf from "../../assets/ryaf.jpg";
+import soris from "../../assets/soris.jpg";
 import './About.css'
 function About() {
   return (
@@ -67,18 +70,18 @@ function About() {
         </div>
 
       </div>
-      <div className='parterner'>
-        <div className='partner'>
-          <h1>Our PArtners</h1>
-        </div>
-        <div className='logo'>
-          <img src={logo} alt="" />
-          <img src={logo} alt="" />
-          <img src={logo} alt="" />
-          <img src={logo} alt="" />
-        </div>
+
+     <h1 className='partners'>Our PArtners</h1> 
+
+     <div className='log-image'>
+      <img src={gnf} alt='gnf'/>
+      <img src={rgg} alt='gnf'/>
+      <img src={soris} alt='gnf'/>
+      <img src={ryaf} alt='gnf'/>
+     </div>
+        
       </div>
-    </div>
+  
 
 
   )

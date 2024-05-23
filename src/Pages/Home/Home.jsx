@@ -2,9 +2,11 @@
 import "./Home.css"
 import avocado1 from '../../assets/avocado1.jpg'
 import avocado2 from '../../assets/avocado2.jpg'
+import avocado3 from '../../assets/avocado3.jpg'
 import info1 from '../../assets/info1.jpg'
 import info2 from '../../assets/info2.jpg'
 import info3 from '../../assets/info3.jpg'
+import map from '../../assets/map.jpg'
 import SlideShow from "../../components/Slide/Slide";
 import { FaSprayCan } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
@@ -20,14 +22,14 @@ const text = (
  Cultivating Green Delights Through Community and Knowledge.
       </p>
     </div>
-    <div className='slide-button'>Get in touch</div>
+    <div className='slide-button'>Discover</div>
   </div>
 );
 
 const images = [
   { url: avocado1, text: text },
   { url: avocado2, text: text },
-  { url: avocado1, text: text },
+  { url: avocado3, text: text },
 ];
 
 function Home() {
@@ -43,7 +45,7 @@ function Home() {
          <span className="bio-button">Explore More</span>
       </div>
       <div className="bio-sector2">
-        <h1>Empowering Avocado Farmers for Market Success Through Enhanced Production Quality and Access</h1>
+        <h1>Empowering Rwandan small scale avocado producers for the Global market access, quality standards, and tailored financial modeling.</h1>
         <p>The society supports all avocado producers by helping <br/> them meet quality standards and access markets,<br/> regardless of farm size. This is accomplished through<br/> tailored finance models, extension services, information<br/> sharing, and contract farming agreements.</p>
       </div>
     </div>
@@ -114,9 +116,27 @@ function Home() {
        </ul>
       </div>
       <div className="ben-section2">
-         <img className="info-image1" src={info3} alt="info3" />
+         <img className="section-image1" src={info3} alt="info3" />
       </div>
     </div>
+
+    <div className="contact-info">
+      <div className="contact">
+        <h1>Get in Touch </h1>
+        <p>Empowering Avocado Enthusiasts<br/> for Sustainable Growth.<br/>
+          Cultivating Green Delights<br/> Through Community and<br/> Knowledge.</p>
+          <h2>LOCATION</h2>
+          <p>Kigali, Rwanda KG 208 ST</p>
+          <h2>PHONE</h2>
+          <p>+250 0788 889 80</p>
+          <h2>EMAIL</h2>
+          <p>asr@gmail.com</p>
+      </div>
+      <div className="map">
+         <img className="map-disp" src={map} alt="info2" />
+      </div>
+     </div>
+
     </>
   )
 }
