@@ -5,25 +5,25 @@ import { MdClose } from "react-icons/md";
 import { MdMenu } from "react-icons/md";
 import image from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import './Header.css'
+import Sidebar from './Sidebar';
 
 
 function Header() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  };
+  const [SidebarOpener, setSidebarOpener] = useState(false);
+  const handleMenuClick = () => {
+    setSidebarOpener(!SidebarOpener);
+  }
   return (
     <>
       <div className="header">
         <div>
           <Link to="/"> <img className='logo' src={image} alt="" /></Link>
         </div>
-        <div className={`header-nav ${sidebarOpen ? 'open' : ''}`}>
-          <button onClick={() => setSidebarOpen(false)}><MdClose className='close' /></button>
+        <div className="header-nav">
           <ul>
-            <li><Link to="/" onClick={closeSidebar}>Home</Link></li>
-            <li><Link to="/About" onClick={closeSidebar}>About</Link></li>
-            <li><Link to="/Membership" onClick={closeSidebar}>Membership</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/About">About</Link></li>
+            <li><Link to="/Membership">Membership</Link></li>
             <div className='icon'>
               <IoCall className='icon1' />
               <p>+250780941222</p>
@@ -33,8 +33,13 @@ function Header() {
         <div>
           <div className='header-button'>Get in touch</div>
         </div>
-        <button className="menu-button" onClick={() => setSidebarOpen(true)}><MdMenu /></button>
+        <div className='menu' onClick={handleMenuClick}>
+        <MdMenu />
+      {SidebarOpener && <Sidebar setSidebarOpen={setSidebarOpener} className='open' />}
+           
+      </div> 
       </div>
+       
     </>
   )
 }
