@@ -44,7 +44,10 @@
 
 .bio{
     display: flex;
-    margin: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
     gap: 2rem;
 }
 
@@ -55,14 +58,14 @@
 
 .bio-sector1 h1{
   font-family: 'Just Another Hand', cursive;
+  
   color: #599217;
 }
 
-.bio-sector1 h3{
+.bio-sector1 h4 {
   font-family: 'Poppins', sans-serif;
-  margin-top: 1.4rem;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
+  margin: 1rem 0 2rem;
+  font-size: 1.6rem;
 }
 
 .bio-button{
@@ -78,12 +81,14 @@
 
 .bio-sector2 h1{
   font-family: 'Poppins', sans-serif;
+  text-align: center;
   font-size: 1.2rem;
 }
 
 .bio-sector2 p{
   font-family: 'Poppins', sans-serif;
   margin-top: 1.2rem;
+  text-align: justify;
 }
 
 
@@ -126,12 +131,13 @@
 .benefits{
   background: url('../../assets/bg.jpg');
   background-size:contain;
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
   width: 100%;
   height: auto;
-  margin-top: 5rem;
+  margin-top: 4rem;
   display: flex;
   padding-top: 7rem;
+  padding-bottom: 6rem;
   justify-content: space-around;
   color: #fff;
   padding-left: 4rem;
@@ -143,21 +149,27 @@
   font-family: 'Just Another Hand', cursive;
   color: #EECF39;
   font-size: 2rem;
+  text-transform: capitalize;
 }
 .benefits-text h1{
   font-family: poppins;
   font-size: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   
+  
 }
+
+
 .benefits-text p{
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 .benefits-list{
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 .icon1{
   display: flex;
@@ -215,6 +227,15 @@
  font-size: 16px;
  margin-top: 1rem;
 }
+
+.button a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.ben-section1 p{
+  text-align: justify;
+}
 .ben-section1 ul{
   padding-left: 2rem;
   font-family: 'Poppins', sans-serif;
@@ -233,13 +254,14 @@
   height: 300px;
   border-bottom-left-radius: 2.5rem;
   object-fit: cover;
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 
  .contact-info{
   display: flex;
   justify-content: space-evenly;
-  background-color: #599217;
+  background-color: rgba(89, 146, 23, 0.67);
+  margin-top: 3rem;
   margin-bottom: 3rem;
   padding: 5rem;
    font-family: 'Poppins', sans-serif;
@@ -251,6 +273,7 @@
  }
 
  .contact-info p{
+  text-align: justify;
   margin-bottom: 1rem;
  }
 
@@ -311,6 +334,9 @@
   .bio-sector2{
     width: 100%;
   }
+  .bio-sector2 h1{
+    text-align: left;
+  }
   
    .info{
     flex-direction: column;
@@ -342,6 +368,10 @@
   background: #1F310A;
   flex-direction: column;
   padding: 3rem;
+}
+
+.benefits-list{
+  gap: 1rem;
 }
 
 .benefits2{
