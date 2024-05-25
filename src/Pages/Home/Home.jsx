@@ -39,14 +39,14 @@ function Home() {
 
     <div className="bio">
       <div className="bio-sector1">
-        <h1>Beauty of Avocado Society</h1>
-        <h3>We  take care and give<br/> 
-         value to your Avocado</h3>
+        <h1> The Beauty of Avocado Society</h1>
+        <h4>We  take care and give
+         value to your Avocado</h4>
          <span className="bio-button">Explore More</span>
       </div>
       <div className="bio-sector2">
         <h1>Empowering Rwandan small scale avocado producers for the Global market access, quality standards, and tailored financial modeling.</h1>
-        <p>The society supports all avocado producers by helping <br/> them meet quality standards and access markets,<br/> regardless of farm size. This is accomplished through<br/> tailored finance models, extension services, information<br/> sharing, and contract farming agreements.</p>
+        <p>The society supports all avocado producers by helping  them meet quality standards and access markets, regardless of farm size. This is accomplished through tailored finance models, extension services, information sharing, and contract farming agreements.</p>
       </div>
     </div>
 
@@ -71,10 +71,10 @@ function Home() {
         <img className="info-image1" src={info1} alt="info1" />
       </div>
       <div className="benefits-text">
-        <h2>Benefits</h2>
+        <h2>farmer service center </h2>
         <h1>Awesome works with<br/> 
           Avocado Society Rwanda</h1>
-        <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size. This is accomplished through tailored finance models, extension services, information sharing, and t.
+        <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size and means. This is accomplished through tailored and digitized finance modeling, extension services, information sharing, and farmer financial modeling
         </p>
         <div className="benefits-list">
           <div className="icon1">
