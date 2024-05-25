@@ -11,6 +11,7 @@ import SlideShow from "../../components/Slide/Slide";
 import { FaSprayCan } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
 import { FaMountainSun } from "react-icons/fa6";
+import { Link } from "react-router-dom"
 
 const text = (
   <div className='style' >
@@ -72,21 +73,20 @@ function Home() {
       </div>
       <div className="benefits-text">
         <h2>farmer service center </h2>
-        <h1>Awesome works with<br/> 
-          Avocado Society Rwanda</h1>
-        <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size and means. This is accomplished through tailored and digitized finance modeling, extension services, information sharing, and farmer financial modeling
+        <h1>Access this though <br/>
+         our Society's Pwallet App.</h1>
+        <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size and means. This is accomplished through tailored and digitized farm financial modeling, extension services, and information sharing. 
         </p>
         <div className="benefits-list">
           <div className="icon1">
             <FaSprayCan className="icon2" />
-            <p>Pest
+            <p>Collective Pest<br/>
             Management</p>
           </div>
           <div className="icon1">
             <FaBasketShopping className="icon2" />
-            <p>Awesome
-            Harvesting <br />
-          Extension Services</p>
+            <p>
+            Farm Harvesting<br/> Management</p>
             
          </div>
           <div className="icon1">
@@ -97,23 +97,26 @@ function Home() {
           </div>
           
         </div>
-        <div className="button"><button>explore</button></div>
         
         </div>
     </div>
 
     <div className="benefits2">
       <div className="ben-section1">
-       <h2>Benefits</h2>
+       <h2>Know more about Pwallet</h2>
        <h1>We do Creative <br/>
        things for Success</h1>
-       <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size.This is accomplished through tailored
+       <p>The society supports all avocado producers and other value chain actors by helping them meet consistency in quality standards, growth of production, and predictive analytics tools for markets. This is accomplished through:
        </p>
        <ul>
-        <li>Finance Models</li>
+        <li>Farm financial modeling</li>
         <li>Extension Services</li>
         <li>Contract Farming Agreements</li>
        </ul>
+
+       <div className="button">
+          <button>
+            <Link to="/Membership">explore</Link></button></div>
       </div>
       <div className="ben-section2">
          <img className="section-image1" src={info3} alt="info3" />
@@ -126,7 +129,7 @@ function Home() {
         <p>Empowering Avocado Enthusiasts<br/> for Sustainable Growth.<br/>
           Cultivating Green Delights<br/> Through Community and<br/> Knowledge.</p>
           <h2>LOCATION</h2>
-          <p>Kigali, Rwanda KG 208 ST</p>
+          <p>Kigali, Rwanda KK 208 ST</p>
           <h2>PHONE</h2>
           <p>+250 0788 889 80</p>
           <h2>EMAIL</h2>
