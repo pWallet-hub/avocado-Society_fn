@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+
 
 .active-hub {
     display: grid;
@@ -7,14 +13,15 @@
    
    .active-img{
        width: 100%;
-       height: 70vh;
+       height: 60vh;
        object-fit: cover;
    }
    .active-content h3{
-     font-size: 32px;
+     font-size: 3rem;
+     font-family: 'Poppins', sans-serif;
      margin-top: -200px;
      position: absolute;
-     margin-left: 84px;
+     margin-left: 5rem;
      color: white;
    }
    .about{
@@ -35,6 +42,7 @@
    }
    .about-content h5{
     font-size: 20px;
+    font-family: 'Poppins', sans-serif;
    }
    .about-content{
     margin-left: 1rem;
@@ -114,23 +122,30 @@
     justify-content: center;
    }
 
-  
-.logo{
+.partners{
+   font-family: 'Viga', sans-serif;
+   color:aliceblue ;
+   font-size: 3rem;
+   background: #599217AB;
+   text-align: center;
+   margin-top:2rem;
+}
+
+.log-image{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .logo img{
-    width: 100%;
-    height: 63%;
-    object-fit: cover;
-  }
+    justify-content: space-evenly;
+    margin: 2rem;
+
+}
+
+.log-image img{
+    width: 33%;
+    height: 10rem;
+    object-fit: fill;
+    border-radius: 10%;
+}
   @media (max-width: 768px){
-    .active-content h3{
-        align-items: center;
-        font-size: 50px;
-    }
+    
     .about{
         display: flex;
         flex-direction: column;
@@ -171,9 +186,12 @@
         font-size: 28px;
         text-transform: capitalize;
     }
-    .logo{
-        display: flex;
-        flex-direction: row;
+    .log-image{
+        flex-direction:column;
     }
+    .log-image img{
+    width: 100%;
+    object-fit: contain;
+}
   }
   

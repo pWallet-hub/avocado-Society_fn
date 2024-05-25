@@ -1,12 +1,12 @@
-import React from 'react'
 import avocado5 from '../../assets/avocado5.jpeg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import './Membership.css'
 import { FaCheckCircle } from "react-icons/fa";
 
+
 function Membeship() {
   return (
-    <div>
+    <>
       <div className='active-hub'>
         <div className='active-content'>
           <img className='active-img' src={avocado5} alt="Description of image" />
@@ -105,7 +105,7 @@ function Membeship() {
           <input type="number" />
         </div>
         <div className='comment'>
-          <input type="text" />
+          <input type="text" placeholder='In not more than 300 words tell us your journey' />
         </div>
         <h3>Membership Information</h3>
         <div className='member-form-content5'>
@@ -137,7 +137,7 @@ function Membeship() {
           <div className='buto'><button>send</button></div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
