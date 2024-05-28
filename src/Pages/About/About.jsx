@@ -5,9 +5,9 @@ import image3 from '../../assets/image3.jpeg'
 import image4 from '../../assets/image4.jpeg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import gnf from "../../assets/gfn.jpg";
-import rgg from "../../assets/rgg.jpg";
+import rgg from "../../assets/rgg.png";
 import ryaf from "../../assets/ryaf.jpg";
-import soris from "../../assets/soris.jpg";
+import soris from "../../assets/soris.png";
 import './About.css'
 function About() {
   return (
@@ -18,31 +18,90 @@ function About() {
         <h3>ABOUT</h3>
       </div>
       <div className='about'>
-        <h4>Get to know</h4>
-        <div className='about-content'>
-          <h1>avacado society rwanda</h1>
-          <h5>with reference to made:</h5>
+        <h2>Avocado Society of Rwanda</h2>
+        <p>The Avocado Society of Rwanda was established on October 28th, 2020, as a social enterprise dedicated to empowering Rwandan avocado producers. Organized with the primary aim of creating a sustainable and prosperous avocado industry, the society reinvests all profits back into the development of Rwanda's avocado sector. This reinvestment focuses on supporting small-scale farmers, enhancing quality standards, and refinancing avocado collection infrastructure.</p>
+        <h2>Social Enterprise Model</h2>
+        <p>
+          As a social enterprise, the Avocado Society of Rwanda operates with a commitment to reinvesting profits into social and environmental initiatives. Shareholders do not receive dividends; instead, all earnings are used to support the Rwandan avocado industry.
+          
+          </p>
 
+          <h2>Sustainable Developement goals:</h2>
+
+          <p>The Avocado Society of Rwanda was registered with the Rwanda Development Board (RDB) under the framework of sustainable development goals and the Agriculture and Livestock Strategic Transformation Plan (PST4) 2018-2024. The society aligns with several key Sustainable goals, specifically: </p>
           <ul>
-            <li><p>	Sustainable Development Goals specifically goal 1, 2, 3, 8, 12, 13, 14, 15;</p></li>
-            <li><p>	Agriculture and Livestock Strategic Transformation in Rwanda 2018-2024 (PST4);</p></li>
+            <li> Goal 1: No Poverty</li>
+            <li>Goal 2: Zero Hunger</li>
+            <li>Goal 3: Good Health and Well-being</li>
+            <li>Goal 8: Decent Work and Economic Growth</li>
           </ul>
-          <p>It is high time for Rwandan people to be proactive and invest efforts
-            to complement to government initiatives and smoothen the achievement of sustainable food
-            security and climate resilient agriculture development.
+        
+        <div className='about-content'>
+          <h1>Vision :</h1>
+          <p>To transform Rwanda's avocado industry into a globally recognized leader by empowering small-scale producers with access to quality standards, global markets, and innovative financial solutions.
           </p>
-          <p>In this context a social enterprise called “Avocado Society
-            of Rwanda” is under establishment to operate in Rwanda with aims at
-            creating prosperous communities built around scientific innovation in agriculture.
-            The Society will bring together individual and organizations alike who are involved in avocado
-            business in Rwanda to invest and build capacity of producers, collectors, packers, and exporters
-            from Rwanda to meet the international market and trade standards.
+          <h1>Mission:</h1>
+          <p>Working in partnership with public and private stakeholders, the Avocado Society of Rwanda provides innovative services that transform agriculture and empower small-scale avocado producers. Our focus is on helping these farmers sustainably increase productivity and meet market demands through our digital platforms and farm financial modeling, ultimately improving their livelihoods.
           </p>
+
         </div>
         <div className='team'>
           <div className='team1'>
             <h2>the team</h2>
-            <h1>Key People in ASR</h1>
+            <h1>Board of Director ASR</h1>
+          </div>
+          <div className='image'>
+            <div className='image1'>
+              <img src={image1} alt="" />
+              <h3>Omar BISERUKA</h3>
+              <p>Managing Director</p>
+            </div>
+            <div className='image1'>
+              <img src={image2} alt="" />
+              <h3>Jean Damascéne MUSANGAMFURA</h3>
+              <p>Secretary</p>
+            </div>
+            <div className='image1'>
+              <img src={image3} alt="" />
+              <h3>Pacifique NSHIMIYIMANA</h3>
+              <p>Chair Person</p>
+            </div>
+            <div className='image1'>
+              <img src={image4} alt="" />
+              <h3>Renovat NITUNGA</h3>
+              <p>Member</p>
+            </div>
+          </div>
+                    <div className='image'>
+            <div className='image1'>
+              <img src={image1} alt="" />
+              <h3>Godfrey KAREMA</h3>
+              <p>Member</p>
+            </div>
+            <div className='image1'>
+              <img src={image2} alt="" />
+              <h3>ALEXANDRE NSHIMIYIMANA</h3>
+              <p>Member</p>
+            </div>
+            <div className='image1'>
+              <img src={image3} alt="" />
+              <h3>Mugeni Euphrosine NIYIDUKUNDA</h3>
+              <p>Member</p>
+            </div>
+            <div className='image1'>
+              <img src={image4} alt="" />
+              <h3>Aime Chance BUTERA</h3>
+              <p>Member</p>
+            </div>
+            <div className='image1'>
+              <img src={image4} alt="" />
+              <h3>Emmanuel Muvunyi MUGISHA</h3>
+              <p>Member</p>
+            </div>
+          </div>
+
+          <div className='team1'>
+            <h1>Supporting Team ASR</h1>
           </div>
           <div className='image'>
             <div className='image1'>
@@ -65,7 +124,6 @@ function About() {
               <h3>Gregory River</h3>
               <p>mechanic</p>
             </div>
-
           </div>
         </div>
 
