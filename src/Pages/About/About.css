@@ -29,16 +29,48 @@
     margin-left: 2rem;
     margin-top: 1rem;
    }
-   .about h4{
+   .about h2{
     color: #599217;
-    font-size: 25px;
     font-family: Just Another Hand;
+    font-size: 2rem;
+    text-align: center;
    }
+
+   .about p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    text-align: justify;
+    margin: 1.2rem
+   }
+
+   .about h3{
+    color: #599217;
+    font-family: Just Another Hand;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    
+   }
+
+   .about ul{
+    margin-left: 2rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.4rem;
+    list-style-type: none;
+   }
+
+  .about   ul li::before {
+  content: "\2713\0020"; 
+  color: #599217;
+  font-weight: bold; 
+}
    .about-content h1{
-    color: #000000;
-    font-family: Poppins;
-    text-transform: capitalize;
-    margin-bottom: 1rem;
+   color: #599217;
+   font-family: Just Another Hand;
+   text-align: center;
+   font-size: 2.4rem;
+
    }
    .about-content h5{
     font-size: 20px;
@@ -90,20 +122,20 @@
    
    }
    .image1 img{
-    width: 100%;
-    height: 370px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     border-radius: 5px;
    }
    .image1 h3{
-    font-size: 18px;
-    font-family: poppins;
-    margin: 8px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1rem;
     color: #000000;
    }
    .image1 p{
-    font-size: 18px;
-    font-family: poppins;
+    font-size: 1rem;
+   font-family: 'Poppins', sans-serif;
     color: #000000;
    }
    .partner{
@@ -141,10 +173,14 @@
 .log-image img{
     width: 33%;
     height: 10rem;
-    object-fit: fill;
+    object-fit:contain;
     border-radius: 10%;
 }
   @media (max-width: 768px){
+
+    .active-img{
+        height: 30vh;
+    }
     
     .about{
         display: flex;
@@ -163,6 +199,7 @@
     }
     .about-content p{
         font-size: 16px;
+        text-align: justify;
     }
     .team1 h2{
         font-size: 50px;

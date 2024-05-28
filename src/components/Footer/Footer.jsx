@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
-import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
+import logo from '../../assets/LOGO_-_Avocado_Society_of_Rwanda.png'
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -11,7 +11,7 @@ function Footer() {
     <div className='footer'>
       <div className='left'>
         <img src={logo} alt="logo" />
-        <p>Empowering local small scale  <br /> producers for the  <br />  Global market access.</p>
+        <p>Empowering local avacado producers for the  Global market access.</p>
         <div className='icons'>
           <FaTwitter />
           <FaLinkedin />
