@@ -129,7 +129,7 @@ function Home() {
         <p>Empowering Avocado Enthusiasts<br/> for Sustainable Growth.<br/>
           Cultivating Green Delights<br/> Through Community and<br/> Knowledge.</p>
           <h2>LOCATION</h2>
-          <p>Kigali, Rwanda KK 208 ST</p>
+          <p>Kigali, Rwanda KN 154 STREET</p>
           <h2>PHONE</h2>
           <p>+250 0788 889 80</p>
           <h2>EMAIL</h2>
