@@ -66,5 +66,20 @@
     .header-nav{
         display: none;
     }
+    .menu{
+        font-size: 35px;
+        align-items: center;
+        display: flex;
+    }
+    .header-button{
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+    }
+.logo{
+    height: 5rem;
+    width: 4rem;
+    padding-bottom: 1rem;
+} 
     
   }
