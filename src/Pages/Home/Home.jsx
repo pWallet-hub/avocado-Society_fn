@@ -20,11 +20,12 @@ const text = (
       <h3 >Avocado Society of Rwanda </h3>
     </div>
     <div className='story-content'>
-      <p>Empowering Avocado Enthusiasts for Sustainable Growth.
+      <p>Empowering Avocado producers for Sustainable Growth.
  Cultivating Green Delights Through Community and Knowledge.
       </p>
     </div>
-    <div className='slide-button'>Discover</div>
+    <div className='slide-button'>
+      <Link className="about-style" to="/About">Discover</Link></div>
   </div>
 );
 
@@ -43,7 +44,7 @@ function Home() {
       <div className="bio-sector1">
         <h1> The Beauty of Avocado Society</h1>
         <h4>We  take care and give
-         value to your Avocado</h4>
+         value to your avocado orchards</h4>
          <span className="bio-button">Explore More</span>
       </div>
       <div className="bio-sector2">
@@ -130,9 +131,8 @@ function Home() {
     <div className="contact-info">
       <div className="contact">
         <h1>Get in Touch </h1>
-        <p>Empowering Avocado Enthusiasts<br/> for Sustainable Growth.<br/>
-          Cultivating Green Delights<br/> Through Community and<br/> Knowledge.</p>
-          <h2>LOCATION</h2>
+        <p className="p">Welcome to the Avocado Society of Rwanda.<br/> Join us in our mission to feed the world.</p>
+          <h2 className="location">LOCATION</h2>
           <p>Kigali, Rwanda KN 159 STREET</p>
           <h2>PHONE</h2>
           <p>+250788481560</p>
