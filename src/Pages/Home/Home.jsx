@@ -68,7 +68,7 @@ function Home() {
         <img className="info-image1" src={info3} alt="info3" />
       </div>
     </div>
-
+    <WaveLine/>
 
     <div className="benefits">
       <div className="benefits-img">
@@ -103,7 +103,7 @@ function Home() {
         
         </div>
     </div>
-
+    <WaveLine/>
     <div className="benefits2">
       <div className="ben-section1">
        <h2>Know more about Pwallet</h2>
@@ -143,7 +143,7 @@ function Home() {
          <img className="map-disp" src={map} alt="info2" />
       </div>
      </div>
-
+     <WaveLine/>
     </>
   )
 }

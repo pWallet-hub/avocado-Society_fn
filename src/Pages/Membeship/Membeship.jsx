@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import avocado5 from '../../assets/avocado5.jpeg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import './Membership.css'
@@ -5,6 +6,54 @@ import { FaCheckCircle } from "react-icons/fa";
 
 
 function Membeship() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    birthDate: '',
+    address: '',
+    email: '',
+    phoneNumber: '',
+    journey: '',
+    upi: '',
+    numberOfTrees: '',
+    variety: '',
+    advancedService: ''
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const validate = () => {
+    let formErrors = {};
+
+    if (!formData.fullName.trim()) formErrors.fullName = 'Full Name is required';
+    if (!formData.birthDate.trim()) formErrors.birthDate = 'Birth Date is required';
+    if (!formData.address.trim()) formErrors.address = 'Address is required';
+    if (!formData.email.trim()) formErrors.email = 'Email is required';
+    if (!formData.phoneNumber.trim()) formErrors.phoneNumber = 'Phone Number is required';
+    if (formData.journey.trim().length > 300) formErrors.journey = 'Journey should be less than 300 words';
+    if (!formData.upi.trim()) formErrors.upi = 'UPI is required';
+    if (!formData.numberOfTrees.trim()) formErrors.numberOfTrees = 'Number of Trees is required';
+    if (!formData.variety.trim()) formErrors.variety = 'Variety is required';
+    if (!formData.advancedService.trim()) formErrors.advancedService = 'Advanced Service is required';
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validate()) {
+      console.log('Form data:', formData);
+      // Submit form data
+    }
+  };
   return (
     <>
       <div className='active-hub'>
@@ -82,61 +131,128 @@ function Membeship() {
           <h1>MEMBERSHIP Form</h1>
         </div>
       </div>
-      <div className='member-form'>
+      <form className='member-form' onSubmit={handleSubmit}>
         <h3>personal information</h3>
         <div className='member-form-content'>
-          <label htmlFor="FirstName">Full Name: </label>
-          <input type="text" />
+          <label htmlFor="fullName">Full Name: </label>
+          <input
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+          />
+          {errors.fullName && <span className="error">{errors.fullName}</span>}
         </div>
         <div className='member-form-content1'>
           <label htmlFor="birthdate">Birth Date: </label>
-          <input type="date" />
+          <input
+            type="date"
+            name="birthDate"
+            value={formData.birthDate}
+            onChange={handleChange}
+          />
+          {errors.birthDate && <span className="error">{errors.birthDate}</span>}
         </div>
         <div className='member-form-content2'>
           <label htmlFor="Address">Address: </label>
-          <input type="text" />
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+          {errors.address && <span className="error">{errors.address}</span>}
         </div>
         <div className='member-form-content3'>
           <label htmlFor="email">Email: </label>
-          <input type="email" />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <span className="error">{errors.email}</span>}
         </div>
         <div className='member-form-content4'>
           <label htmlFor="number">Phone Number: </label>
-          <input type="number" />
+          <input
+            type="number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+          />
+          {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
         </div>
         <div className='comment'>
-          <input type="text" placeholder='In not more than 300 words tell us your journey' />
+        <input
+            type="text"
+            name="journey"
+            placeholder="In not more than 300 words tell us your journey"
+            value={formData.journey}
+            onChange={handleChange}
+          />
+          {errors.journey && <span className="error">{errors.journey}</span>}
         </div>
         <h3>Membership Information</h3>
         <div className='member-form-content5'>
           <label htmlFor="upi">Upi: </label>
-          <input type="number" />
+          <input
+            type="number"
+            name="upi"
+            value={formData.upi}
+            onChange={handleChange}
+          />
+          {errors.upi && <span className="error">{errors.upi}</span>}
         </div>
         <div className='member-form-content6'>
           <label htmlFor="upi">Number of Trees : </label>
-          <input type="number" />
+          <input
+            type="number"
+            name="numberOfTrees"
+            value={formData.numberOfTrees}
+            onChange={handleChange}
+          />
+          {errors.numberOfTrees && <span className="error">{errors.numberOfTrees}</span>}
         </div>
         <div className='member-form-content7'>
           <label htmlFor="varieties">Varieties : </label>
-          <select name="varieties" id="">
+          <select
+            name="variety"
+            value={formData.variety}
+            onChange={handleChange}
+          >
             <option value="text">select</option>
             <option value="text">avoca</option>
             <option value="text">umwembe</option>
           </select>
+          {errors.variety && <span className="error">{errors.variety}</span>}
         </div>
         <h3>Advanced Service</h3>
         <div className='radio'>
           <div className='radio-text'>
           <label htmlFor="text">Advance Payment:</label>
-          <input type="radio" />
+          <input
+              type="radio"
+              name="advancedService"
+              value="Saving"
+              checked={formData.advancedService === 'Advance Payment'}
+              onChange={handleChange}
+            />
           </div>
           <div className='radio-text'>
             <label htmlFor="text">Saving:</label>
-            <input type="radio" />
+            <input
+              type="radio"
+              name="advancedService"
+              value="Advance Payment"
+              checked={formData.advancedService === 'Saving'}
+              onChange={handleChange}
+            />
           </div>
+          {errors.advancedService && <span className="error">{errors.advancedService}</span>}
           <div className='buto'><button>send</button></div>
         </div>
-      </div>
+      </form>
     </>
   )
 }

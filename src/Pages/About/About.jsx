@@ -8,6 +8,7 @@ import gnf from "../../assets/gfn.jpg";
 import rgg from "../../assets/rgg.png";
 import ryaf from "../../assets/ryaf.jpg";
 import soris from "../../assets/soris.png";
+import WaveLine from '../../components/Line/line'
 import './About.css'
 function About() {
   return (
@@ -23,19 +24,19 @@ function About() {
         <h2>Social Enterprise Model</h2>
         <p>
           As a social enterprise, the Avocado Society of Rwanda operates with a commitment to reinvesting profits into social and environmental initiatives. Shareholders do not receive dividends; instead, all earnings are used to support the Rwandan avocado industry.
-          
-          </p>
 
-          <h2>Sustainable Developement goals:</h2>
+        </p>
 
-          <p>The Avocado Society of Rwanda was registered with the Rwanda Development Board (RDB) under the framework of sustainable development goals and the Agriculture and Livestock Strategic Transformation Plan (PST4) 2018-2024. The society aligns with several key Sustainable goals, specifically: </p>
-          <ul>
-            <li> Goal 1: No Poverty</li>
-            <li>Goal 2: Zero Hunger</li>
-            <li>Goal 3: Good Health and Well-being</li>
-            <li>Goal 8: Decent Work and Economic Growth</li>
-          </ul>
-        
+        <h2>Sustainable Developement goals:</h2>
+
+        <p>The Avocado Society of Rwanda was registered with the Rwanda Development Board (RDB) under the framework of sustainable development goals and the Agriculture and Livestock Strategic Transformation Plan (PST4) 2018-2024. The society aligns with several key Sustainable goals, specifically: </p>
+        <ul>
+          <li> Goal 1: No Poverty</li>
+          <li>Goal 2: Zero Hunger</li>
+          <li>Goal 3: Good Health and Well-being</li>
+          <li>Goal 8: Decent Work and Economic Growth</li>
+        </ul>
+
         <div className='about-content'>
           <h1>Vision :</h1>
           <p>To transform Rwanda's avocado industry into a globally recognized leader by empowering small-scale producers with access to quality standards, global markets, and innovative financial solutions.
@@ -45,6 +46,7 @@ function About() {
           </p>
 
         </div>
+        <WaveLine/>
         <div className='team'>
           <div className='team1'>
             <h2>the team</h2>
@@ -72,7 +74,7 @@ function About() {
               <p>Member</p>
             </div>
           </div>
-                    <div className='image'>
+          <div className='image'>
             <div className='image1'>
               <img src={image1} alt="" />
               <h3>Godfrey KAREMA</h3>
@@ -128,18 +130,19 @@ function About() {
         </div>
 
       </div>
+      <WaveLine/>
 
-     <h1 className='partners'>Our PArtners</h1> 
+      <h1 className='partners'>Our PArtners</h1>
 
-     <div className='log-image'>
-      <img src={gnf} alt='gnf'/>
-      <img src={rgg} alt='gnf'/>
-      <img src={soris} alt='gnf'/>
-      <img src={ryaf} alt='gnf'/>
-     </div>
-        
+      <div className='log-image'>
+        <img src={gnf} alt='gnf' />
+        <img src={rgg} alt='gnf' />
+        <img src={soris} alt='gnf' />
+        <img src={ryaf} alt='gnf' />
       </div>
-  
+
+    </div>
+
 
 
   )
