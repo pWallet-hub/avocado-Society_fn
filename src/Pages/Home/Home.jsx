@@ -7,7 +7,6 @@ import info1 from '../../assets/info1.jpg'
 import info2 from '../../assets/info2.jpg'
 import info3 from '../../assets/info3.jpg'
 import map from '../../assets/map.jpg'
-import WaveLine from '../../components/Line/line'
 import SlideShow from "../../components/Slide/Slide";
 import { FaSprayCan } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
@@ -68,7 +67,7 @@ function Home() {
         <img className="info-image1" src={info3} alt="info3" />
       </div>
     </div>
-    <WaveLine/>
+    {/* <WaveLine/> */}
 
     <div className="benefits">
       <div className="benefits-img">
@@ -77,13 +76,14 @@ function Home() {
       <div className="benefits-text">
         <h2>farmer service center </h2>
         <h1>Access this though <br/>
-         our Society's Pwallet App.</h1>
+         our Society&apos;s Pwallet App.</h1>
         <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size and means. This is accomplished through tailored and digitized farm financial modeling, extension services, and information sharing. 
         </p>
         <div className="benefits-list">
           <div className="icon1">
             <FaSprayCan className="icon2" />
             <p>Collective Pest<br/>
+            
             Management</p>
           </div>
           <div className="icon1">
@@ -103,7 +103,7 @@ function Home() {
         
         </div>
     </div>
-    <WaveLine/>
+    {/* <WaveLine/> */}
     <div className="benefits2">
       <div className="ben-section1">
        <h2>Know more about Pwallet</h2>
@@ -125,7 +125,7 @@ function Home() {
          <img className="section-image1" src={info3} alt="info3" />
       </div>
     </div>
-    <WaveLine/>
+    {/* <WaveLine/> */}
 
     <div className="contact-info">
       <div className="contact">
@@ -143,7 +143,7 @@ function Home() {
          <img className="map-disp" src={map} alt="info2" />
       </div>
      </div>
-     <WaveLine/>
+     {/* <WaveLine/> */}
     </>
   )
 }

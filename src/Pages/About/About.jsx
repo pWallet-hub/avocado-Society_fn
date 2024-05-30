@@ -3,7 +3,6 @@ import image1 from '../../assets/image1.jpeg'
 import image2 from '../../assets/image2.jpeg'
 import image3 from '../../assets/image3.jpeg'
 import image4 from '../../assets/image4.jpeg'
-import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import gnf from "../../assets/gfn.jpg";
 import rgg from "../../assets/rgg.png";
 import ryaf from "../../assets/ryaf.jpg";
@@ -20,7 +19,7 @@ function About() {
       </div>
       <div className='about'>
         <h2>Avocado Society of Rwanda</h2>
-        <p>The Avocado Society of Rwanda was established on October 28th, 2020, as a social enterprise dedicated to empowering Rwandan avocado producers. Organized with the primary aim of creating a sustainable and prosperous avocado industry, the society reinvests all profits back into the development of Rwanda's avocado sector. This reinvestment focuses on supporting small-scale farmers, enhancing quality standards, and refinancing avocado collection infrastructure.</p>
+        <p>The Avocado Society of Rwanda was established on October 28th, 2020, as a social enterprise dedicated to empowering Rwandan avocado producers. Organized with the primary aim of creating a sustainable and prosperous avocado industry, the society reinvests all profits back into the development of Rwanda&apos;s avocado sector. This reinvestment focuses on supporting small-scale farmers, enhancing quality standards, and refinancing avocado collection infrastructure.</p>
         <h2>Social Enterprise Model</h2>
         <p>
           As a social enterprise, the Avocado Society of Rwanda operates with a commitment to reinvesting profits into social and environmental initiatives. Shareholders do not receive dividends; instead, all earnings are used to support the Rwandan avocado industry.
@@ -39,7 +38,7 @@ function About() {
 
         <div className='about-content'>
           <h1>Vision :</h1>
-          <p>To transform Rwanda's avocado industry into a globally recognized leader by empowering small-scale producers with access to quality standards, global markets, and innovative financial solutions.
+          <p>To transform Rwanda&apos;s avocado industry into a globally recognized leader by empowering small-scale producers with access to quality standards, global markets, and innovative financial solutions.
           </p>
           <h1>Mission:</h1>
           <p>Working in partnership with public and private stakeholders, the Avocado Society of Rwanda provides innovative services that transform agriculture and empower small-scale avocado producers. Our focus is on helping these farmers sustainably increase productivity and meet market demands through our digital platforms and farm financial modeling, ultimately improving their livelihoods.

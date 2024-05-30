@@ -6,7 +6,7 @@ const SlideShow = ({ images }) => {
   const slideImages = images;
 
   const properties = {
-    duration: 4000,
+    duration: 400000,
     transitionDuration: 500,
     infinite: true,
     indicators: true,

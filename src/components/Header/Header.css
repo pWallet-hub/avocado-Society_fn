@@ -1,5 +1,5 @@
 .header{
-    height: 10vh;
+    height: 13vh;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -13,9 +13,10 @@
 } */
 
 .logo{
-    height: 3rem;
-    width: 3rem;
+    height: 5rem;
+    width: 5rem;
     margin-top: -1rem;
+    /* margin-left: 3rem; */
 }
 
 .header-nav{
@@ -26,6 +27,7 @@
     list-style: none;
     justify-content: space-around;  
     color: #599217;
+    font-size: 2rem;
 }
 
 .header-nav a{
@@ -35,6 +37,7 @@
 }
 .header-nav a :hover{
     color: #599217;
+    /* font-size: 2rem; */
 }
 
 .header-button{
@@ -42,7 +45,10 @@
     padding: 0.5rem;
     border: 2px solid #EECF39;
     cursor: pointer;
+    /* margin-bottom: 0.3rem; */
+
 }
+
 .icon{
     display: flex;
     flex-direction: row;
@@ -50,9 +56,9 @@
     text-align: left;
 }
 .icon1{
-    font-size: 30px;
-   color: #070707;
-    padding-right: 0.5rem;
+    font-size: 2rem;
+    color: #070707;
+    /* padding-right: 0.5rem; */
 }
 .icon p{
     color: #070707;
@@ -75,13 +81,15 @@
     .header-button{
         display: flex;
         align-items: center;
-        padding: 0.7rem;
-        margin-top: -0.5rem;
+        /* padding: 0.7rem; */
+        margin-top: 0.1rem;
     }
 .logo{
-    height: 5rem;
+    height: 4rem;
     width: 4rem;
-    padding-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+    /* margin-top: 0.1rem; */
+    padding-top: 0.4rem;
 } 
     
   }
