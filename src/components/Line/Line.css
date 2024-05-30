@@ -1,0 +1,13 @@
+
+.wave-line-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0; /* Adjust margin as needed */
+  }
+  
+  .wave-line {
+    width: 80%; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+  }
+  

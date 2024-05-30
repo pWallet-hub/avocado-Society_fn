@@ -110,17 +110,25 @@
         gap: 2rem;
     }
     .left img{
-        width: 26%;
-        height: 65px;
+        width: 150%;
+        height: 100px;
     object-fit: cover;
     border-radius: 50%;
     margin-top: 1rem;
+    }
+    .left p{
+        font-size: 1.2rem;
+        width: 500%;
+        
+        
     }
     .icons{
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        font-size: 35px;
+        font-size: 40px;
+        gap: 1rem;
+        width: 473%;
     }
     .right p{
         font-size: 16px;

@@ -349,9 +349,16 @@
   }
 
   .comment input {
-    width: 100%;
+    width: 92%;
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+  .member-logo{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .member-logo img{
+    display: none;
   }
 
   .radio {

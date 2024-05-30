@@ -7,11 +7,13 @@ import info1 from '../../assets/info1.jpg'
 import info2 from '../../assets/info2.jpg'
 import info3 from '../../assets/info3.jpg'
 import map from '../../assets/map.jpg'
+import WaveLine from '../../components/Line/line'
 import SlideShow from "../../components/Slide/Slide";
 import { FaSprayCan } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
 import { FaMountainSun } from "react-icons/fa6";
 import { Link } from "react-router-dom"
+
 
 const text = (
   <div className='style' >
@@ -51,6 +53,7 @@ function Home() {
       </div>
     </div>
 
+
     <div className="info">
       <div className="info-sector1">
         <h1>Harvesting</h1>
@@ -65,7 +68,7 @@ function Home() {
         <img className="info-image1" src={info3} alt="info3" />
       </div>
     </div>
-
+    <WaveLine/>
 
     <div className="benefits">
       <div className="benefits-img">
@@ -100,7 +103,7 @@ function Home() {
         
         </div>
     </div>
-
+    <WaveLine/>
     <div className="benefits2">
       <div className="ben-section1">
        <h2>Know more about Pwallet</h2>
@@ -122,6 +125,7 @@ function Home() {
          <img className="section-image1" src={info3} alt="info3" />
       </div>
     </div>
+    <WaveLine/>
 
     <div className="contact-info">
       <div className="contact">
@@ -129,17 +133,17 @@ function Home() {
         <p>Empowering Avocado Enthusiasts<br/> for Sustainable Growth.<br/>
           Cultivating Green Delights<br/> Through Community and<br/> Knowledge.</p>
           <h2>LOCATION</h2>
-          <p>Kigali, Rwanda KN 154 STREET</p>
+          <p>Kigali, Rwanda KN 159 STREET</p>
           <h2>PHONE</h2>
-          <p>+250 0788 889 80</p>
+          <p>+250788481560</p>
           <h2>EMAIL</h2>
-          <p>asr@gmail.com</p>
+          <p>avocadosocietyofrwanda@gmail.com</p>
       </div>
       <div className="map">
          <img className="map-disp" src={map} alt="info2" />
       </div>
      </div>
-
+     <WaveLine/>
     </>
   )
 }
