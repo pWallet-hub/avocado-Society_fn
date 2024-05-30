@@ -57,6 +57,9 @@
     justify-content: space-around;
     text-align: left;
 }
+.icon-text{
+    margin-top: 0.4rem;
+}
 .icon1{
     font-size: 2rem;
     color: #070707;
