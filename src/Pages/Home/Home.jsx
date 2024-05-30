@@ -7,7 +7,6 @@ import info1 from '../../assets/info1.jpg'
 import info2 from '../../assets/info2.jpg'
 import info3 from '../../assets/info3.jpg'
 import map from '../../assets/map.jpg'
-import WaveLine from '../../components/Line/line'
 import SlideShow from "../../components/Slide/Slide";
 import { FaSprayCan } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
@@ -21,11 +20,12 @@ const text = (
       <h3 >Avocado Society of Rwanda </h3>
     </div>
     <div className='story-content'>
-      <p>Empowering Avocado Enthusiasts for Sustainable Growth.
+      <p>Empowering Avocado producers for Sustainable Growth.
  Cultivating Green Delights Through Community and Knowledge.
       </p>
     </div>
-    <div className='slide-button'>Discover</div>
+    <div className='slide-button'>
+      <Link className="about-style" to="/About">Discover</Link></div>
   </div>
 );
 
@@ -44,7 +44,7 @@ function Home() {
       <div className="bio-sector1">
         <h1> The Beauty of Avocado Society</h1>
         <h4>We  take care and give
-         value to your Avocado</h4>
+         value to your avocado orchards</h4>
          <span className="bio-button">Explore More</span>
       </div>
       <div className="bio-sector2">
@@ -68,7 +68,7 @@ function Home() {
         <img className="info-image1" src={info3} alt="info3" />
       </div>
     </div>
-    <WaveLine/>
+    {/* <WaveLine/> */}
 
     <div className="benefits">
       <div className="benefits-img">
@@ -77,13 +77,14 @@ function Home() {
       <div className="benefits-text">
         <h2>farmer service center </h2>
         <h1>Access this though <br/>
-         our Society's Pwallet App.</h1>
+         our Society&apos;s Pwallet App.</h1>
         <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size and means. This is accomplished through tailored and digitized farm financial modeling, extension services, and information sharing. 
         </p>
         <div className="benefits-list">
           <div className="icon1">
             <FaSprayCan className="icon2" />
             <p>Collective Pest<br/>
+            
             Management</p>
           </div>
           <div className="icon1">
@@ -103,7 +104,7 @@ function Home() {
         
         </div>
     </div>
-    <WaveLine/>
+    {/* <WaveLine/> */}
     <div className="benefits2">
       <div className="ben-section1">
        <h2>Know more about Pwallet</h2>
@@ -125,14 +126,13 @@ function Home() {
          <img className="section-image1" src={info3} alt="info3" />
       </div>
     </div>
-    <WaveLine/>
+    {/* <WaveLine/> */}
 
     <div className="contact-info">
       <div className="contact">
         <h1>Get in Touch </h1>
-        <p>Empowering Avocado Enthusiasts<br/> for Sustainable Growth.<br/>
-          Cultivating Green Delights<br/> Through Community and<br/> Knowledge.</p>
-          <h2>LOCATION</h2>
+        <p className="p">Welcome to the Avocado Society of Rwanda.<br/> Join us in our mission to feed the world.</p>
+          <h2 className="location">LOCATION</h2>
           <p>Kigali, Rwanda KN 159 STREET</p>
           <h2>PHONE</h2>
           <p>+250788481560</p>
@@ -143,7 +143,7 @@ function Home() {
          <img className="map-disp" src={map} alt="info2" />
       </div>
      </div>
-     <WaveLine/>
+     {/* <WaveLine/> */}
     </>
   )
 }
