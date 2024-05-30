@@ -234,6 +234,12 @@
     border-radius: 4px;
     flex: 1;
 }
+.error {
+    color: rgb(197, 51, 51);
+    font-size: 0.875em;
+    font-family: poppins;
+    margin-top: 5px;
+  }
 .comment input{
     width: 95%;
     height: 110px;
@@ -346,6 +352,11 @@
   .member-form-content7 select {
     width: 100%;
     margin-left: 0;
+  }
+  .error {
+    color: rgb(197, 51, 51);
+    font-size: 0.875em;
+    margin-top: 5px;
   }
 
   .comment input {
