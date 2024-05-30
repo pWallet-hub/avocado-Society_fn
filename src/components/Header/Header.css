@@ -15,6 +15,7 @@
 .logo{
     height: 3rem;
     width: 3rem;
+    margin-top: -1rem;
 }
 
 .header-nav{
@@ -67,7 +68,7 @@
         display: none;
     }
     .menu{
-        font-size: 35px;
+        font-size: 25px;
         align-items: center;
         display: flex;
     }
