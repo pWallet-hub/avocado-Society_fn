@@ -8,11 +8,8 @@
     margin-bottom: 0.3rem;
     align-items: center;
     z-index: 100;
+    
 }
-/* .close{
-    display: none;
-} */
-
 .logo{
     height: 8rem;
     margin-left: 2rem;             
@@ -36,9 +33,16 @@
     font-weight: bold;
     font-size: large;
 }
-.header-nav a :hover{
+.header-nav ul :hover{
     color: #599217;
-    /* font-size: 2rem; */
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+
+}
+.header-nav a.active {
+  color: #599217; /* Active link color */
 }
 
 .header-button{
@@ -47,8 +51,10 @@
     border: 2px solid #EECF39;
     cursor: pointer;
     margin-right: 2rem;
-    /* margin-bottom: 0.3rem; */
-
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: poppins;
+    color: #EECF39;
 }
 
 .icon{
@@ -97,6 +103,7 @@
     /* margin-bottom: 1rem; */
     /* margin-top: 0.1rem; */
     padding-top: 0.4rem;
-} 
+}
+ 
     
   }
