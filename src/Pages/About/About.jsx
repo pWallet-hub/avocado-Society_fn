@@ -1,7 +1,7 @@
 import avacados from '../../assets/avocados.jpeg'
-import image1 from '../../assets/felix.png'
-import image2 from '../../assets/image2.jpeg'
-import image3 from '../../assets/image3.jpeg'
+import image1 from '../../assets/Agape web photo.png'
+import image2 from '../../assets/felix.png'
+import image3 from '../../assets/kevin.jpg'
 import image4 from '../../assets/image4.jpeg'
 import gnf from "../../assets/gfn.jpg";
 import rgg from "../../assets/rgg.png";
