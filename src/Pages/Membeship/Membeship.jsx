@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import avocado5 from '../../assets/avocado5.jpeg'
+import avocado5 from '../../assets/DSC_2210.jpg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import './Membership.css'
 import { FaCheckCircle } from "react-icons/fa";

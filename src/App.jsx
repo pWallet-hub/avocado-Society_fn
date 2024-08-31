@@ -7,6 +7,7 @@ import About from './Pages/About/About';
 import Membeship from './Pages/Membeship/Membeship';
 
 
+
 function App() {
   return (
     <Router>
@@ -15,6 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About/>} />
         <Route path="/Membership" element={<Membeship/>} />
+        
+
       </Routes>
       <Footer />
     </Router>

@@ -8,8 +8,68 @@ import rgg from "../../assets/rgg.png";
 import ryaf from "../../assets/ryaf.jpg";
 import soris from "../../assets/soris.png";
 import WaveLine from '../../components/Line/line'
+import React, { useState } from 'react';
+import {
+  TextField,
+  Button,
+  MenuItem,
+  Grid,
+  Container,
+  Typography
+} from '@mui/material';
 import './About.css'
 function About() {
+  const [formValues, setFormValues] = useState({
+    amazina: '',
+    imyaka: '',
+    umudugudu: '',
+    akagari: '',
+    umurenge: '',
+    akarere: '',
+    upiNumber: '',
+    telefone: '',
+    ubusoHa: ''
+  });
+
+  const [formErrors, setFormErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const validate = () => {
+    const errors = {};
+    if (!formValues.amazina) errors.amazina = 'Amazina is required';
+    if (!formValues.imyaka) errors.imyaka = 'Imyaka is required';
+    if (!formValues.umudugudu) errors.umudugudu = 'Umudugudu is required';
+    if (!formValues.akagari) errors.akagari = 'Akagari is required';
+    if (!formValues.umurenge) errors.umurenge = 'Umurenge is required';
+    if (!formValues.akarere) errors.akarere = 'Akarere is required';
+    if (!formValues.upiNumber) errors.upiNumber = 'UPI Number is required';
+    if (!formValues.telefone) errors.telefone = 'Telefone is required';
+    if (!formValues.ubusoHa) errors.ubusoHa = 'Ubuso Ha is required';
+
+    // Additional validation (e.g., phone number format)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (formValues.telefone && !phoneRegex.test(formValues.telefone)) {
+      errors.telefone = 'Telefone must be a 10-digit number';
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validate();
+    if (Object.keys(errors).length === 0) {
+      // Submit the form
+      console.log('Form submitted successfully', formValues);
+    } else {
+      setFormErrors(errors);
+    }
+  };
+  
   return (
 
     <div className='active-hub'>
@@ -132,6 +192,123 @@ function About() {
       </div>
       <WaveLine/>
 
+      <div className="container">
+        <h2>KWIYANDIKISHA</h2>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label className="label">Amazina:</label>
+          <input
+            type="text"
+            name="amazina"
+            className="input"
+            value={formValues.amazina}
+            onChange={handleInputChange}
+          />
+          {formErrors.amazina && <span className="error">{formErrors.amazina}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Imyaka:</label>
+          <select
+            name="imyaka"
+            className="select"
+            value={formValues.imyaka}
+            onChange={handleInputChange}
+          >
+            <option value="">Select</option>
+            <option value="<35">Below 35</option>
+            <option value=">35">Above 35</option>
+          </select>
+          {formErrors.imyaka && <span className="error">{formErrors.imyaka}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Umudugudu:</label>
+          <input
+            type="text"
+            name="umudugudu"
+            className="input"
+            value={formValues.umudugudu}
+            onChange={handleInputChange}
+          />
+          {formErrors.umudugudu && <span className="error">{formErrors.umudugudu}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Akagari:</label>
+          <input
+            type="text"
+            name="akagari"
+            className="input"
+            value={formValues.akagari}
+            onChange={handleInputChange}
+          />
+          {formErrors.akagari && <span className="error">{formErrors.akagari}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Umurenge:</label>
+          <input
+            type="text"
+            name="umurenge"
+            className="input"
+            value={formValues.umurenge}
+            onChange={handleInputChange}
+          />
+          {formErrors.umurenge && <span className="error">{formErrors.umurenge}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Akarere:</label>
+          <input
+            type="text"
+            name="akarere"
+            className="input"
+            value={formValues.akarere}
+            onChange={handleInputChange}
+          />
+          {formErrors.akarere && <span className="error">{formErrors.akarere}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">UPI Number:</label>
+          <input
+            type="text"
+            name="upiNumber"
+            className="input"
+            value={formValues.upiNumber}
+            onChange={handleInputChange}
+          />
+          {formErrors.upiNumber && <span className="error">{formErrors.upiNumber}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Telefone:</label>
+          <input
+            type="text"
+            name="telefone"
+            className="input"
+            value={formValues.telefone}
+            onChange={handleInputChange}
+          />
+          {formErrors.telefone && <span className="error">{formErrors.telefone}</span>}
+        </div>
+
+        <div className="form-group">
+          <label className="label">Ubuso ufite Ha:</label>
+          <input
+            type="text"
+            name="ubusoHa"
+            className="input"
+            value={formValues.ubusoHa}
+            onChange={handleInputChange}
+          />
+          {formErrors.ubusoHa && <span className="error">{formErrors.ubusoHa}</span>}
+        </div>
+
+        <button type="submit" className="submit-button">Submit</button>
+      </form>
+    </div>
       <h1 className='partners'>Our PArtners</h1>
 
       <div className='log-image'>

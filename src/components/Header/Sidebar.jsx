@@ -20,6 +20,7 @@ function Sidebar({className,setSidebarOpen }) {
          <li><Link to="/"><IoMdHome className='icn' />  Home</Link></li>
           <li><Link to="/About"><MdPeopleAlt className='icn' /> About</Link></li>
           <li><Link to="/Membership"><MdGroupAdd className='icn' /> Membership</Link></li>
+          
           <ul className='social-media'>
             <li><Link to="/"><FaFacebookF className='soc' /></Link></li>
             <li><Link to="/"><FaTwitter className='soc' /></Link></li>

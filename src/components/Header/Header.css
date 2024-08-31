@@ -22,9 +22,10 @@
 .header-nav ul {
     display: flex;
     list-style: none;
-    justify-content: space-around;  
+    justify-content: flex-end;  
     color: #599217;
     font-size: 2rem;
+    gap: 2rem;
 }
 
 .header-nav a{
@@ -65,6 +66,7 @@
 }
 .icon-text{
     margin-top: 0.4rem;
+    padding-right: 1rem;
 }
 .icon1{
     font-size: 2rem;
