@@ -26,7 +26,7 @@ function Header() {
             <li><Link to="/Membership">Membership</Link></li>
             <div className='icon'>
               <IoCall className='icon1' />
-              <p className='icon-text'>+250780941222</p>
+              <p className='icon-text'>+250788481560</p>
             </div>
           </ul>
         </div>

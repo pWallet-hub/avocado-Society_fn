@@ -22,9 +22,10 @@
 .header-nav ul {
     display: flex;
     list-style: none;
-    justify-content: space-around;  
+    justify-content: flex-end;  
     color: #599217;
     font-size: 2rem;
+    gap: 2rem;
 }
 
 .header-nav a{
@@ -65,11 +66,11 @@
 }
 .icon-text{
     margin-top: 0.4rem;
+    padding-right: 1rem;
 }
 .icon1{
     font-size: 2rem;
-    color: #070707;
-    /* padding-right: 0.5rem; */
+    color: #4416c2;
 }
 .icon p{
     color: #070707;
