@@ -31,7 +31,7 @@ function Header() {
           </ul>
         </div>
         <div>
-          <div className='header-button'>Get in touch</div>
+        <Link to="/Register" className='header-button'>Get in touch</Link>
         </div>
         <div className='menu' onClick={handleMenuClick}>
         <MdMenu />

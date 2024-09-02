@@ -36,9 +36,7 @@
 }
 .header-nav ul :hover{
     color: #599217;
-    text-decoration: underline;
     font-weight: bold;
-    font-size: large;
     cursor: pointer;
 
 }
@@ -70,7 +68,7 @@
 }
 .icon1{
     font-size: 2rem;
-    color: #4416c2;
+    color: #30a540;
 }
 .icon p{
     color: #070707;

@@ -6,6 +6,7 @@ import image4 from '../../assets/image4.jpeg'
 import gnf from "../../assets/gfn.jpg";
 import rgg from "../../assets/rgg.png";
 import ryaf from "../../assets/ryaf.jpg";
+import nopic from "../../assets/nopic.jpg";
 import soris from "../../assets/soris.png";
 import WaveLine from '../../components/Line/line'
 import React, { useState } from 'react';
@@ -113,49 +114,49 @@ function About() {
           </div>
           <div className='image'>
             <div className='image1'>
-              <img src={image1} alt="" />
+              <img src={nopic} alt="" />
               <h3>Omar BISERUKA</h3>
               <p>Managing Director</p>
             </div>
             <div className='image1'>
-              <img src={image2} alt="" />
+              <img src={nopic} alt="" />
               <h3>Jean Damascéne MUSANGAMFURA</h3>
               <p>Secretary</p>
             </div>
             <div className='image1'>
-              <img src={image3} alt="" />
+              <img src={nopic} alt="" />
               <h3>Pacifique NSHIMIYIMANA</h3>
               <p>Chair Person</p>
             </div>
             <div className='image1'>
-              <img src={image4} alt="" />
+              <img src={nopic} alt="" />
               <h3>Renovat NITUNGA</h3>
               <p>Member</p>
             </div>
           </div>
           <div className='image'>
             <div className='image1'>
-              <img src={image1} alt="" />
+              <img src={nopic} alt="" />
               <h3>Godfrey KAREMA</h3>
               <p>Member</p>
             </div>
             <div className='image1'>
-              <img src={image2} alt="" />
+              <img src={nopic} alt="" />
               <h3>ALEXANDRE NSHIMIYIMANA</h3>
               <p>Member</p>
             </div>
             <div className='image1'>
-              <img src={image3} alt="" />
+              <img src={nopic} alt="" />
               <h3>Mugeni Euphrosine NIYIDUKUNDA</h3>
               <p>Member</p>
             </div>
             <div className='image1'>
-              <img src={image4} alt="" />
+              <img src={nopic} alt="" />
               <h3>Aime Chance BUTERA</h3>
               <p>Member</p>
             </div>
             <div className='image1'>
-              <img src={image4} alt="" />
+              <img src={nopic} alt="" />
               <h3>Emmanuel Muvunyi MUGISHA</h3>
               <p>Member</p>
             </div>
@@ -166,23 +167,23 @@ function About() {
           </div>
           <div className='image'>
             <div className='image1'>
-              <img src={image1} alt="" />
+              <img src={nopic} alt="" />
               <h3>Agape Nduwamungu</h3>
               <p> Administrative Officer</p>
             </div>
             <div className='image1'>
-              <img src={image2} alt="" />
+              <img src={nopic} alt="" />
               <h3>Felix Bikorimana </h3>
               <p>Senior digitization Officer
 </p>
             </div>
             <div className='image1'>
-              <img src={image3} alt="" />
+              <img src={nopic} alt="" />
               <h3>Kevin Ishimwe</h3>
               <p>back-End Lead</p>
             </div>
             <div className='image1'>
-              <img src={image4} alt="" />
+              <img src={nopic} alt="" />
               <h3>Umutoni Doreen</h3>
               <p>UI/UX  Lead </p>
             </div>
@@ -190,7 +191,7 @@ function About() {
         </div>
 
       </div>
-      <WaveLine/>
+     
 
       <div className="container">
         <h2>KWIYANDIKISHA</h2>
