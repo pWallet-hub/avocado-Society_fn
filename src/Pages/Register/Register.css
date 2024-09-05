@@ -1,12 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-.form-container {
-    background: #1F310A;
-    padding: 20px;
-    max-width: 600px;
+/* Container Styles */
+.register-container {
+    max-width: 1200px;
     margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Flex Container for Side-by-Side Layout */
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px; /* Space between the two sections */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+.page-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Full viewport height */
+    padding: 20px;           /* Optional padding */
+}
+
+/* Avocado Information Styles */
+.avocado-info {
+    flex: 1;
+    background-color: #e9f7f4;
+    border: 1px solid #cce7e2;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+  max-height: 350px;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+  font-family: poppins;
+  
+}
+
+.avocado-info h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #007a74;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: poppins;
+
+}
+
+.avocado-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #333;
+    padding-top: 1rem;
+}
+
+/* Form Container Styles */
+.form-container {
+    flex: 2;
+    background: #1F310A;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 800px;
+    padding: 2rem;
+    font-family: poppins;
+ 
 }
 
 .form-header {
@@ -16,24 +74,22 @@
 
 .form-logo {
     width: 100px;
-    margin-bottom: 10px;
+    height: auto;
 }
 
 .form-title {
-    color: white;
     font-size: 24px;
-    font-weight: bold;
+    margin: 10px 0;
 }
 
 .form-subtitle {
-    color: white;
-    font-size: 14px;
+    font-size: 18px;
+    color: #007a74;
 }
 
 .membership-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group {
@@ -41,40 +97,57 @@
 }
 
 .form-group label {
-    display: flex;
+    display: block;
     margin-bottom: 5px;
-    font-weight: bold;
 }
 
-.form-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-row input {
-    width: 48%;
-}
-
-input, textarea {
+.form-group input {
     width: 100%;
     padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.error {
+    color: #721c24;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Alert Styles */
+.alert {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.alert .icon {
+    margin-right: 10px;
+}
+
+.success-alert {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .submit-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #000000;
+    background: #19737f;
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-    background-color: #333333;
+    background-color: #005f5f;
 }
