@@ -1,219 +1,189 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
-import logo from '../../assets/LOGO_-_Avocado_Society_of_Rwanda.png';
+import logo from '../../assets/avocado1.jpg';
 import { FaCheckCircle } from "react-icons/fa";
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+
+const FormStep = ({ title, children }) => (
+  <div className="form-step">
+    <h2>{title}</h2>
+    {children}
+  </div>
+);
+
+const ProgressBar = ({ currentStep, totalSteps }) => (
+  <div className="progress-bar-wrapper">
+    <div
+      className="progress-bar-fill"
+      style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+    ></div>
+  </div>
+);
 
 export default function Register() {
-    const [formData, setFormData] = useState({
-        amazina: '',
-        imyaka: 0,
-        umudugudu: '',
-        akagari: '',
-        umurenge: '',
-        akarere: '',
-        telefone: '',
-        ubuso: '',
-    });
-    const [errors, setErrors] = useState({});
-    const [submitError, setSubmitError] = useState(null);
-    const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [step, setStep] = useState(1);
+  const totalSteps = 4;
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    telephone: '',
+    idNumber: '',
+    village: '',
+    cell: '',
+    sector: '',
+    district: '',
+    province: '',
+    planted: '',
+    avocadoType: '',
+    mixedPercentage: '',
+    farmSize: '',
+    treeCount: '',
+    upiNumber: '',
+    assistance: ''
+  });
 
-    const validate = () => {
-        let newErrors = {};
+  const nextStep = () => setStep(prev => Math.min(prev + 1, totalSteps));
+  const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
-        if (!formData.amazina.trim()) newErrors.amazina = 'Amazina (Name) is required';
-        if (!formData.imyaka) newErrors.imyaka = 'Imyaka (Age) is required';
-        if (!formData.umudugudu.trim()) newErrors.umudugudu = 'Umudugudu (Village) is required';
-        if (!formData.akagari.trim()) newErrors.akagari = 'Akagari (Cell) is required';
-        if (!formData.umurenge.trim()) newErrors.umurenge = 'Umurenge (Sector) is required';
-        if (!formData.akarere.trim()) newErrors.akarere = 'Akarere (District) is required';
-        if (!formData.telefone.trim()) {
-            newErrors.telefone = 'Telefone (Phone) is required';
-        } else if (!/^\+?\d{1,3}?[-\s]?\(?\d{1,3}\)?[-\s]?\d{3,4}[-\s]?\d{4}$/.test(formData.telefone)) {
-            newErrors.telefone = 'Telefone (Phone) is invalid';
-        }
-        if (!formData.ubuso.trim()) newErrors.ubuso = 'Ubuso (Area) is required';
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (validate()) {
-            try {
-                const response = await axios.post(
-                    'https://applicanion-api.onrender.com/api/users',
-                    {
-                        amazina: formData.amazina,
-                        myaka: formData.imyaka,
-                        umudugudu: formData.umudugudu,
-                        akagari: formData.akagari,
-                        umurenge: formData.umurenge,
-                        akarere: formData.akarere,
-                        telefone: formData.telefone,
-                        ubuso: formData.ubuso,
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    }
-                );
-                console.log(response.data);
-                setSubmitSuccess(true);
-                setFormData({
-                    amazina: '',
-                    imyaka: 0,
-                    umudugudu: '',
-                    akagari: '',
-                    umurenge: '',
-                    akarere: '',
-                    telefone: '',
-                    ubuso: '',
-                });
-                setErrors({});
-                setSubmitError(null);
-            } catch (error) {
-                console.error('There was an error submitting the form!', error.message);
-                setSubmitError('There was an error submitting the form. Please try again later.');
-                setSubmitSuccess(false);
-            }
-        } else {
-            console.log('Validation failed');
-        }
-    };
-
-    return (
-        <div className="register-container">
-            <div className="content-wrapper">
-                <div className="page-container">
-                    <div className="avocado-info">
-                        <h2>Avocado Varieties Provisional</h2>
-                        <p>The Avocado Society of Rwanda is proposing to provide the following avocado varieties:</p>
-                        <ul>
-                            <li><strong>Hass:</strong> Known for its creamy texture and rich flavor, Hass avocados are popular for their smooth, dark green skin and nutty taste.</li>
-                            <li><strong>Fuerte:</strong> Fuerte avocados are known for their milder flavor and smooth, medium-green skin. They are often used in salads and as a garnish.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="form-container">
-                    <div className="form-header">
-                        <img src={logo} alt="ASRI Logo" className="form-logo" />
-                        <h1 className="form-title">MEMBERSHIP REGISTRATION</h1>
-                        <p className="form-subtitle">Register to avocado-society member</p>
-                    </div>
-
-                    {/* Display alert messages */}
-                    {submitSuccess && (
-                        <div className="alert success-alert">
-                            <i className="icon"><FaCheckCircle /></i>
-                            Form submitted successfully! Thank you for registering.
-                        </div>
-                    )}
-                    {submitError && (
-                        <div className="alert error-alert">
-                            {submitError}
-                        </div>
-                    )}
-
-                    <form className="membership-form" onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label>Member Name</label>
-                            <input
-                                type="text"
-                                name="amazina"
-                                placeholder="Amazina (Name)"
-                                value={formData.amazina}
-                                onChange={handleChange}
-                            />
-                            {errors.amazina && <span className="error">{errors.amazina}</span>}
-                        </div>
-
-                        <div className="form-group">
-                            <label>Age</label>
-                            <input
-                                type="number"
-                                name="imyaka"
-                                placeholder="Imyaka (Age)"
-                                value={formData.imyaka}
-                                onChange={handleChange}
-                            />
-                            {errors.imyaka && <span className="error">{errors.imyaka}</span>}
-                        </div>
-
-                        <div className="form-group">
-                            <label>Home Address</label>
-                            <input
-                                type="text"
-                                name="umudugudu"
-                                placeholder="Umudugudu (Village)"
-                                value={formData.umudugudu}
-                                onChange={handleChange}
-                            />
-                            {errors.umudugudu && <span className="error">{errors.umudugudu}</span>}
-                            <input
-                                type="text"
-                                name="akagari"
-                                placeholder="Akagari (Cell)"
-                                value={formData.akagari}
-                                onChange={handleChange}
-                            />
-                            {errors.akagari && <span className="error">{errors.akagari}</span>}
-                            <input
-                                type="text"
-                                name="umurenge"
-                                placeholder="Umurenge (Sector)"
-                                value={formData.umurenge}
-                                onChange={handleChange}
-                            />
-                            {errors.umurenge && <span className="error">{errors.umurenge}</span>}
-                            <input
-                                type="text"
-                                name="akarere"
-                                placeholder="Akarere (District)"
-                                value={formData.akarere}
-                                onChange={handleChange}
-                            />
-                            {errors.akarere && <span className="error">{errors.akarere}</span>}
-                        </div>
-
-                        <div className="form-group">
-                            <label>Phone Number</label>
-                            <input
-                                type="tel"
-                                name="telefone"
-                                placeholder="Telefone (Phone)"
-                                value={formData.telefone}
-                                onChange={handleChange}
-                            />
-                            {errors.telefone && <span className="error">{errors.telefone}</span>}
-                        </div>
-
-                        <div className="form-group">
-                            <label>Area in Ha</label>
-                            <input
-                                type="text"
-                                name="ubuso"
-                                placeholder="Ubuso (Area)"
-                                value={formData.ubuso}
-                                onChange={handleChange}
-                            />
-                            {errors.ubuso && <span className="error">{errors.ubuso}</span>}
-                        </div>
-
-                        <button type="submit" className="submit-button">Submit</button>
-                    </form>
-                </div>
-            </div>
+  return (
+    <div className="interactive-form-container">
+      {/* Left Section */}
+      <div className="left-section">
+        <div className="info-box">
+          <h1>Avocado Society Rwanda</h1>
+          <p>
+            {step === 1 && "Umwirondoro w'umuhinzi waho utuye. Tell us about yourself."}
+            {step === 2 && "Aho ubutaka buhingwaho buherereye. Let's understand your land."}
+            {step === 3 && "Ibisobanuro by'umurima. Provide details about your farm."}
+            {step === 4 && "Ubufasha n'imikoranire akeneye. How can we assist you?"}
+          </p>
+          <div className="additional-info">
+            <h3>Impamvu ibi ari ingenzi:</h3>
+            <p>
+              {step === 1 && "Amakuru yawe y'ingenzi atuma dushobora kugufasha neza."}
+              {step === 2 && "Kumenya aho ubutaka bwawe buherereye bidufasha mu mikoranire."}
+              {step === 3 && "Ibisobanuro by'umurima bituma dushobora gutanga ubufasha bukwiye."}
+              {step === 4 && "Ubufasha bukenewe butuma ubucuruzi bwawe butera imbere."}
+            </p>
+          </div>
         </div>
-    );
+      </div>
+
+      {/* Right Section */}
+      <div className="right-section">
+        <form onSubmit={handleSubmit} className="form-content">
+          <ProgressBar currentStep={step} totalSteps={totalSteps} />
+          
+          {step === 1 && (
+            <FormStep title="Umwirondoro w'umuhinzi waho utuye">
+              <input className="form-input" placeholder="Amazina - First Name" name="firstName" value={formData.firstName} onChange={handleChange} />
+              <input className="form-input" placeholder="Amazina - Last Name" name="lastName" value={formData.lastName} onChange={handleChange} />
+              <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
+              <input className="form-input" placeholder="Indangamuntu" name="idNumber" value={formData.idNumber} onChange={handleChange} />
+              <input className="form-input" placeholder="Umudugudu" name="village" value={formData.village} onChange={handleChange} />
+              <input className="form-input" placeholder="Akagali" name="cell" value={formData.cell} onChange={handleChange} />
+              <input className="form-input" placeholder="Umurenge" name="sector" value={formData.sector} onChange={handleChange} />
+              <input className="form-input" placeholder="Akarere" name="district" value={formData.district} onChange={handleChange} />
+              <input className="form-input" placeholder="Intara" name="province" value={formData.province} onChange={handleChange} />
+            </FormStep>
+          )}
+
+          {step === 2 && (
+            <FormStep title="Aho ubutaka buhingwaho buherereye">
+              <label>Waba waramaze gutera?</label>
+              <select className="form-input" name="planted" value={formData.planted} onChange={handleChange}>
+                <option value="">Hitamo</option>
+                <option value="yego">Yego</option>
+                <option value="oya">Oya</option>
+              </select>
+
+              <label>Ni ubuhe bwoko bwa avoka wateye?</label>
+              <select className="form-input" name="avocadoType" value={formData.avocadoType} onChange={handleChange}>
+                <option value="">Hitamo</option>
+                <option value="hass">Hass</option>
+                <option value="fuerte">Fuerte</option>
+                <option value="bivanze">Bivanze</option>
+              </select>
+
+              <label>Niba waravanze Fuerte na Hass, ni kanganahe ku ijana?</label>
+              <select className="form-input" name="mixedPercentage" value={formData.mixedPercentage} onChange={handleChange}>
+                <option value="">Hitamo</option>
+                <option value=">60">{'>'}60%</option>
+                <option value="50">50%</option>
+                <option value="40">40%</option>
+                <option value="<20">{'<'}20%</option>
+              </select>
+            </FormStep>
+          )}
+
+          {step === 3 && (
+            <FormStep title="Ibisobanuro by'umurima">
+              <label>Ingano y'umurima muri hectare</label>
+              <select className="form-input" name="farmSize" value={formData.farmSize} onChange={handleChange}>
+                <option value="">Hitamo</option>
+                <option value="1/4">¼</option>
+                <option value="1/2">½</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value=">10">{'>'}10</option>
+              </select>
+
+              <input className="form-input" placeholder="Umubare w'ibiti" type="number" name="treeCount" value={formData.treeCount} onChange={handleChange} />
+
+              <input className="form-input" placeholder="UPI number (not mandatory)" name="upiNumber" value={formData.upiNumber} onChange={handleChange} />
+            </FormStep>
+          )}
+
+          {step === 4 && (
+            <FormStep title="Ubufasha n'imikoranire akeneye">
+              <label>Ubufasha akeneye na ASR</label>
+              <select className="form-input" name="assistance" value={formData.assistance} onChange={handleChange}>
+                <option value="">Hitamo</option>
+                <option value="kubona-imbuto">Kubona imbuto</option>
+                <option value="kontara-gurirwa">Kontara yo kugurirwa umusaruro</option>
+                <option value="bds">BDS (Business Development Service)</option>
+                <option value="inguzanyo">Inguzanyo iriho inkunga ya 50% ku nyungu ya banki igabanyije 10%</option>
+              </select>
+            </FormStep>
+          )}
+
+          <div className="navigation-buttons">
+            {step > 1 && (
+              <button type="button" onClick={prevStep} className="nav-button prev-button">
+                <ChevronLeft size={20} />
+                Previous
+              </button>
+            )}
+            {step < totalSteps ? (
+              <button type="button" onClick={nextStep} className="nav-button next-button">
+                Next
+                <ChevronRight size={20} />
+              </button>
+            ) : (
+              <button type="submit" className="submit-button">Submit</button>
+            )}
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
