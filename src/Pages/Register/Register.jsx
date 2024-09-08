@@ -54,7 +54,14 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    //console.log(formData);
+    try {
+        const response = axios.post('https://applicanion-api.onrender.com/api/users', formData);
+        console.log('Form submitted successfully');
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
   };
 
   return (
