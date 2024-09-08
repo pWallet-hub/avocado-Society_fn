@@ -1,108 +1,148 @@
-.header{
+.header {
     height: fit-content;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 1rem;
-    font-family: sans-serif;
+    padding: 1rem 2rem;
+    font-family: 'Poppins', sans-serif;
     margin-bottom: 0.3rem;
     align-items: center;
     z-index: 100;
-    
-}
-.logo{
-    height: 8rem;
-    margin-left: 2rem;             
-    width: 8rem;
+    background: linear-gradient(90deg, #599217, #30a540);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.header-nav{
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 8rem;
+    width: 8rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.header-nav {
     flex: 3;
 }
+
 .header-nav ul {
     display: flex;
     list-style: none;
-    justify-content: flex-end;  
-    color: #599217;
+    justify-content: flex-end;
+    color: #fff;
     font-size: 2rem;
     gap: 2rem;
 }
 
-.header-nav a{
-     color: #070707;
-     text-decoration: none;
+.header-nav a {
+    color: #fff;
+    text-decoration: none;
     font-weight: bold;
     font-size: large;
+    position: relative;
+    transition: color 0.3s ease;
 }
-.header-nav ul :hover{
-    color: #599217;
-    font-weight: bold;
-    cursor: pointer;
 
+.header-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #EECF39;
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
 }
+
+.header-nav a:hover::after {
+    width: 100%;
+    left: 0;
+    background: #EECF39;
+}
+
+.header-nav a:hover {
+    color: #EECF39;
+}
+
 .header-nav a.active {
-  color: #599217; /* Active link color */
+    color: #EECF39;
 }
 
-.header-button{
-    background-color: none;
-    padding: 0.5rem;
+.header-button {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
     border: 2px solid #EECF39;
     cursor: pointer;
     margin-right: 2rem;
     border-radius: 5px;
     font-size: 20px;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     color: #EECF39;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
 }
 
-.icon{
+.header-button:hover {
+    background-color: #EECF39;
+    color: #fff;
+}
+
+.icon {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: left;
 }
-.icon-text{
+
+.icon-text {
     margin-top: 0.4rem;
     padding-right: 1rem;
 }
-.icon1{
+
+.icon1 {
     font-size: 2rem;
-    color: #30a540;
+    color: #fff;
 }
-.icon p{
-    color: #070707;
+
+.icon p {
+    color: #fff;
     font-weight: bold;
     font-size: large;
 }
-.menu{
+
+.menu {
     display: none;
-  }
+}
+
 @media (max-width: 980px) {
-    .menu{
-    display: block;
+    .menu {
+        display: block;
     }
-    .header-nav{
+    .header-nav {
         display: none;
     }
-    .menu{
+    .menu {
         font-size: 25px;
         align-items: center;
         display: flex;
     }
-    .header-button{
+    .header-button {
         display: flex;
         align-items: center;
-        /* padding: 0.7rem; */
         margin-top: 0.1rem;
     }
-.logo{
-    height: 4rem;
-    width: 4rem;
-    /* margin-bottom: 1rem; */
-    /* margin-top: 0.1rem; */
-    padding-top: 0.4rem;
+    .logo {
+        height: 4rem;
+        width: 4rem;
+        padding-top: 0.4rem;
+    }
 }
- 
-    
-  }
