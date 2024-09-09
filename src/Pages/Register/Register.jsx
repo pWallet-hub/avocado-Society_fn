@@ -42,6 +42,8 @@ export default function Register() {
     assistance: ''
   });
 
+  const [submitted, setSubmitted] = useState(false); // Track submission status
+
   const nextStep = () => setStep(prev => Math.min(prev + 1, totalSteps));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
@@ -55,6 +57,7 @@ export default function Register() {
     try {
       const response = await axios.post('https://applicanion-api.onrender.com/api/users', formData);
       console.log('Form submitted successfully:', response.data);
+      setSubmitted(true); // Set submission status to true on success
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -84,108 +87,121 @@ export default function Register() {
         </div>
       </div>
 
-      {/* Right Section */}
       <div className="right-section">
-        <form onSubmit={handleSubmit} className="form-content">
-          <ProgressBar currentStep={step} totalSteps={totalSteps} />
-          
-          {step === 1 && (
-            <FormStep title="Umwirondoro w'umuhinzi waho utuye">
-              <input className="form-input" placeholder="Amazina - First Name" name="firstname" value={formData.firstname} onChange={handleChange} />
-              <input className="form-input" placeholder="Amazina - Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
-              <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
-              <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />
-              <input className="form-input" placeholder="Umudugudu" name="village" value={formData.village} onChange={handleChange} />
-              <input className="form-input" placeholder="Akagali" name="cell" value={formData.cell} onChange={handleChange} />
-              <input className="form-input" placeholder="Umurenge" name="sector" value={formData.sector} onChange={handleChange} />
-              <input className="form-input" placeholder="Akarere" name="district" value={formData.district} onChange={handleChange} />
-              <input className="form-input" placeholder="Intara" name="province" value={formData.province} onChange={handleChange} />
-            </FormStep>
-          )}
-
-          {step === 2 && (
-            <FormStep title="Aho ubutaka buhingwaho buherereye">
-              <label>Waba waramaze gutera?</label>
-              <select className="form-input" name="planted" value={formData.planted} onChange={handleChange}>
-                <option value="">Hitamo</option>
-                <option value="yego">Yego</option>
-                <option value="oya">Oya</option>
-              </select>
-
-              <label>Ni ubuhe bwoko bwa avoka wateye?</label>
-              <select className="form-input" name="avocadotype" value={formData.avocadotype} onChange={handleChange}>
-                <option value="">Hitamo</option>
-                <option value="hass">Hass</option>
-                <option value="fuerte">Fuerte</option>
-                <option value="bivanze">Bivanze</option>
-              </select>
-
-              <label>Niba waravanze Fuerte na Hass, ni kanganahe ku ijana?</label>
-              <select className="form-input" name="mixedpercentage" value={formData.mixedpercentage} onChange={handleChange}>
-                <option value="">Hitamo</option>
-                <option value=">60">{'>'}60%</option>
-                <option value="50">50%</option>
-                <option value="40">40%</option>
-                <option value="<20">{'<'}20%</option>
-              </select>
-            </FormStep>
-          )}
-
-          {step === 3 && (
-            <FormStep title="Ibisobanuro by'umurima">
-              <label>Ingano y'umurima muri hectare</label>
-              <select className="form-input" name="farmsize" value={formData.farmsize} onChange={handleChange}>
-                <option value="">Hitamo</option>
-                <option value="1/4">¼</option>
-                <option value="1/2">½</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value=">10">{'>'}10</option>
-              </select>
-
-              <input className="form-input" placeholder="Umubare w'ibiti" type="number" name="treecount" value={formData.treecount} onChange={handleChange} />
-
-              <input className="form-input" placeholder="UPI number (not mandatory)" name="upinumber" value={formData.upinumber} onChange={handleChange} />
-            </FormStep>
-          )}
-
-          {step === 4 && (
-            <FormStep title="Ubufasha n'imikoranire akeneye">
-              <label>Ubufasha akeneye na ASR</label>
-              <select className="form-input" name="assistance" value={formData.assistance} onChange={handleChange}>
-                <option value="">Hitamo</option>
-                <option value="kubona-imbuto">Kubona imbuto</option>
-                <option value="kontara-gurirwa">Kontara yo kugurirwa umusaruro</option>
-                <option value="bds">BDS (Business Development Service)</option>
-                <option value="inguzanyo">Inguzanyo iriho inkunga ya 50% ku nyungu ya banki igabanyije 10%</option>
-              </select>
-            </FormStep>
-          )}
-
-          <div className="navigation-buttons">
-            {step > 1 && (
-              <button type="button" onClick={prevStep} className="nav-button prev-button">
-                <ChevronLeft size={20} />
-                Previous
-              </button>
-            )}
-            {step < totalSteps ? (
-              <button type="button" onClick={nextStep} className="nav-button next-button">
-                Next
-                <ChevronRight size={20} />
-              </button>
-            ) : (
-              <button type="submit" className="submit-button">Submit</button>
-            )}
+        {submitted ? (
+          <div className="success-message">
+            <h2>Thank you! Your registration has been successfully submitted.</h2>
+            <p>We will review your information and get back to you soon.</p>
           </div>
-        </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="form-content">
+            <ProgressBar currentStep={step} totalSteps={totalSteps} />
+
+            {step === 1 && (
+              <FormStep title="Umwirondoro w'umuhinzi waho utuye">
+                <label htmlFor="text">Amazina <span className="required">*</span></label>
+                <input className="form-input" placeholder="Amazina - First Name" name="firstname" value={formData.firstname} onChange={handleChange} />
+                <label htmlFor="text">Amazina <span className="required">*</span></label>
+                <input className="form-input" placeholder="Amazina - Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
+                <label htmlFor="number">Telephone <span className="required">*</span></label>
+                <input className="form-input" placeholder="Telephone" type="tel" name="number" value={formData.telephone} onChange={handleChange} />
+                <label htmlFor="number">Indangamuntu <span className="required">*</span></label>
+                <input className="form-input" placeholder="Indangamuntu" name="number" value={formData.idnumber} onChange={handleChange} />
+                <label htmlFor="number">Umudugudu <span className="required">*</span></label>
+                <input className="form-input" placeholder="Umudugudu" name="village" value={formData.village} onChange={handleChange} />
+                <label htmlFor="text">Akagali <span className="required">*</span></label>
+                <input className="form-input" placeholder="Akagali" name="cell" value={formData.cell} onChange={handleChange} />
+                <label htmlFor="text">Umurenge <span className="required">*</span></label>
+                <input className="form-input" placeholder="Umurenge" name="sector" value={formData.sector} onChange={handleChange} />
+                <label htmlFor="text">Akarere <span className="required">*</span></label>
+                <input className="form-input" placeholder="Akarere" name="district" value={formData.district} onChange={handleChange} />
+                <label htmlFor="text">Intara <span className="required">*</span></label>
+                <input className="form-input" placeholder="Intara" name="province" value={formData.province} onChange={handleChange} />
+              </FormStep>
+            )}
+
+            {step === 2 && (
+              <FormStep title="Aho ubutaka buhingwaho buherereye">
+                <label>Waba waramaze gutera? <span className="required">*</span></label>
+                <select className="form-input" name="planted" value={formData.planted} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  <option value="yego">Yego</option>
+                  <option value="oya">Oya</option>
+                </select>
+
+                <label>Ni ubuhe bwoko bwa avoka wateye? <span className="required">*</span></label>
+                <select className="form-input" name="avocadotype" value={formData.avocadotype} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  <option value="hass">Hass</option>
+                  <option value="fuerte">Fuerte</option>
+                  <option value="bivanze">Bivanze</option>
+                </select>
+
+                <label>Niba waravanze Fuerte na Hass, ni kanganahe ku ijana?<span className="required">*</span></label>
+                <select className="form-input" name="mixedpercentage" value={formData.mixedpercentage} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  <option value=">60">{'>'}60%</option>
+                  <option value="50">50%</option>
+                  <option value="40">40%</option>
+                  <option value="<20">{'<'}20%</option>
+                </select>
+              </FormStep>
+            )}
+
+            {step === 3 && (
+              <FormStep title="Ibisobanuro by'umurima">
+                <label>Ingano y'umurima muri hectare <span className="required">*</span></label>
+                <select className="form-input" name="farmsize" value={formData.farmsize} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  <option value="1/4">¼</option>
+                  <option value="1/2">½</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value=">10">{'>'}10</option>
+                </select>
+                <label htmlFor="number">Umubare w'ibiti byatewe <span className="required">*</span></label>
+                <input className="form-input" placeholder="Umubare w'ibiti" name="number" value={formData.treecount} onChange={handleChange} />
+                <label htmlFor="text">UPI number <span className="required">*</span></label>
+                <input className="form-input" placeholder="UPI Number" name="upinumber" value={formData.upinumber} onChange={handleChange} />
+              </FormStep>
+            )}
+
+            {step === 4 && (
+              <FormStep title="Ubufasha n'imikoranire akeneye">
+                <label htmlFor="text">Ni ubuhe bufasha wifuza? <span className="required">*</span></label>
+                <select className="form-input" name="assistance" value={formData.assistance} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  <option value="ubuhinzi">Ubuhinzi</option>
+                  <option value="ubuvugizi">Ubuvugizi</option>
+                  <option value="guhangana-nibibazo">Guhangana n'ibibazo</option>
+                  <option value="ubwishingizi">Ubwishingizi</option>
+                </select>
+              </FormStep>
+            )}
+
+            <div className="form-buttons">
+              {step > 1 && (
+                <button type="button" className="prev-button" onClick={prevStep}>
+                  <ChevronLeft /> Back
+                </button>
+              )}
+              {step < totalSteps ? (
+                <button type="button" className="next-button" onClick={nextStep}>
+                  Next <ChevronRight />
+                </button>
+              ) : (
+                <button type="submit" className="submit-button">Submit</button>
+              )}
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );
