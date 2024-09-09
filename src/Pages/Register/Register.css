@@ -1,16 +1,16 @@
-/* Container styles */
+
 .interactive-form-container {
   display: flex;
   min-height: 100vh;
   background-color: #f0f8ff;
-  font-family: 'sans-serif';
+  font-family: 'poppins';
 }
 
-/* Left Section */
+
 .left-section {
   width: 50%;
   padding: 40px;
-  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  background: linear-gradient(135deg, #4cba4e, #5bb345);
   color: white;
   display: flex;
   align-items: center;
@@ -49,8 +49,6 @@
   font-size: 16px;
   line-height: 1.5;
 }
-
-/* Right Section */
 .right-section {
   width: 50%;
   padding: 40px;
@@ -69,7 +67,6 @@
   position: relative;
 }
 
-/* Progress Bar */
 .progress-bar-wrapper {
   background-color: #e0e0e0;
   border-radius: 50px;
@@ -77,6 +74,24 @@
   margin-bottom: 30px;
   overflow: hidden;
 }
+.required {
+  color: red;
+  margin-left: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: green;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
 
 .progress-bar-fill {
   background-color: #4caf50;
@@ -85,7 +100,6 @@
   transition: width 0.5s ease-in-out;
 }
 
-/* Form Step */
 .form-step h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -132,30 +146,74 @@ label {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s;
+  justify-content: space-between;
 }
 
 .nav-button:hover, .submit-button:hover {
   opacity: 0.9;
   transform: translateY(-2px);
+}/* Register.css */
+
+/* General button styling */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+  color: #fff;
+  display: flex;
+  justify-content: center;
 }
+
+button:hover {
+  opacity: 0.9;
+}
+
 
 .prev-button {
-  background-color: #b0b0b0;
-  color: white;
+  background-color: #4CAF50;
+  color: white; 
+  width: 40%;
+  height: 40px;
 }
 
-.next-button {
-  background-color: #2196f3;
-  color: white;
+.prev-button:hover {
+  background-color: #45a049;
 }
+
+/* Next button styling */
+.next-button {
+  background-color: #2196F3; /* Blue background */
+  color: white; /* White text */
+  width: 40%;
+  /* height: 40px; */
+}
+
+.next-button:hover {
+  background-color: #053f79; 
+}
+
 
 .submit-button {
-  background-color: #4caf50;
-  color: white;
-  width: 100%;
+  background-color: #154d06; 
+  color: white; 
+  width: 100%; 
 }
 
-/* Responsive Design */
+.submit-button:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+/* Form buttons container */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 @media (max-width: 768px) {
   .interactive-form-container {
     flex-direction: column;
@@ -166,10 +224,11 @@ label {
   }
 
   .info-box h1 {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .form-content {
     padding: 20px;
   }
 }
+

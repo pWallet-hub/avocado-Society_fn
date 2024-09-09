@@ -70,7 +70,7 @@ function About() {
       setFormErrors(errors);
     }
   };
-  
+
   return (
 
     <div className='active-hub'>
@@ -106,7 +106,7 @@ function About() {
           </p>
 
         </div>
-        <WaveLine/>
+        <WaveLine />
         <div className='team'>
           <div className='team1'>
             <h2>the team</h2>
@@ -175,7 +175,7 @@ function About() {
               <img src={nopic} alt="" />
               <h3>Felix Bikorimana </h3>
               <p>Senior digitization Officer
-</p>
+              </p>
             </div>
             <div className='image1'>
               <img src={nopic} alt="" />
@@ -189,127 +189,7 @@ function About() {
             </div>
           </div>
         </div>
-
       </div>
-     
-
-      <div className="container">
-        <h2>KWIYANDIKISHA</h2>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="label">Amazina:</label>
-          <input
-            type="text"
-            name="amazina"
-            className="input"
-            value={formValues.amazina}
-            onChange={handleInputChange}
-          />
-          {formErrors.amazina && <span className="error">{formErrors.amazina}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Imyaka:</label>
-          <select
-            name="imyaka"
-            className="select"
-            value={formValues.imyaka}
-            onChange={handleInputChange}
-          >
-            <option value="">Select</option>
-            <option value="<35">Below 35</option>
-            <option value=">35">Above 35</option>
-          </select>
-          {formErrors.imyaka && <span className="error">{formErrors.imyaka}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Umudugudu:</label>
-          <input
-            type="text"
-            name="umudugudu"
-            className="input"
-            value={formValues.umudugudu}
-            onChange={handleInputChange}
-          />
-          {formErrors.umudugudu && <span className="error">{formErrors.umudugudu}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Akagari:</label>
-          <input
-            type="text"
-            name="akagari"
-            className="input"
-            value={formValues.akagari}
-            onChange={handleInputChange}
-          />
-          {formErrors.akagari && <span className="error">{formErrors.akagari}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Umurenge:</label>
-          <input
-            type="text"
-            name="umurenge"
-            className="input"
-            value={formValues.umurenge}
-            onChange={handleInputChange}
-          />
-          {formErrors.umurenge && <span className="error">{formErrors.umurenge}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Akarere:</label>
-          <input
-            type="text"
-            name="akarere"
-            className="input"
-            value={formValues.akarere}
-            onChange={handleInputChange}
-          />
-          {formErrors.akarere && <span className="error">{formErrors.akarere}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">UPI Number:</label>
-          <input
-            type="text"
-            name="upiNumber"
-            className="input"
-            value={formValues.upiNumber}
-            onChange={handleInputChange}
-          />
-          {formErrors.upiNumber && <span className="error">{formErrors.upiNumber}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Telefone:</label>
-          <input
-            type="text"
-            name="telefone"
-            className="input"
-            value={formValues.telefone}
-            onChange={handleInputChange}
-          />
-          {formErrors.telefone && <span className="error">{formErrors.telefone}</span>}
-        </div>
-
-        <div className="form-group">
-          <label className="label">Ubuso ufite Ha:</label>
-          <input
-            type="text"
-            name="ubusoHa"
-            className="input"
-            value={formValues.ubusoHa}
-            onChange={handleInputChange}
-          />
-          {formErrors.ubusoHa && <span className="error">{formErrors.ubusoHa}</span>}
-        </div>
-
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
-    </div>
       <h1 className='partners'>Our PArtners</h1>
 
       <div className='log-image'>
