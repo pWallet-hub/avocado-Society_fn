@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
-import logo from '../../assets/avocado1.jpg';
-import { FaCheckCircle } from "react-icons/fa";
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 const FormStep = ({ title, children }) => (
@@ -26,21 +24,21 @@ export default function Register() {
   const totalSteps = 4;
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    firstname: '',
+    lastname: '',
     telephone: '',
-    idNumber: '',
+    idnumber: '',
     village: '',
     cell: '',
     sector: '',
     district: '',
     province: '',
     planted: '',
-    avocadoType: '',
-    mixedPercentage: '',
-    farmSize: '',
-    treeCount: '',
-    upiNumber: '',
+    avocadotype: '',
+    mixedpercentage: '',
+    farmsize: '',
+    treecount: '',
+    upinumber: '',
     assistance: ''
   });
 
@@ -52,15 +50,13 @@ export default function Register() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(formData);
     try {
-        const response = axios.post('https://applicanion-api.onrender.com/api/users', formData);
-        console.log('Form submitted successfully');
-        console.log(response);
+      const response = await axios.post('https://applicanion-api.onrender.com/api/users', formData);
+      console.log('Form submitted successfully:', response.data);
     } catch (error) {
-        console.error(error);
+      console.error('Error submitting form:', error);
     }
   };
 
@@ -95,10 +91,10 @@ export default function Register() {
           
           {step === 1 && (
             <FormStep title="Umwirondoro w'umuhinzi waho utuye">
-              <input className="form-input" placeholder="Amazina - First Name" name="firstName" value={formData.firstName} onChange={handleChange} />
-              <input className="form-input" placeholder="Amazina - Last Name" name="lastName" value={formData.lastName} onChange={handleChange} />
+              <input className="form-input" placeholder="Amazina - First Name" name="firstname" value={formData.firstname} onChange={handleChange} />
+              <input className="form-input" placeholder="Amazina - Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
               <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
-              <input className="form-input" placeholder="Indangamuntu" name="idNumber" value={formData.idNumber} onChange={handleChange} />
+              <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />
               <input className="form-input" placeholder="Umudugudu" name="village" value={formData.village} onChange={handleChange} />
               <input className="form-input" placeholder="Akagali" name="cell" value={formData.cell} onChange={handleChange} />
               <input className="form-input" placeholder="Umurenge" name="sector" value={formData.sector} onChange={handleChange} />
@@ -117,7 +113,7 @@ export default function Register() {
               </select>
 
               <label>Ni ubuhe bwoko bwa avoka wateye?</label>
-              <select className="form-input" name="avocadoType" value={formData.avocadoType} onChange={handleChange}>
+              <select className="form-input" name="avocadotype" value={formData.avocadotype} onChange={handleChange}>
                 <option value="">Hitamo</option>
                 <option value="hass">Hass</option>
                 <option value="fuerte">Fuerte</option>
@@ -125,7 +121,7 @@ export default function Register() {
               </select>
 
               <label>Niba waravanze Fuerte na Hass, ni kanganahe ku ijana?</label>
-              <select className="form-input" name="mixedPercentage" value={formData.mixedPercentage} onChange={handleChange}>
+              <select className="form-input" name="mixedpercentage" value={formData.mixedpercentage} onChange={handleChange}>
                 <option value="">Hitamo</option>
                 <option value=">60">{'>'}60%</option>
                 <option value="50">50%</option>
@@ -138,7 +134,7 @@ export default function Register() {
           {step === 3 && (
             <FormStep title="Ibisobanuro by'umurima">
               <label>Ingano y'umurima muri hectare</label>
-              <select className="form-input" name="farmSize" value={formData.farmSize} onChange={handleChange}>
+              <select className="form-input" name="farmsize" value={formData.farmsize} onChange={handleChange}>
                 <option value="">Hitamo</option>
                 <option value="1/4">¼</option>
                 <option value="1/2">½</option>
@@ -154,9 +150,9 @@ export default function Register() {
                 <option value=">10">{'>'}10</option>
               </select>
 
-              <input className="form-input" placeholder="Umubare w'ibiti" type="number" name="treeCount" value={formData.treeCount} onChange={handleChange} />
+              <input className="form-input" placeholder="Umubare w'ibiti" type="number" name="treecount" value={formData.treecount} onChange={handleChange} />
 
-              <input className="form-input" placeholder="UPI number (not mandatory)" name="upiNumber" value={formData.upiNumber} onChange={handleChange} />
+              <input className="form-input" placeholder="UPI number (not mandatory)" name="upinumber" value={formData.upinumber} onChange={handleChange} />
             </FormStep>
           )}
 
