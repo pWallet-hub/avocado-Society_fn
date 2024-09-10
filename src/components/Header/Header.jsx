@@ -24,6 +24,7 @@ function Header() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/About">About</Link></li>
             <li><Link to="/Membership">Membership</Link></li>
+            <li><Link to="/Resources">Resources</Link></li>
             <div className='icon'>
               <IoCall className='icon1' />
               <p className='icon-text'>+250788481560</p>
