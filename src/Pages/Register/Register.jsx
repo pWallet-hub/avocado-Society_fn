@@ -43,6 +43,8 @@ export default function Register() {
   });
 
   const [submitted, setSubmitted] = useState(false); // Track submission status
+  const [loading, setLoading] = useState(false); // Track loading status
+  const [error, setError] = useState(''); // Track error status
 
   const nextStep = () => setStep(prev => Math.min(prev + 1, totalSteps));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
@@ -54,13 +56,22 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
     try {
       const response = await axios.post('https://applicanion-api.onrender.com/api/users', formData);
       console.log('Form submitted successfully:', response.data);
-      setSubmitted(true); // Set submission status to true on success
+      setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
+      setError('Submission failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const isLastStepValid = () => {
+    return formData.assistance !== '';
   };
 
   return (
@@ -90,32 +101,51 @@ export default function Register() {
       <div className="right-section">
         {submitted ? (
           <div className="success-message">
-            <h2>Thank you! Your registration has been successfully submitted.</h2>
-            <p>We will review your information and get back to you soon.</p>
-          </div>
+            <div className="success-icon">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-check-circle"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+  </div>
+  <h2>Thank you! Your registration has been successfully submitted.</h2>
+  <p>We will review your information and get back to you soon.</p>
+  <p>If you have any questions, feel free to <a href="/contact">contact us</a>.</p>
+  <button className="back-home-button" onClick={() => window.location.href = '/'}>
+    Back to Home
+  </button>
+</div>
         ) : (
           <form onSubmit={handleSubmit} className="form-content">
             <ProgressBar currentStep={step} totalSteps={totalSteps} />
 
             {step === 1 && (
               <FormStep title="Umwirondoro w'umuhinzi waho utuye">
-                <label htmlFor="text">Amazina <span className="required">*</span></label>
+                <label htmlFor="firstname">Amazina <span className="required">*</span></label>
                 <input className="form-input" placeholder="Amazina - First Name" name="firstname" value={formData.firstname} onChange={handleChange} />
-                <label htmlFor="text">Amazina <span className="required">*</span></label>
+                <label htmlFor="lastname">Amazina <span className="required">*</span></label>
                 <input className="form-input" placeholder="Amazina - Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
-                <label htmlFor="number">Telephone <span className="required">*</span></label>
-                <input className="form-input" placeholder="Telephone" type="tel" name="number" value={formData.telephone} onChange={handleChange} />
-                <label htmlFor="number">Indangamuntu <span className="required">*</span></label>
-                <input className="form-input" placeholder="Indangamuntu" name="number" value={formData.idnumber} onChange={handleChange} />
-                <label htmlFor="number">Umudugudu <span className="required">*</span></label>
+                <label htmlFor="telephone">Telephone <span className="required">*</span></label>
+                <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
+                <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
+                <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />
+                <label htmlFor="village">Umudugudu <span className="required">*</span></label>
                 <input className="form-input" placeholder="Umudugudu" name="village" value={formData.village} onChange={handleChange} />
-                <label htmlFor="text">Akagali <span className="required">*</span></label>
+                <label htmlFor="cell">Akagali <span className="required">*</span></label>
                 <input className="form-input" placeholder="Akagali" name="cell" value={formData.cell} onChange={handleChange} />
-                <label htmlFor="text">Umurenge <span className="required">*</span></label>
+                <label htmlFor="sector">Umurenge <span className="required">*</span></label>
                 <input className="form-input" placeholder="Umurenge" name="sector" value={formData.sector} onChange={handleChange} />
-                <label htmlFor="text">Akarere <span className="required">*</span></label>
+                <label htmlFor="district">Akarere <span className="required">*</span></label>
                 <input className="form-input" placeholder="Akarere" name="district" value={formData.district} onChange={handleChange} />
-                <label htmlFor="text">Intara <span className="required">*</span></label>
+                <label htmlFor="province">Intara <span className="required">*</span></label>
                 <input className="form-input" placeholder="Intara" name="province" value={formData.province} onChange={handleChange} />
               </FormStep>
             )}
@@ -166,16 +196,16 @@ export default function Register() {
                   <option value="9">9</option>
                   <option value=">10">{'>'}10</option>
                 </select>
-                <label htmlFor="number">Umubare w'ibiti byatewe <span className="required">*</span></label>
-                <input className="form-input" placeholder="Umubare w'ibiti" name="number" value={formData.treecount} onChange={handleChange} />
-                <label htmlFor="text">UPI number <span className="required">*</span></label>
+                <label htmlFor="treecount">Umubare w'ibiti byatewe <span className="required">*</span></label>
+                <input className="form-input" placeholder="Umubare w'ibiti" name="treecount" value={formData.treecount} onChange={handleChange} />
+                <label htmlFor="upinumber">UPI number <span className="required">*</span></label>
                 <input className="form-input" placeholder="UPI Number" name="upinumber" value={formData.upinumber} onChange={handleChange} />
               </FormStep>
             )}
 
             {step === 4 && (
               <FormStep title="Ubufasha n'imikoranire akeneye">
-                <label htmlFor="text">Ni ubuhe bufasha wifuza? <span className="required">*</span></label>
+                <label htmlFor="assistance">Ni ubuhe bufasha wifuza? <span className="required">*</span></label>
                 <select className="form-input" name="assistance" value={formData.assistance} onChange={handleChange}>
                   <option value="">Hitamo</option>
                   <option value="ubuhinzi">Ubuhinzi</option>
@@ -197,9 +227,12 @@ export default function Register() {
                   Next <ChevronRight />
                 </button>
               ) : (
-                <button type="submit" className="submit-button">Submit</button>
+                <button type="submit" className="submit-button" disabled={loading || !isLastStepValid()}>
+                  {loading ? 'Submitting...' : 'Submit'}
+                </button>
               )}
             </div>
+            {error && <p className="error-message">{error}</p>}
           </form>
         )}
       </div>
