@@ -243,10 +243,10 @@ button:hover {
 }
 
 
-.submit-button {
+.submits-button {
   background-color: #154d06; 
   color: white; 
-  width: 100%; 
+  width: 40%; 
 }
 
 .submit-button:hover {
@@ -259,6 +259,21 @@ button:hover {
   justify-content: space-between;
   margin-top: 20px;
 }
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-group label {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
 
 @media (max-width: 768px) {
   .interactive-form-container {

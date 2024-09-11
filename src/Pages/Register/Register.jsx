@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Register.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
@@ -42,16 +42,55 @@ export default function Register() {
     assistance: ''
   });
 
-  const [submitted, setSubmitted] = useState(false); // Track submission status
-  const [loading, setLoading] = useState(false); // Track loading status
-  const [error, setError] = useState(''); // Track error status
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  
+  const [provinces, setProvinces] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const [sectors, setSectors] = useState([]);
+  const [cells, setCells] = useState([]);
+  const [villages, setVillages] = useState([]);
+  
+  const [filteredDistricts, setFilteredDistricts] = useState([]);
+  const [filteredSectors, setFilteredSectors] = useState([]);
+  const [filteredCells, setFilteredCells] = useState([]);
+  const [filteredVillages, setFilteredVillages] = useState([]);
 
   const nextStep = () => setStep(prev => Math.min(prev + 1, totalSteps));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+
+    if (type === 'checkbox') {
+      setFormData(prev => {
+        const updatedAssistance = checked
+          ? [...prev.assistance, value]
+          : prev.assistance.filter(item => item !== value);
+        return { ...prev, assistance: updatedAssistance };
+      });
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+
+    if (name === 'province') {
+      const relatedDistricts = districts.filter(district => district.province === value);
+      setFilteredDistricts(relatedDistricts);
+      setFormData(prev => ({ ...prev, district: '', sector: '', cell: '', village: '' }));
+    } else if (name === 'district') {
+      const relatedSectors = sectors.filter(sector => sector.district === value);
+      setFilteredSectors(relatedSectors);
+      setFormData(prev => ({ ...prev, sector: '', cell: '', village: '' }));
+    } else if (name === 'sector') {
+      const relatedCells = cells.filter(cell => cell.sector === value);
+      setFilteredCells(relatedCells);
+      setFormData(prev => ({ ...prev, cell: '', village: '' }));
+    } else if (name === 'cell') {
+      const relatedVillages = villages.filter(village => village.cell === value);
+      setFilteredVillages(relatedVillages);
+      setFormData(prev => ({ ...prev, village: '' }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -69,6 +108,55 @@ export default function Register() {
       setLoading(false);
     }
   };
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [provincesRes, districtsRes, sectorsRes, cellsRes, villagesRes] = await Promise.all([
+          axios.get('https://rwanda.p.rapidapi.com/provinces', {
+            headers: {
+              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
+              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8', 
+            }
+          }),
+          axios.get('https://rwanda.p.rapidapi.com/districts', {
+            headers: {
+              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
+              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8', 
+            }
+          }),
+          axios.get('https://rwanda.p.rapidapi.com/sectors', {
+            headers: {
+              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
+              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8',
+            }
+          }),
+          axios.get('https://rwanda.p.rapidapi.com/cells', {
+            headers: {
+              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
+              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8',
+            }
+          }),
+          axios.get('https://rwanda.p.rapidapi.com/villages', {
+            headers: {
+              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
+              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8',
+            }
+          })
+        ]);
+
+        setProvinces(provincesRes.data.data);
+        setDistricts(districtsRes.data.data);
+        setSectors(sectorsRes.data.data);
+        setCells(cellsRes.data.data);
+        setVillages(villagesRes.data.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   const isLastStepValid = () => {
     return formData.assistance !== '';
@@ -113,16 +201,16 @@ export default function Register() {
               className="feather feather-check-circle"
               >
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <polyline points="22 4 12 14.01 9 11.01" />
-    </svg>
-  </div>
-  <h2>Thank you! Your registration has been successfully submitted.</h2>
-  <p>We will review your information and get back to you soon.</p>
-  <p>If you have any questions, feel free to <a href="/contact">contact us</a>.</p>
-  <button className="back-home-button" onClick={() => window.location.href = '/'}>
-    Back to Home
-  </button>
-</div>
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h2>Thank you! Your registration has been successfully submitted.</h2>
+            <p>We will review your information and get back to you soon.</p>
+            <p>If you have any questions, feel free to <a href="/contact">contact us</a>.</p>
+            <button className="back-home-button" onClick={() => window.location.href = '/'}>
+              Back to Home
+            </button>
+          </div>
         ) : (
           <form onSubmit={handleSubmit} className="form-content">
             <ProgressBar currentStep={step} totalSteps={totalSteps} />
@@ -136,17 +224,42 @@ export default function Register() {
                 <label htmlFor="telephone">Telephone <span className="required">*</span></label>
                 <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
                 <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
-                <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />
-                <label htmlFor="village">Umudugudu <span className="required">*</span></label>
-                <input className="form-input" placeholder="Umudugudu" name="village" value={formData.village} onChange={handleChange} />
-                <label htmlFor="cell">Akagali <span className="required">*</span></label>
-                <input className="form-input" placeholder="Akagali" name="cell" value={formData.cell} onChange={handleChange} />
-                <label htmlFor="sector">Umurenge <span className="required">*</span></label>
-                <input className="form-input" placeholder="Umurenge" name="sector" value={formData.sector} onChange={handleChange} />
+                <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />    <label htmlFor="province">Intara <span className="required">*</span></label>
+                <select className="form-input" name="province" value={formData.province} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  {provinces.map((province, index) => (
+                    <option key={index} value={province}>{province}</option>
+                  ))}
+                </select>
                 <label htmlFor="district">Akarere <span className="required">*</span></label>
-                <input className="form-input" placeholder="Akarere" name="district" value={formData.district} onChange={handleChange} />
-                <label htmlFor="province">Intara <span className="required">*</span></label>
-                <input className="form-input" placeholder="Intara" name="province" value={formData.province} onChange={handleChange} />
+                <select className="form-input" name="district" value={formData.district} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  {filteredDistricts.map((district, index) => (
+                    <option key={index} value={district.name}>{district.name}</option>
+                  ))}
+                </select>
+                <label htmlFor="sector">Umurenge <span className="required">*</span></label>
+                <select className="form-input" name="sector" value={formData.sector} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  {filteredSectors.map((sector, index) => (
+                    <option key={index} value={sector.name}>{sector.name}</option>
+                  ))}
+                </select>
+                <label htmlFor="cell">Akagali <span className="required">*</span></label>
+                <select className="form-input" name="cell" value={formData.cell} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  {filteredCells.map((cell, index) => (
+                    <option key={index} value={cell.name}>{cell.name}</option>
+                  ))}
+                </select>
+                <label htmlFor="village">Umudugudu <span className="required">*</span></label>
+                <select className="form-input" name="village" value={formData.village} onChange={handleChange}>
+                  <option value="">Hitamo</option>
+                  {filteredVillages.map((village, index) => (
+                    <option key={index} value={village.name}>{village.name}</option>
+                  ))}
+                </select>
+                
               </FormStep>
             )}
 
@@ -197,23 +310,58 @@ export default function Register() {
                   <option value=">10">{'>'}10</option>
                 </select>
                 <label htmlFor="treecount">Umubare w'ibiti byatewe <span className="required">*</span></label>
-                <input className="form-input" placeholder="Umubare w'ibiti" name="treecount" value={formData.treecount} onChange={handleChange} />
+                <input className="form-input" placeholder="Umubare w'ibiti" type='number' name="treecount" value={formData.treecount} onChange={handleChange} />
                 <label htmlFor="upinumber">UPI number <span className="required">*</span></label>
-                <input className="form-input" placeholder="UPI Number" name="upinumber" value={formData.upinumber} onChange={handleChange} />
+                <input className="form-input" placeholder="UPI Number" type='number' name="upinumber" value={formData.upinumber} onChange={handleChange} />
               </FormStep>
             )}
 
             {step === 4 && (
-              <FormStep title="Ubufasha n'imikoranire akeneye">
-                <label htmlFor="assistance">Ni ubuhe bufasha wifuza? <span className="required">*</span></label>
-                <select className="form-input" name="assistance" value={formData.assistance} onChange={handleChange}>
-                  <option value="">Hitamo</option>
-                  <option value="ubuhinzi">Ubuhinzi</option>
-                  <option value="ubuvugizi">Ubuvugizi</option>
-                  <option value="guhangana-nibibazo">Guhangana n'ibibazo</option>
-                  <option value="ubwishingizi">Ubwishingizi</option>
-                </select>
-              </FormStep>
+             <FormStep title="Ubufasha n'imikoranire akeneye">
+             <label>Ni ubuhe bufasha wifuza? <span className="required">*</span></label>
+             <div className="checkbox-group">
+               <label>
+                 <input
+                   type="checkbox"
+                   name="assistance"
+                   value="ubuhinzi"
+                   checked={formData.assistance.includes('ubuhinzi')}
+                   onChange={handleChange}
+                 />
+                 Ubuhinzi
+               </label>
+               <label>
+                 <input
+                   type="checkbox"
+                   name="assistance"
+                   value="ubuvugizi"
+                   checked={formData.assistance.includes('ubuvugizi')}
+                   onChange={handleChange}
+                 />
+                 Ubuvugizi
+               </label>
+               <label>
+                 <input
+                   type="checkbox"
+                   name="assistance"
+                   value="guhangana-nibibazo"
+                   checked={formData.assistance.includes('guhangana-nibibazo')}
+                   onChange={handleChange}
+                 />
+                 Guhangana n'ibibazo
+               </label>
+               <label>
+                 <input
+                   type="checkbox"
+                   name="assistance"
+                   value="ubwishingizi"
+                   checked={formData.assistance.includes('ubwishingizi')}
+                   onChange={handleChange}
+                 />
+                 Ubwishingizi
+               </label>
+             </div>
+           </FormStep>
             )}
 
             <div className="form-buttons">
@@ -227,7 +375,7 @@ export default function Register() {
                   Next <ChevronRight />
                 </button>
               ) : (
-                <button type="submit" className="submit-button" disabled={loading || !isLastStepValid()}>
+                <button type="submit" className="submits-button" disabled={loading || !isLastStepValid()}>
                   {loading ? 'Submitting...' : 'Submit'}
                 </button>
               )}
