@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-
 .sidebar {
   z-index: 1;
   position: fixed;
@@ -11,17 +10,19 @@
   background-color: #1F310A;
   padding: 20px;
   box-sizing: border-box;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
   transform: translateX(-100%);
   font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
 }
 
 .sidebar.open {
   transform: translateX(0);
 }
-.icn{
+
+.icn {
   color: darkgoldenrod;
-  font-size: 35px;
+  font-size: 24px;
   margin-right: 1rem;
 }
 
@@ -35,8 +36,27 @@
   color: #fff;
   cursor: pointer;
   margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
+.sidebar ul li:hover {
+  background-color: #2A4B0A;
+  transform: translateX(5px);
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul li a .icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
 
 .sidebar button {
   position: absolute;
@@ -46,47 +66,53 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
 }
 
-.social-media{
-    display: flex;
-    justify-content: space-around;
-    min-height: 100vh;
-    align-items: center;
-    font-size: 40px;
-  
+.sidebar button:hover {
+  transform: rotate(90deg);
 }
-.soc{
+
+.social-media {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+  font-size: 30px;
+}
+
+.soc {
   color: #EECF39;
   font-family: 'Poppins', sans-serif;
+  transition: color 0.3s;
 }
 
+.soc:hover {
+  color: #FFD700;
+}
 
 @media only screen and (max-width: 980px) {
   .sidebar {
     width: 65%;
-    height: 100%;
-    padding: 20px 10px; 
-    
+    padding: 20px 10px;
   }
 
   .sidebar button {
-    top: 20px; 
-    right: 20px; 
+    top: 20px;
+    right: 20px;
   }
 
   .sidebar ul li {
-    margin-bottom: 8px; 
-    padding: 8px 12px; 
-  
+    margin-bottom: 8px;
+    padding: 8px 12px;
   }
-  .sidebar ul li a{
+
+  .sidebar ul li a {
     color: aliceblue;
     text-decoration: none;
   }
 
   .sidebar ul.social-media li {
-    margin-bottom: 8px; 
+    margin-bottom: 8px;
   }
 }
