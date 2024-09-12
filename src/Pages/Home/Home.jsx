@@ -6,7 +6,7 @@ import avocado3 from '../../assets/avocado3.jpg'
 import info1 from '../../assets/info1.jpg'
 import info2 from '../../assets/info2.jpg'
 import info3 from '../../assets/info3.jpg'
-import map from '../../assets/map.jpg'
+import map from '../../assets/map1.jpg'
 import SlideShow from "../../components/Slide/Slide";
 import { FaSprayCan } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
@@ -133,7 +133,7 @@ function Home() {
         <h1>Get in Touch </h1>
         <p className="p">Welcome to the Avocado Society of Rwanda.<br/> Join us in our mission to feed the world.</p>
           <h2 className="location">LOCATION</h2>
-          <p>Kigali, Rwanda KN 159 STREET</p>
+          <p>1 KN 78 St, Kigali</p>
           <h2>PHONE</h2>
           <p>+250788481560</p>
           <h2>EMAIL</h2>
