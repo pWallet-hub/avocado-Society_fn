@@ -8,6 +8,7 @@ import mugisha from '../../assets/mugisha.jpg';
 import pacific from '../../assets/pacific.jpg';
 import omar from '../../assets/omar.jpg';
 import renovat from '../../assets/renovat.jpg';
+import euprosine from '../../assets/euprosine.jpg';
 import agape from '../../assets/agape.jpg';
 import React from 'react';
 import './About.css';
@@ -90,7 +91,7 @@ function About() {
             </div>
             <div className='board'>
               <div className='image1'>
-                <img src={nopic} alt="Mugeni Euphrosine NIYIDUKUNDA" />
+                <img src={euprosine} alt="Mugeni Euphrosine NIYIDUKUNDA" />
                 <h3>Mugeni Euphrosine NIYIDUKUNDA</h3>
                 <p>Value Addition Advisor</p>
               </div>
