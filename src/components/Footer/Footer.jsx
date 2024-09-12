@@ -1,43 +1,41 @@
-import { Link } from 'react-router-dom'
-import './Footer.css'
-import logo from '../../assets/LOGO_-_Avocado_Society_of_Rwanda.png'
-import { FaTwitter } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import './Footer.css';
+import logo from '../../assets/LOGO_-_Avocado_Society_of_Rwanda.png';
+import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
     <div className='footer-container'>
-    <div className='footer'>
-      <div className='left'>
-        <img src={logo} alt="logo" />
-        <p>Empowering local avacado producers for the  Global market access.</p>
-        <div className='icons'>
-          <FaTwitter />
-          <FaLinkedin />
-          <FaInstagram />
+      <div className='footer'>
+        <div className='footer-section left'>
+          <img src={logo} alt="logo" className='footer-logo' />
+          <p>Empowering local avocado producers for global market access.</p>
+          <div className='icons'>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          </div>
         </div>
-      </div>
-      <div className='middle'>
-        <h3>Main menu</h3>
-        <ul>
-          <><Link to="/">Home</Link></>
-          <><Link to="/About">About</Link></>
-          <><Link to="/Membership">Membership</Link></>
-        </ul>
-      </div>
-      <div className='right' >
-        <h2>Subscribe</h2>
-        <p>Join our mailing list to receive timely <br /> updates, expert tips, and exciting <br /> news</p>
-        <div className='email'>
-          <input type="Email" placeholder='Email' />
-          <button>send</button>
+        <div className='footer-section middle'>
+          <h3>Main Menu</h3>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/About">About</Link></li>
+            <li><Link to="/Membership">Membership</Link></li>
+            <li><Link to="/Resources">Resources</Link></li>
+          </ul>
+        </div>
+        <div className='footer-section right'>
+          <h3>Subscribe</h3>
+          <p>Join our mailing list to receive timely updates, expert tips, and exciting news.</p>
+          <div className='email'>
+            <input type="email" placeholder='Email' />
+            <button>Send</button>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    
-  )
+  );
 }
 
-export default Footer
+export default Footer;
