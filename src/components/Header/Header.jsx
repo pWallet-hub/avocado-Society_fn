@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { IoCall } from "react-icons/io5";
 import { MdMenu } from "react-icons/md";
-import image from '../../assets/LOGO - Avocado Society of Rwanda.png';
+import image from '../../assets/LOGO_-_Avocado_Society_of_Rwanda.png';
 import './Header.css';
 import Sidebar from './Sidebar';
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Register.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { Provinces, Districts, Sectors, Cells, Villages } from 'rwanda';
 
 const FormStep = ({ title, children }) => (
   <div className="form-step">
@@ -45,52 +46,57 @@ export default function Register() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  
+
   const [provinces, setProvinces] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [sectors, setSectors] = useState([]);
-  const [cells, setCells] = useState([]);
-  const [villages, setVillages] = useState([]);
-  
   const [filteredDistricts, setFilteredDistricts] = useState([]);
   const [filteredSectors, setFilteredSectors] = useState([]);
   const [filteredCells, setFilteredCells] = useState([]);
   const [filteredVillages, setFilteredVillages] = useState([]);
 
+  useEffect(() => {
+    // Initialize provinces
+    setProvinces(Provinces());
+
+    // Update filtered lists based on selected formData
+    if (formData.province) {
+      setFilteredDistricts(Districts(formData.province));
+    } else {
+      setFilteredDistricts([]);
+    }
+
+    if (formData.district) {
+      setFilteredSectors(Sectors(formData.district));
+    } else {
+      setFilteredSectors([]);
+    }
+
+    if (formData.sector) {
+      setFilteredCells(Cells(formData.sector));
+    } else {
+      setFilteredCells([]);
+    }
+
+    if (formData.cell) {
+      setFilteredVillages(Villages(formData.cell));
+    } else {
+      setFilteredVillages([]);
+    }
+  }, [formData.province, formData.district, formData.sector, formData.cell]);
+
   const nextStep = () => setStep(prev => Math.min(prev + 1, totalSteps));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
 
-    if (type === 'checkbox') {
-      setFormData(prev => {
-        const updatedAssistance = checked
-          ? [...prev.assistance, value]
-          : prev.assistance.filter(item => item !== value);
-        return { ...prev, assistance: updatedAssistance };
-      });
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-    }
-
-    if (name === 'province') {
-      const relatedDistricts = districts.filter(district => district.province === value);
-      setFilteredDistricts(relatedDistricts);
-      setFormData(prev => ({ ...prev, district: '', sector: '', cell: '', village: '' }));
-    } else if (name === 'district') {
-      const relatedSectors = sectors.filter(sector => sector.district === value);
-      setFilteredSectors(relatedSectors);
-      setFormData(prev => ({ ...prev, sector: '', cell: '', village: '' }));
-    } else if (name === 'sector') {
-      const relatedCells = cells.filter(cell => cell.sector === value);
-      setFilteredCells(relatedCells);
-      setFormData(prev => ({ ...prev, cell: '', village: '' }));
-    } else if (name === 'cell') {
-      const relatedVillages = villages.filter(village => village.cell === value);
-      setFilteredVillages(relatedVillages);
-      setFormData(prev => ({ ...prev, village: '' }));
-    }
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+      ...(name === 'province' && { district: '', sector: '', cell: '', village: '' }),
+      ...(name === 'district' && { sector: '', cell: '', village: '' }),
+      ...(name === 'sector' && { cell: '', village: '' }),
+      ...(name === 'cell' && { village: '' })
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -108,63 +114,11 @@ export default function Register() {
       setLoading(false);
     }
   };
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [provincesRes, districtsRes, sectorsRes, cellsRes, villagesRes] = await Promise.all([
-          axios.get('https://rwanda.p.rapidapi.com/provinces', {
-            headers: {
-              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
-              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8', 
-            }
-          }),
-          axios.get('https://rwanda.p.rapidapi.com/districts', {
-            headers: {
-              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
-              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8', 
-            }
-          }),
-          axios.get('https://rwanda.p.rapidapi.com/sectors', {
-            headers: {
-              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
-              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8',
-            }
-          }),
-          axios.get('https://rwanda.p.rapidapi.com/cells', {
-            headers: {
-              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
-              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8',
-            }
-          }),
-          axios.get('https://rwanda.p.rapidapi.com/villages', {
-            headers: {
-              'X-RapidAPI-Host': 'rwanda.p.rapidapi.com',
-              'X-RapidAPI-Key': '4e257aaadfmshd7a0ec10597d78ep1f26b2jsn2b367157f2a8',
-            }
-          })
-        ]);
 
-        setProvinces(provincesRes.data.data);
-        setDistricts(districtsRes.data.data);
-        setSectors(sectorsRes.data.data);
-        setCells(cellsRes.data.data);
-        setVillages(villagesRes.data.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    
-    fetchData();
-  }, []);
-
-  const isLastStepValid = () => {
-    return formData.assistance !== '';
-  };
+  const isLastStepValid = () => formData.assistance !== '';
 
   return (
     <div className="interactive-form-container">
-      {/* Left Section */}
       <div className="left-section">
         <div className="info-box">
           <h1>Avocado Society Rwanda</h1>
@@ -191,14 +145,14 @@ export default function Register() {
           <div className="success-message">
             <div className="success-icon">
               <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-check-circle"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-check-circle"
               >
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                 <polyline points="22 4 12 14.01 9 11.01" />
@@ -224,46 +178,45 @@ export default function Register() {
                 <label htmlFor="telephone">Telephone <span className="required">*</span></label>
                 <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
                 <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
-                <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />    <label htmlFor="province">Intara <span className="required">*</span></label>
-                <select className="form-input" name="province" value={formData.province} onChange={handleChange}>
-                  <option value="">Hitamo</option>
-                  {provinces.map((province, index) => (
-                    <option key={index} value={province}>{province}</option>
+                <input className="form-input" placeholder="Indangamuntu" name="idnumber" value={formData.idnumber} onChange={handleChange} />
+                <label htmlFor="province">Intara <span className="required">*</span></label>
+                <select className='form-input' name="province" value={formData.province} onChange={handleChange}>
+                  <option value="">-- Select Province --</option>
+                  {provinces.map(province => (
+                    <option key={province} value={province}>{province}</option>
                   ))}
                 </select>
                 <label htmlFor="district">Akarere <span className="required">*</span></label>
-                <select className="form-input" name="district" value={formData.district} onChange={handleChange}>
-                  <option value="">Hitamo</option>
-                  {filteredDistricts.map((district, index) => (
-                    <option key={index} value={district.name}>{district.name}</option>
+                <select className='form-input' name="district" value={formData.district} onChange={handleChange}>
+                  <option value="">-- Select District --</option>
+                  {filteredDistricts.map(district => (
+                    <option key={district} value={district}>{district}</option>
                   ))}
                 </select>
                 <label htmlFor="sector">Umurenge <span className="required">*</span></label>
-                <select className="form-input" name="sector" value={formData.sector} onChange={handleChange}>
-                  <option value="">Hitamo</option>
-                  {filteredSectors.map((sector, index) => (
-                    <option key={index} value={sector.name}>{sector.name}</option>
+                <select className='form-input' name="sector" value={formData.sector} onChange={handleChange}>
+                  <option value="">-- Select Sector --</option>
+                  {filteredSectors.map(sector => (
+                    <option key={sector} value={sector}>{sector}</option>
                   ))}
                 </select>
-                <label htmlFor="cell">Akagali <span className="required">*</span></label>
-                <select className="form-input" name="cell" value={formData.cell} onChange={handleChange}>
-                  <option value="">Hitamo</option>
-                  {filteredCells.map((cell, index) => (
-                    <option key={index} value={cell.name}>{cell.name}</option>
+                <label htmlFor="cell">Akagari <span className="required">*</span></label>
+                <select className='form-input' name="cell" value={formData.cell} onChange={handleChange}>
+                  <option value="">-- Select Cell --</option>
+                  {filteredCells.map(cell => (
+                    <option key={cell} value={cell}>{cell}</option>
                   ))}
                 </select>
                 <label htmlFor="village">Umudugudu <span className="required">*</span></label>
-                <select className="form-input" name="village" value={formData.village} onChange={handleChange}>
-                  <option value="">Hitamo</option>
-                  {filteredVillages.map((village, index) => (
-                    <option key={index} value={village.name}>{village.name}</option>
+                <select className='form-input' name="village" value={formData.village} onChange={handleChange}>
+                  <option value="">-- Select Village --</option>
+                  {filteredVillages.map(village => (
+                    <option key={village} value={village}>{village}</option>
                   ))}
                 </select>
-                
               </FormStep>
             )}
-
-            {step === 2 && (
+  {step === 2 && (
               <FormStep title="Aho ubutaka buhingwaho buherereye">
                 <label>Waba waramaze gutera? <span className="required">*</span></label>
                 <select className="form-input" name="planted" value={formData.planted} onChange={handleChange}>
