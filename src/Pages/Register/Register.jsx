@@ -98,30 +98,52 @@ export default function Register() {
   };
 
   const handleCheckboxChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { value, checked } = e.target;
     setFormData(prev => ({
-      ...prev,
-      [name]: checked
-        ? [...prev[name], value]
-        : prev[name].filter(item => item !== value)
+        ...prev,
+        assistance: checked
+            ? [...prev.assistance, value]
+            : prev.assistance.filter(item => item !== value)
     }));
-  };
-
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    // Construct the payload with the required API format
+    const payload = {
+        firstname: formData.firstname,
+        lastname: formData.lastname,
+        telephone: formData.telephone,
+        idnumber: formData.idnumber,
+        village: formData.village,
+        cell: formData.cell,
+        sector: formData.sector,
+        district: formData.district,
+        province: formData.province,
+        planted: formData.planted,
+        avocadotype: formData.avocadotype,
+        mixedpercentage: formData.mixedpercentage,
+        farmsize: formData.farmsize,
+        treecount: formData.treecount,
+        upinumber: formData.upinumber,
+        assistance: formData.assistance
+    };
+
     try {
-      const response = await axios.post('https://applicanion-api.onrender.com/api/users', formData);
-      console.log('Form submitted successfully:', response.data);
-      setSubmitted(true);
+        const response = await axios.post('https://applicanion-api.onrender.com/api/users', payload);
+        console.log('Form submitted successfully:', response.data);
+        setSubmitted(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setError('Submission failed. Please try again.');
+        console.error('Error submitting form:', error);
+        setError('Submission failed. Please try again.');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
+  
 
   const isLastStepValid = () => formData.assistance !== '';
 
@@ -248,6 +270,7 @@ export default function Register() {
                   <option value="50">50%</option>
                   <option value="40">40%</option>
                   <option value="<20">{'<'}20%</option>
+                  <option value="0">0%</option>
                 </select>
               </FormStep>
             )}
@@ -281,47 +304,52 @@ export default function Register() {
              <FormStep title="Ubufasha n'imikoranire akeneye">
              <label>Ni ubuhe bufasha wifuza? <span className="required">*</span></label>
              <div className="checkbox-group">
-               <label>
-                 <input
-                   type="checkbox"
-                   name="assistance"
-                   value="ubuhinzi"
-                   checked={formData.assistance.includes('ubuhinzi')}
-                   onChange={handleChange}
-                 />
-                 Ubuhinzi
-               </label>
-               <label>
-                 <input
-                   type="checkbox"
-                   name="assistance"
-                   value="ubuvugizi"
-                   checked={formData.assistance.includes('ubuvugizi')}
-                   onChange={handleChange}
-                 />
-                 Ubuvugizi
-               </label>
-               <label>
-                 <input
-                   type="checkbox"
-                   name="assistance"
-                   value="guhangana-nibibazo"
-                   checked={formData.assistance.includes('guhangana-nibibazo')}
-                   onChange={handleChange}
-                 />
-                 Guhangana n'ibibazo
-               </label>
-               <label>
-                 <input
-                   type="checkbox"
-                   name="assistance"
-                   value="ubwishingizi"
-                   checked={formData.assistance.includes('ubwishingizi')}
-                   onChange={handleChange}
-                 />
-                 Ubwishingizi
-               </label>
-             </div>
+             
+  <label>
+    <input
+      type="checkbox"
+      name="assistance"
+      value="ubuhinzi"
+      checked={formData.assistance.includes('ubuhinzi')}
+      onChange={handleCheckboxChange}
+    />
+    Ubuhinzi
+  </label>
+  
+  <label>
+    <input
+      type="checkbox"
+      name="assistance"
+      value="ubuvugizi"
+      checked={formData.assistance.includes('ubuvugizi')}
+      onChange={handleCheckboxChange}
+    />
+    Ubuvugizi
+  </label>
+  
+  <label>
+    <input
+      type="checkbox"
+      name="assistance"
+      value="guhangana-nibibazo"
+      checked={formData.assistance.includes('guhangana-nibibazo')}
+      onChange={handleCheckboxChange}
+    />
+    Guhangana n'ibibazo
+  </label>
+  
+  <label>
+    <input
+      type="checkbox"
+      name="assistance"
+      value="ubwishingizi"
+      checked={formData.assistance.includes('ubwishingizi')}
+      onChange={handleCheckboxChange}
+    />
+    Ubwishingizi
+  </label>
+</div>
+
            </FormStep>
             )}
 
