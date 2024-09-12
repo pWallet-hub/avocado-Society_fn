@@ -53,11 +53,9 @@ export default function Register() {
   const [filteredCells, setFilteredCells] = useState([]);
   const [filteredVillages, setFilteredVillages] = useState([]);
 
-  useEffect(() => {
-    // Initialize provinces
+   useEffect(() => {
+    
     setProvinces(Provinces());
-
-    // Update filtered lists based on selected formData
     if (formData.province) {
       setFilteredDistricts(Districts(formData.province));
     } else {
@@ -65,19 +63,19 @@ export default function Register() {
     }
 
     if (formData.district) {
-      setFilteredSectors(Sectors(formData.district));
+      setFilteredSectors(Sectors(formData.province, formData.district));
     } else {
       setFilteredSectors([]);
     }
 
     if (formData.sector) {
-      setFilteredCells(Cells(formData.sector));
+      setFilteredCells(Cells(formData.province, formData.district, formData.sector));
     } else {
       setFilteredCells([]);
     }
 
     if (formData.cell) {
-      setFilteredVillages(Villages(formData.cell));
+      setFilteredVillages(Villages(formData.province, formData.district, formData.sector, formData.cell));
     } else {
       setFilteredVillages([]);
     }
@@ -86,7 +84,7 @@ export default function Register() {
   const nextStep = () => setStep(prev => Math.min(prev + 1, totalSteps));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
-  const handleChange = (e) => {
+   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData(prev => ({
@@ -96,6 +94,16 @@ export default function Register() {
       ...(name === 'district' && { sector: '', cell: '', village: '' }),
       ...(name === 'sector' && { cell: '', village: '' }),
       ...(name === 'cell' && { village: '' })
+    }));
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { name, value, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: checked
+        ? [...prev[name], value]
+        : prev[name].filter(item => item !== value)
     }));
   };
 
@@ -194,14 +202,14 @@ export default function Register() {
                   ))}
                 </select>
                 <label htmlFor="sector">Umurenge <span className="required">*</span></label>
-                <select className='form-input' name="sector" value={formData.sector} onChange={handleChange}>
+               <select className='form-input' name="sector" value={formData.sector} onChange={handleChange}>
                   <option value="">-- Select Sector --</option>
                   {filteredSectors.map(sector => (
                     <option key={sector} value={sector}>{sector}</option>
                   ))}
                 </select>
                 <label htmlFor="cell">Akagari <span className="required">*</span></label>
-                <select className='form-input' name="cell" value={formData.cell} onChange={handleChange}>
+                 <select className='form-input' name="cell" value={formData.cell} onChange={handleChange}>
                   <option value="">-- Select Cell --</option>
                   {filteredCells.map(cell => (
                     <option key={cell} value={cell}>{cell}</option>
