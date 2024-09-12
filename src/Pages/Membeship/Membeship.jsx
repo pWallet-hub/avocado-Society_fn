@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import avocado5 from '../../assets/DSC_2210.jpg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
+import avoca from '../../assets/avica.webp'
 import './Membership.css'
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -58,7 +59,7 @@ function Membeship() {
     <>
       <div className='active-hub'>
         <div className='active-content'>
-          <img className='active-img' src={avocado5} alt="Description of image" />
+          <img className='active-img' src={avoca} alt="Description of image" />
           <h3>MEMBERSHIP</h3>
         </div>
       </div>
