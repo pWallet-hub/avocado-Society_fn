@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Register.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
@@ -267,7 +267,7 @@ export default function Register() {
 
 
 
-  const isLastStepValid = () => formData.assistance !== '';
+  //const isLastStepValid = () => formData.assistance !== '';
 
   return (
     <div className="interactive-form-container">
