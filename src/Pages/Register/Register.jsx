@@ -228,24 +228,30 @@ export default function Register() {
     setError('');
 
     // Construct the payload with the required API format
-    const payload = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      telephone: formData.telephone,
-      idnumber: formData.idnumber,
-      village: formData.village,
-      cell: formData.cell,
-      sector: formData.sector,
-      district: formData.district,
-      province: formData.province,
-      planted: formData.planted,
-      avocadotype: formData.avocadotype,
-      mixedpercentage: formData.mixedpercentage,
-      farmsize: formData.farmsize,
-      treecount: formData.treecount,
-      upinumber: formData.upinumber,
-      assistance: formData.assistance
-    };
+  const payload = {
+    firstname: formData.firstname,
+    lastname: formData.lastname,
+    telephone: formData.telephone,
+    idnumber: formData.idnumber,
+    province: formData.province,
+    district: formData.district,
+    sector: formData.sector,
+    cell: formData.cell,
+    village: formData.village,
+    farm_province: step2Data.province,
+    farm_district: step2Data.district,
+    farm_sector: step2Data.sector,
+    farm_cell: step2Data.cell,
+    farm_village: step2Data.village,
+    planted: formData.planted,
+    avocadotype: formData.avocadotype,
+    mixedpercentage: formData.mixedpercentage,
+    farmsize: formData.farmsize,
+    treecount: parseInt(formData.treecount, 10),
+    upinumber: formData.upinumber,
+    assistance: formData.assistance
+  };
+
 
     try {
       const response = await axios.post('https://applicanion-api.onrender.com/api/users', payload);
