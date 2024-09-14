@@ -48,6 +48,7 @@
 .additional-info p {
   font-size: 16px;
   line-height: 1.5;
+  text-align: justify;
 }
 .right-section {
   width: 50%;
@@ -249,7 +250,7 @@ button:hover {
   width: 40%; 
 }
 
-.submit-button:hover {
+.submits-button:hover {
   background-color: #e53935; /* Darker red on hover */
 }
 
