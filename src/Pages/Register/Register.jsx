@@ -173,7 +173,7 @@ export default function Register() {
   };
 
   const validateStep3 = (formData) => {
-    const requiredFields = ['farmsize', 'treecount', 'upinumber'];
+    const requiredFields = ['farmsize', 'treecount'];
     return requiredFields.every(field => formData[field].trim() !== '');
   };
 
@@ -500,45 +500,37 @@ export default function Register() {
                     <input
                       type="checkbox"
                       name="assistance"
-                      value="ubuhinzi"
-                      checked={formData.assistance.includes('ubuhinzi')}
+                      value="Imihingire"
+                      checked={formData.assistance.includes('Imihingire')}
                       onChange={handleCheckboxChange}
                     />
-                    Imihingire: Guhabwa umukozi wahuguwe kandi umenyereye akakubera farm manager.
+                    Imihingire: Guhabwa umukozi wahuguwe kandi umenyereye akakubera farm manager. Cyangwa se kuguhurura muri rusange ariko wagaragaje umukozi umwe wishakiye uzaba ashinzwe gushyira mu bikorwa amabwiriza y' ubuhinzi bwa avoka.
+
                   </label>
 
                   <label>
                     <input
                       type="checkbox"
                       name="assistance"
-                      value="ubuvugizi"
-                      checked={formData.assistance.includes('ubuvugizi')}
+                      value="Ubujyanama"
+                      checked={formData.assistance.includes('Ubujyanama')}
                       onChange={handleCheckboxChange}
                     />
-                    Ubujyanama: Guhabwa service zikurikina uko ushyira mu bikorwa amabwiriza y' ubuziranenge harimo kugusurano kuguha rapport y' igenzura ituma imenya ibigenda neza n' ibyo ukwiye guhindura no kongere.
+                    Ubujyanama: Guhabwa service zikurikirana uko ushyira mu bikorwa amabwiriza y' ubuziranenge harimo kugusurano kuguha rapport y' igenzura ituma umenya ibigenda neza n' ibyo ukwiye guhindura no kongere.
+
                   </label>
 
                   <label>
                     <input
                       type="checkbox"
                       name="assistance"
-                      value="guhangana-nibibazo"
-                      checked={formData.assistance.includes('guhangana-nibibazo')}
+                      value="Inguzanyo"
+                      checked={formData.assistance.includes('Inguzanyo')}
                       onChange={handleCheckboxChange}
                     />
-                    Serivise z' inguzanyo (Access to Finance): Guhabwa bimwe mu bikoresho nk' ingemwe, ifumbire, imiti, n' ibindi byifashishwa mu buhinzi bwa avoka nk' imiziga y' inzuki, ibikoresho byo kuhira,....
+                    Serivise z' inguzanyo (Access to Finance): Guhabwa ubufasha mu kugera ku gishoro gikoreshwa ku bikoresho, ingemwe, ifumbire, imiti, n' ibindi byifashishwa mu buhinzi bwa avoka nk' imiziga y' inzuki, ibikoresho byo kuhira, n' abakozi.
                   </label>
 
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="assistance"
-                      value="ubwishingizi"
-                      checked={formData.assistance.includes('ubwishingizi')}
-                      onChange={handleCheckboxChange}
-                    />
-                    Ubwishingizi
-                  </label>
                 </div>
 
               </FormStep>

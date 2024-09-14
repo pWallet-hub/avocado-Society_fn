@@ -83,7 +83,7 @@
 .error-message {
   color: red;
   font-size: 16px;
-  margin-top: -10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -251,7 +251,7 @@ button:hover {
 }
 
 .submits-button:hover {
-  background-color: #e53935; /* Darker red on hover */
+  background-color: rgb(116, 169, 136); 
 }
 
 /* Form buttons container */
