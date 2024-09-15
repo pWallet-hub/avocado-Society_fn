@@ -28,6 +28,7 @@ export default function Register() {
     firstname: '',
     lastname: '',
     telephone: '',
+    dateOfBirth: '',
     idnumber: '',
     village: '',
     cell: '',
@@ -37,6 +38,7 @@ export default function Register() {
     planted: '',
     avocadotype: '',
     mixedpercentage: '',
+    yearPlanted: '',
     farmsize: '',
     treecount: '',
     upinumber: '',
@@ -143,6 +145,16 @@ export default function Register() {
       ...(name === 'cell' && { village: '' })
     }));
   };
+  if (name === 'dateOfBirth') {
+    const birthDate = new Date(value);
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
+    if (age < 18) {
+      setValidationError('You must be at least 18 years old to register.');
+    } else {
+      setValidationError('');
+    }
+  }
   if (name === 'idnumber' && value.length > 16) {
     return; // Don't update state if ID number exceeds 16 digits
   }
@@ -157,14 +169,14 @@ export default function Register() {
   }
 
   const validateStep1 = (formData) => {
-    const requiredFields = ['firstname', 'lastname', 'telephone', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
+    const requiredFields = ['firstname', 'lastname', 'telephone', 'dateOfBirth', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
     return requiredFields.every(field => formData[field].trim() !== '');
   };
 
   const validateStep2 = (formData) => {
     const requiredFields = ['planted'];
     if (formData.planted === 'yego') {
-      requiredFields.push('avocadotype');
+      requiredFields.push('yearPlanted', 'avocadotype');
       if (formData.avocadotype === 'bivanze') {
         requiredFields.push('mixedpercentage');
       }
@@ -228,29 +240,30 @@ export default function Register() {
     setError('');
 
     // Construct the payload with the required API format
-  const payload = {
-    firstname: formData.firstname,
-    lastname: formData.lastname,
-    telephone: formData.telephone,
-    idnumber: formData.idnumber,
-    province: formData.province,
-    district: formData.district,
-    sector: formData.sector,
-    cell: formData.cell,
-    village: formData.village,
-    farm_province: step2Data.province,
-    farm_district: step2Data.district,
-    farm_sector: step2Data.sector,
-    farm_cell: step2Data.cell,
-    farm_village: step2Data.village,
-    planted: formData.planted,
-    avocadotype: formData.avocadotype,
-    mixedpercentage: formData.mixedpercentage,
-    farmsize: formData.farmsize,
-    treecount: parseInt(formData.treecount, 10),
-    upinumber: formData.upinumber,
-    assistance: formData.assistance
-  };
+    const payload = {
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      telephone: formData.telephone,
+      idnumber: formData.idnumber,
+      province: formData.province,
+      district: formData.district,
+      sector: formData.sector,
+      cell: formData.cell,
+      village: formData.village,
+      farm_province: step2Data.province,
+      farm_district: step2Data.district,
+      farm_sector: step2Data.sector,
+      farm_cell: step2Data.cell,
+      farm_village: step2Data.village,
+      planted: formData.planted,
+      avocadotype: formData.avocadotype,
+      mixedpercentage: formData.mixedpercentage,
+      yearPlanted: formData.yearPlanted,
+      farmsize: formData.farmsize,
+      treecount: parseInt(formData.treecount, 10),
+      upinumber: formData.upinumber,
+      assistance: formData.assistance
+    };
 
 
     try {
@@ -273,9 +286,9 @@ export default function Register() {
     <div className="interactive-form-container">
       <div className="left-section">
         <div className="info-box">
-          <h1>Avocado Society Rwanda</h1>
+          <h1>Avocado Society of Rwanda</h1>
           <p>
-            {step === 1 && "Umwirondoro w'umuhinzi waho utuye. Tell us about yourself."}
+            {step === 1 && "Umwirondoro w'umuhinzi n'aho utuye. Tell us about yourself."}
             {step === 2 && "Aho ubutaka buhingwaho buherereye. Let's understand your land."}
             {step === 3 && "Ibisobanuro by'umurima. Provide details about your farm."}
             {step === 4 && "Ubufasha n'imikoranire akeneye. How can we assist you?"}
@@ -283,7 +296,7 @@ export default function Register() {
           <div className="additional-info">
             <h3>Impamvu ibi ari ingenzi:</h3>
             <p>
-              {step === 1 && "Amakuru yawe y'ingenzi atuma dushobora kugufasha neza."}
+              {step === 1 && "Amakuru yawe ni ingenzi kuko atuma tubasha kugufasha no kugukurirana neza."}
               {step === 2 && "Ushobora kuba udatuye aho uhinga ntacyo bitwaye. Amakuru y' ubutaka, ubunini bw' umurima n' ibiwuranga bizadufasha kumenya uko wahitamo abafashanyumvire, ntese no ku gutegurana igihe cyo kubasura."}
               {step === 3 && "Ibisobanuro by'umurima bituma dushobora gutanga ubufasha bukwiye."}
               {step === 4 && "Ubufasha tuvuga aha umuhinzi bumugeraho bivuye ku mukoranire n' abafatanyabikwa b' ihuriro. Ni ingenzi ko tubimenya kare kugirango duhurize hamwe n' abafatanyabikorwa bateganije mu ngengo y' imari baduha. Murakoze!"}
@@ -328,12 +341,22 @@ export default function Register() {
                 <label htmlFor="lastname">Amazina <span className="required">*</span></label>
                 <input className="form-input" placeholder="Amazina - Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
                 <label htmlFor="telephone">Telephone <span className="required">*</span></label>
+
                 <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} maxLength={10} pattern="\d*"
                   onKeyPress={(e) => {
                     if (!/[0-9]/.test(e.key)) {
                       e.preventDefault();
                     }
                   }} />
+                <label htmlFor="dateOfBirth">Itariki y'amavuko <span className="required">*</span></label>
+                <input
+                  className="form-input"
+                  type="date"
+                  name="dateOfBirth"
+                  value={formData.dateOfBirth}
+                  onChange={handleChange}
+                  max={new Date().toISOString().split('T')[0]} // Set max date to today
+                />
                 <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
                 <input className="form-input" placeholder="Indangamuntu" type='text' name="idnumber" value={formData.idnumber} onChange={handleChange} maxLength={16} pattern="\d*"
                   onKeyPress={(e) => {
@@ -429,7 +452,21 @@ export default function Register() {
                 </select>
 
                 {formData.planted === 'yego' && (
+
                   <>
+                  <label>Umwaka wateye<span className="required">*</span></label>
+                        <select
+                          className="form-input"
+                          name="yearPlanted"
+                          value={formData.yearPlanted}
+                          onChange={handleChange}
+                        >
+                          <option value="">Hitamo</option>
+                          {Array.from({ length: new Date().getFullYear() - 1999 }, (_, i) => (
+                            <option key={2000 + i} value={2000 + i}>{2000 + i}</option>
+                          ))}
+                        </select>
+
                     <label>Ni ubuhe bwoko bwa avoka wateye?</label>
                     <select
                       className="form-input"
@@ -459,6 +496,7 @@ export default function Register() {
                           </option>
                           <option value="Fuerte ingana na 50%">Fuerte ingana na 50%</option>
                         </select>
+                        
                       </>
                     )}
                   </>
@@ -486,11 +524,11 @@ export default function Register() {
                   <option value=">10">{'>'}10</option>
                 </select>
                 <label htmlFor="treecount">Umubare w'ibiti byatewe <span className="required">*</span></label>
-                <input className="form-input" placeholder="Umubare w'ibiti" type='number' name="treecount" value={formData.treecount} onChange={handleChange}  onKeyPress={(e) => {
-                    if (!/[0-9]/.test(e.key)) {
-                      e.preventDefault();
-                    }
-                  }}  />
+                <input className="form-input" placeholder="Umubare w'ibiti" type='number' name="treecount" value={formData.treecount} onChange={handleChange} onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }} />
                 <label htmlFor="upinumber">UPI number </label>
                 <input className="form-input" placeholder="UPI Number" type='text' name="upinumber" value={formData.upinumber} onChange={handleChange} />
               </FormStep>
@@ -510,7 +548,7 @@ export default function Register() {
                       checked={formData.assistance.includes('Imihingire')}
                       onChange={handleCheckboxChange}
                     />
-                    Imihingire: Guhabwa umukozi wahuguwe kandi umenyereye akakubera farm manager. Cyangwa se kuguhurura muri rusange ariko wagaragaje umukozi umwe wishakiye uzaba ashinzwe gushyira mu bikorwa amabwiriza y' ubuhinzi bwa avoka.
+                    Imihingire: Guhabwa umukozi wahuguwe kandi umenyereye akakubera Umuhuzabikorwa w' umurima (Farm Manager). Cyangwa se kuguhugura muri rusange ariko wagaragaje umukozi umwe wishakiye uzaba ashinzwe gushyira mu bikorwa amabwiriza y' ubuhinzi bwa avoka.
 
                   </label>
 
@@ -522,7 +560,7 @@ export default function Register() {
                       checked={formData.assistance.includes('Ubujyanama')}
                       onChange={handleCheckboxChange}
                     />
-                    Ubujyanama: Guhabwa service zikurikirana uko ushyira mu bikorwa amabwiriza y' ubuziranenge harimo kugusurano kuguha rapport y' igenzura ituma umenya ibigenda neza n' ibyo ukwiye guhindura no kongere.
+                    Ubujyanama: Guhabwa service zikurikirana uko ushyira mu bikorwa amabwiriza y' ubuziranenge harimo kugusura no kuguha rapport y' igenzura ituma umenya ibigenda neza n' ibyo ukwiye guhindura no kongera.
 
                   </label>
 
