@@ -28,7 +28,7 @@ export default function Register() {
     firstname: '',
     lastname: '',
     telephone: '',
-    dateOfBirth: '',
+    age: '',
     idnumber: '',
     village: '',
     cell: '',
@@ -145,7 +145,7 @@ export default function Register() {
       ...(name === 'cell' && { village: '' })
     }));
   };
-  if (name === 'dateOfBirth') {
+  if (name === 'age') {
     const birthDate = new Date(value);
     const today = new Date();
     const age = today.getFullYear() - birthDate.getFullYear();
@@ -169,7 +169,7 @@ export default function Register() {
   }
 
   const validateStep1 = (formData) => {
-    const requiredFields = ['firstname', 'lastname', 'telephone', 'dateOfBirth', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
+    const requiredFields = ['firstname', 'lastname', 'telephone', 'age', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
     return requiredFields.every(field => formData[field].trim() !== '');
   };
 
@@ -239,31 +239,34 @@ export default function Register() {
     setLoading(true);
     setError('');
 
-    // Construct the payload with the required API format
-    const payload = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      telephone: formData.telephone,
-      idnumber: formData.idnumber,
-      province: formData.province,
-      district: formData.district,
-      sector: formData.sector,
-      cell: formData.cell,
-      village: formData.village,
-      farm_province: step2Data.province,
-      farm_district: step2Data.district,
-      farm_sector: step2Data.sector,
-      farm_cell: step2Data.cell,
-      farm_village: step2Data.village,
-      planted: formData.planted,
-      avocadotype: formData.avocadotype,
-      mixedpercentage: formData.mixedpercentage,
-      yearPlanted: formData.yearPlanted,
-      farmsize: formData.farmsize,
-      treecount: parseInt(formData.treecount, 10),
-      upinumber: formData.upinumber,
-      assistance: formData.assistance
-    };
+   const payload = {
+   firstname: formData.firstname || '',  // Default to empty string if missing
+  lastname: formData.lastname || '',    // Default to empty string
+  telephone: formData.telephone || '',  // Default to empty string
+  age: formData.age ? calculateAge(formData.age) : '',  // Calculate age if valid date provided
+  idnumber: formData.idnumber || '',    // Default to empty string
+  province: formData.province || '',    // Default to empty string
+  district: formData.district || '',    // Default to empty string
+  sector: formData.sector || '',        // Default to empty string
+  cell: formData.cell || '',            // Default to empty string
+  village: formData.village || '',      // Default to empty string
+  farm_province: step2Data.province || '',  // Default to empty string
+  farm_district: step2Data.district || '',  // Default to empty string
+  farm_sector: step2Data.sector || '',      // Default to empty string
+  farm_cell: step2Data.cell || '',          // Default to empty string
+  farm_village: step2Data.village || '',    // Default to empty string
+  planted: formData.planted === 'yego',     // Boolean value, true if 'yego'
+  farmsize: formData.farmsize || '',        // Default to empty string
+  treecount: formData.treecount ? parseInt(formData.treecount, 10) || 0 : 0,  // Parse to int, default to 0
+  upinumber: formData.upinumber || '',      // Default to empty string
+  assistance: formData.assistance || ''     // Default to empty string
+  };
+
+  if (formData.planted === 'yego') {
+     payload.farm_age = formData.yearPlanted ?  parseInt(formData.treecount, 10) || 0 : 0; // If yearPlanted exists, parse it; otherwise, set to empty string
+     payload.avocadotype = formData.avocadotype || '';
+     payload.mixedpercentage = formData.mixedpercentage || '';
+  }
 
 
     try {
@@ -272,10 +275,27 @@ export default function Register() {
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
-      setError('Submission failed. Please try again.');
+      if (error.response) {
+        console.log('Response data:', error.response.data);
+        console.log('Response status:', error.response.status);
+        console.log('Response headers:', error.response.headers);
+        setError(`Submission failed: ${error.response.data.message || 'Please try again.'}`);
+      } else {
+        setError('Submission failed. Please check your internet connection and try again.');
+      }
     } finally {
       setLoading(false);
     }
+  };
+  const calculateAge = (dateOfBirth) => {
+    const today = new Date();
+    const birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   };
 
 
@@ -352,10 +372,10 @@ export default function Register() {
                 <input
                   className="form-input"
                   type="date"
-                  name="dateOfBirth"
-                  value={formData.dateOfBirth}
+                  name="age"
+                  value={formData.age}
                   onChange={handleChange}
-                  max={new Date().toISOString().split('T')[0]} // Set max date to today
+                  max={new Date().toISOString().split('T')[0]} 
                 />
                 <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
                 <input className="form-input" placeholder="Indangamuntu" type='text' name="idnumber" value={formData.idnumber} onChange={handleChange} maxLength={16} pattern="\d*"
@@ -458,7 +478,7 @@ export default function Register() {
                         <select
                           className="form-input"
                           name="yearPlanted"
-                          value={formData.yearPlanted}
+                          value={formData.farm_age}
                           onChange={handleChange}
                         >
                           <option value="">Hitamo</option>
