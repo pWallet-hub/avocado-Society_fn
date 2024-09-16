@@ -73,6 +73,11 @@
   padding: 0.5rem;
   border: 2px solid #599217;
   cursor: pointer;
+  transition: .3s;
+}
+.bio-button:hover{
+  color: white;
+  background-color: #599217;
 }
 
 .bio-sector2{
@@ -219,7 +224,6 @@
 }
 .button button{
   width: 7rem;
-  height: 2rem;
   background: #1F310A;
   border: solid 2px #EECF39;
   color: #ffffff;

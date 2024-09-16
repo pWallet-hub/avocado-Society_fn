@@ -219,7 +219,6 @@ function Membeship() {
           <label htmlFor="varieties">Varieties : </label>
           <select
             name="variety"
-            value={formData.variety}
             onChange={handleChange}
           >
             <option value="text">select</option>
@@ -236,17 +235,18 @@ function Membeship() {
               type="radio"
               name="advancedService"
               value="Saving"
-              checked={formData.advancedService === 'Advance Payment'}
+              check={formData.advancedService === 'Advance Payment'}
               onChange={handleChange}
             />
           </div>
           <div className='radio-text'>
             <label htmlFor="text">Saving:</label>
             <input
+              
               type="radio"
               name="advancedService"
               value="Advance Payment"
-              checked={formData.advancedService === 'Saving'}
+              check={formData.advancedService === 'Saving'}
               onChange={handleChange}
             />
           </div>
