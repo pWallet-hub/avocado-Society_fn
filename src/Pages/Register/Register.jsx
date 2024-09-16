@@ -353,9 +353,9 @@ export default function Register() {
                   className="form-input"
                   type="date"
                   name="dateOfBirth"
-                  value={formData.dateOfBirth}
+                  value={formData.age}
                   onChange={handleChange}
-                  max={new Date().toISOString().split('T')[0]} // Set max date to today
+                  max={new Date().toISOString().split('T')[0]} 
                 />
                 <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
                 <input className="form-input" placeholder="Indangamuntu" type='text' name="idnumber" value={formData.idnumber} onChange={handleChange} maxLength={16} pattern="\d*"
@@ -458,7 +458,7 @@ export default function Register() {
                         <select
                           className="form-input"
                           name="yearPlanted"
-                          value={formData.yearPlanted}
+                          value={formData.farm_age}
                           onChange={handleChange}
                         >
                           <option value="">Hitamo</option>
