@@ -23,27 +23,31 @@ const ProgressBar = ({ currentStep, totalSteps }) => (
 export default function Register() {
   const [step, setStep] = useState(1);
   const totalSteps = 4;
-
   const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    telephone: '',
-    dateOfBirth: '',
-    idnumber: '',
-    village: '',
-    cell: '',
-    sector: '',
-    district: '',
-    province: '',
-    planted: '',
-    avocadotype: '',
-    mixedpercentage: '',
-    yearPlanted: '',
-    farmsize: '',
-    treecount: '',
-    upinumber: '',
-    assistance: ''
-  });
+  firstname: '',
+  lastname: '',
+  telephone: '',
+  age: '', // This should be a date string
+  idnumber: '',
+  province: '',
+  district: '',
+  sector: '',
+  cell: '',
+  village: '',
+  farm_province: '',
+  farm_district: '',
+  farm_sector: '',
+  farm_cell: '',
+  farm_village: '',
+  farm_age: '', // This should be a year
+  planted: '', // This should be a date string
+  avocadotype: '',
+  mixedpercentage: '',
+  farmsize: '',
+  treecount: '',
+  upinumber: '',
+  assistance: []
+});
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -145,7 +149,7 @@ export default function Register() {
       ...(name === 'cell' && { village: '' })
     }));
   };
-  if (name === 'dateOfBirth') {
+  if (name === 'age') {
     const birthDate = new Date(value);
     const today = new Date();
     const age = today.getFullYear() - birthDate.getFullYear();
@@ -169,54 +173,54 @@ export default function Register() {
   }
 
   const validateStep1 = (formData) => {
-    const requiredFields = ['firstname', 'lastname', 'telephone', 'dateOfBirth', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
-    return requiredFields.every(field => formData[field].trim() !== '');
-  };
+  const requiredFields = ['firstname', 'lastname', 'telephone', 'age', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
+  return requiredFields.every(field => formData[field] && formData[field].trim() !== '');
+};
 
-  const validateStep2 = (formData) => {
-    const requiredFields = ['planted'];
-    if (formData.planted === 'yego') {
-      requiredFields.push('yearPlanted', 'avocadotype');
-      if (formData.avocadotype === 'bivanze') {
-        requiredFields.push('mixedpercentage');
-      }
+const validateStep2 = (formData) => {
+  const requiredFields = ['planted'];
+  if (formData.planted === 'yego') {
+    requiredFields.push('farm_age', 'avocadotype'); // Use 'farm_age' instead of 'yearPlanted'
+    if (formData.avocadotype === 'bivanze') {
+      requiredFields.push('mixedpercentage');
     }
-    return requiredFields.every(field => formData[field].trim() !== '');
-  };
+  }
+  return requiredFields.every(field => formData[field] && formData[field].trim() !== '');
+};
 
-  const validateStep3 = (formData) => {
-    const requiredFields = ['farmsize', 'treecount'];
-    return requiredFields.every(field => formData[field].trim() !== '');
-  };
+const validateStep3 = (formData) => {
+  const requiredFields = ['farmsize', 'treecount'];
+  return requiredFields.every(field => formData[field] && formData[field].trim() !== '');
+};
 
-  const validateStep4 = (formData) => {
-    return formData.assistance.length > 0;
-  };
+const validateStep4 = (formData) => {
+  return formData.assistance.length > 0;
+};
 
-  const validateStep = (step, formData) => {
-    switch (step) {
-      case 1:
-        return validateStep1(formData);
-      case 2:
-        return validateStep2(formData);
-      case 3:
-        return validateStep3(formData);
-      case 4:
-        return validateStep4(formData);
-      default:
-        return false;
-    }
-  };
+const validateStep = (step, formData) => {
+  switch (step) {
+    case 1:
+      return validateStep1(formData);
+    case 2:
+      return validateStep2(formData);
+    case 3:
+      return validateStep3(formData);
+    case 4:
+      return validateStep4(formData);
+    default:
+      return true;
+  }
+};
   const handleStep2Change = (e) => {
     const { name, value } = e.target;
 
     setStep2Data(prev => ({
       ...prev,
       [name]: value,
-      ...(name === 'province' && { district: '', sector: '', cell: '', village: '' }),
-      ...(name === 'district' && { sector: '', cell: '', village: '' }),
-      ...(name === 'sector' && { cell: '', village: '' }),
-      ...(name === 'cell' && { village: '' })
+      ...(name === 'farm_province' && { district: '', sector: '', cell: '', village: '' }),
+      ...(name === 'farm_district' && { sector: '', cell: '', village: '' }),
+      ...(name === 'farm_sector' && { cell: '', village: '' }),
+      ...(name === 'farm_cell' && { village: '' })
     }));
   };
 
@@ -239,39 +243,41 @@ export default function Register() {
     setLoading(true);
     setError('');
 
-    // Construct the payload with the required API format
-    const payload = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      telephone: formData.telephone,
-      idnumber: formData.idnumber,
-      province: formData.province,
-      district: formData.district,
-      sector: formData.sector,
-      cell: formData.cell,
-      village: formData.village,
-      farm_province: step2Data.province,
-      farm_district: step2Data.district,
-      farm_sector: step2Data.sector,
-      farm_cell: step2Data.cell,
-      farm_village: step2Data.village,
-      planted: formData.planted,
-      avocadotype: formData.avocadotype,
-      mixedpercentage: formData.mixedpercentage,
-      yearPlanted: formData.yearPlanted,
-      farmsize: formData.farmsize,
-      treecount: parseInt(formData.treecount, 10),
-      upinumber: formData.upinumber,
-      assistance: formData.assistance
-    };
+  const payload = {
+    firstname: formData.firstname,
+    lastname: formData.lastname,
+    telephone: formData.telephone,
+    age: formData.age,  
+    idnumber: formData.idnumber,
+    province: formData.province,
+    district: formData.district,
+    sector: formData.sector,
+    cell: formData.cell,
+    village: formData.village,
+    farm_province: formData.farm_province,
+    farm_district: formData.farm_district,
+    farm_sector: formData.farm_sector,
+    farm_cell: formData.farm_cell,
+    farm_village: formData.farm_village,
+    farm_age: formData.farm_age, 
+    planted: formData.planted, 
+    avocadotype: formData.avocadotype,
+    mixedpercentage: formData.mixedpercentage,
+    farmsize: formData.farmsize, 
+    treecount: formData.treecount,  
+    upinumber: formData.upinumber,
+    assistance: formData.assistance
+};
 
 
     try {
       const response = await axios.post('https://applicanion-api.onrender.com/api/users', payload);
+      console.log(payload);
       console.log('Form submitted successfully:', response.data);
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
+      console.log(payload);
       setError('Submission failed. Please try again.');
     } finally {
       setLoading(false);
@@ -342,7 +348,7 @@ export default function Register() {
                 <input className="form-input" placeholder="Amazina - Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
                 <label htmlFor="telephone">Telephone <span className="required">*</span></label>
 
-                <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} maxLength={10} pattern="\d*"
+                <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} maxLength={13} pattern="\d*"
                   onKeyPress={(e) => {
                     if (!/[0-9]/.test(e.key)) {
                       e.preventDefault();
@@ -352,8 +358,8 @@ export default function Register() {
                 <input
                   className="form-input"
                   type="date"
-                  name="dateOfBirth"
-                  value={formData.dateOfBirth}
+                  name="age"
+                  value={formData.age}
                   onChange={handleChange}
                   max={new Date().toISOString().split('T')[0]} // Set max date to today
                 />
@@ -405,37 +411,37 @@ export default function Register() {
               <FormStep title="Amakuru ajyanye n' umurima w' avoka, n' ubwoko bw' ibiti mwateye">
                 <label>Aho Umurima Uherereye <span className="required">*</span></label>
                 <label htmlFor="province">Intara <span className="required">*</span></label>
-                <select className='form-input' name="province" value={step2Data.province} onChange={handleStep2Change}>
-                  <option value="">-- Select Province --</option>
-                  {provinces.map(province => (
+                 <select name="farm_province" value={formData.farm_province} onChange={handleChange} required>
+                  <option value="">Select Farm Province</option>
+                  {Provinces.map(province => (
                     <option key={province} value={province}>{province}</option>
-                  ))}
-                </select>
+                    ))}
+                 </select>
                 <label htmlFor="district">Akarere <span className="required">*</span></label>
-                <select className='form-input' name="district" value={step2Data.district} onChange={handleStep2Change}>
-                  <option value="">-- Select District --</option>
-                  {filteredDistricts.map(district => (
-                    <option key={district} value={district}>{district}</option>
+               <select name="farm_district" value={formData.farm_district} onChange={handleChange} required>
+                <option value="">Select Farm District</option>
+                {Districts.map(district => (
+                  <option key={district} value={district}>{district}</option>
                   ))}
                 </select>
                 <label htmlFor="sector">Umurenge <span className="required">*</span></label>
-                <select className='form-input' name="sector" value={step2Data.sector} onChange={handleStep2Change}>
-                  <option value="">-- Select Sector --</option>
-                  {filteredSectors.map(sector => (
+                <select name="farm_sector" value={formData.farm_sector} onChange={handleChange} required>
+                  <option value="">Select Farm Sector</option>
+                  {Sectors.map(sector => (
                     <option key={sector} value={sector}>{sector}</option>
-                  ))}
+                    ))}
                 </select>
                 <label htmlFor="cell">Akagari <span className="required">*</span></label>
-                <select className='form-input' name="cell" value={step2Data.cell} onChange={handleStep2Change}>
-                  <option value="">-- Select Cell --</option>
-                  {filteredCells.map(cell => (
+                <select name="farm_cell" value={formData.farm_cell} onChange={handleChange} required>
+                  <option value="">Select Farm Cell</option>
+                  {Cells.map(cell => (
                     <option key={cell} value={cell}>{cell}</option>
                   ))}
                 </select>
                 <label htmlFor="village">Umudugudu <span className="required">*</span></label>
-                <select className='form-input' name="village" value={step2Data.village} onChange={handleStep2Change}>
-                  <option value="">-- Select Village --</option>
-                  {filteredVillages.map(village => (
+                <select name="farm_village" value={formData.farm_village} onChange={handleChange} required>
+                  <option value="">Select Farm Village</option>
+                  {Villages.map(village => (
                     <option key={village} value={village}>{village}</option>
                   ))}
                 </select>
@@ -457,8 +463,8 @@ export default function Register() {
                   <label>Umwaka wateye<span className="required">*</span></label>
                         <select
                           className="form-input"
-                          name="yearPlanted"
-                          value={formData.yearPlanted}
+                          name="farm_age"
+                          value={formData.farm_age}
                           onChange={handleChange}
                         >
                           <option value="">Hitamo</option>
