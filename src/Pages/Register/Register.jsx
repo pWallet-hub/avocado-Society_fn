@@ -28,7 +28,7 @@ export default function Register() {
     firstname: '',
     lastname: '',
     telephone: '',
-    dateOfBirth: '',
+    age: '',
     idnumber: '',
     village: '',
     cell: '',
@@ -145,7 +145,7 @@ export default function Register() {
       ...(name === 'cell' && { village: '' })
     }));
   };
-  if (name === 'dateOfBirth') {
+  if (name === 'age') {
     const birthDate = new Date(value);
     const today = new Date();
     const age = today.getFullYear() - birthDate.getFullYear();
@@ -169,7 +169,7 @@ export default function Register() {
   }
 
   const validateStep1 = (formData) => {
-    const requiredFields = ['firstname', 'lastname', 'telephone', 'dateOfBirth', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
+    const requiredFields = ['firstname', 'lastname', 'telephone', 'age', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
     return requiredFields.every(field => formData[field].trim() !== '');
   };
 
@@ -241,29 +241,31 @@ export default function Register() {
 
     // Construct the payload with the required API format
     const payload = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      telephone: formData.telephone,
-      idnumber: formData.idnumber,
-      province: formData.province,
-      district: formData.district,
-      sector: formData.sector,
-      cell: formData.cell,
-      village: formData.village,
-      farm_province: step2Data.province,
-      farm_district: step2Data.district,
-      farm_sector: step2Data.sector,
-      farm_cell: step2Data.cell,
-      farm_village: step2Data.village,
-      planted: formData.planted,
-      avocadotype: formData.avocadotype,
-      mixedpercentage: formData.mixedpercentage,
-      yearPlanted: formData.yearPlanted,
-      farmsize: formData.farmsize,
-      treecount: parseInt(formData.treecount, 10),
-      upinumber: formData.upinumber,
-      assistance: formData.assistance
-    };
+  firstname: formData.firstname,
+  lastname: formData.lastname,
+  telephone: formData.telephone,
+  age: formData.age,
+  idnumber: formData.idnumber,
+  province: formData.province,
+  district: formData.district,
+  sector: formData.sector,
+  cell: formData.cell,
+  village: formData.village,
+  farm_province: step2Data.province,
+  farm_district: step2Data.district,
+  farm_sector: step2Data.sector,
+  farm_cell: step2Data.cell,
+  farm_village: step2Data.village,
+  farm_age: parseInt(formData.yearPlanted, 10), 
+  planted: formData.planted,
+  avocadotype: formData.avocadotype,
+  mixedpercentage: formData.mixedpercentage,
+  farmsize: formData.farmsize,
+  treecount: parseInt(formData.treecount, 10), // Ensure treecount is a number
+  upinumber: formData.upinumber,
+  assistance: formData.assistance
+};
+
 
 
     try {
@@ -272,6 +274,7 @@ export default function Register() {
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
+      console.log(payload);
       setError('Submission failed. Please try again.');
     } finally {
       setLoading(false);
@@ -352,8 +355,8 @@ export default function Register() {
                 <input
                   className="form-input"
                   type="date"
-                  name="dateOfBirth"
-                  value={formData.dateOfBirth}
+                  name="age"
+                  value={formData.age}
                   onChange={handleChange}
                   max={new Date().toISOString().split('T')[0]} // Set max date to today
                 />
