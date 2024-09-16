@@ -240,30 +240,30 @@ export default function Register() {
     setError('');
 
    const payload = {
-   firstname: formData.firstname || '',  // Default to empty string if missing
-  lastname: formData.lastname || '',    // Default to empty string
-  telephone: formData.telephone || '',  // Default to empty string
-  age: formData.age ? calculateAge(formData.age) : '',  // Calculate age if valid date provided
-  idnumber: formData.idnumber || '',    // Default to empty string
-  province: formData.province || '',    // Default to empty string
-  district: formData.district || '',    // Default to empty string
-  sector: formData.sector || '',        // Default to empty string
-  cell: formData.cell || '',            // Default to empty string
-  village: formData.village || '',      // Default to empty string
-  farm_province: step2Data.province || '',  // Default to empty string
-  farm_district: step2Data.district || '',  // Default to empty string
-  farm_sector: step2Data.sector || '',      // Default to empty string
-  farm_cell: step2Data.cell || '',          // Default to empty string
-  farm_village: step2Data.village || '',    // Default to empty string
-  planted: formData.planted === 'yego',     // Boolean value, true if 'yego'
-  farmsize: formData.farmsize || '',        // Default to empty string
-  treecount: formData.treecount ? parseInt(formData.treecount, 10) || 0 : 0,  // Parse to int, default to 0
-  upinumber: formData.upinumber || '',      // Default to empty string
-  assistance: formData.assistance || ''     // Default to empty string
+   firstname: formData.firstname || '',
+   lastname: formData.lastname || '',  
+  telephone: formData.telephone || '',  
+  age: formData.age ? calculateAge(formData.age) : '', 
+  idnumber: formData.idnumber || '',
+  province: formData.province || '',    
+  district: formData.district || '',
+  sector: formData.sector || '',        
+  cell: formData.cell || '',           
+  village: formData.village || '',      
+  farm_province: step2Data.province || '',  
+  farm_district: step2Data.district || '',
+  farm_sector: step2Data.sector || '',
+  farm_cell: step2Data.cell || '',          
+  farm_village: step2Data.village || '',   
+  planted: formData.planted === 'yego',
+  farmsize: formData.farmsize || '',       
+  treecount: formData.treecount ? parseInt(formData.treecount, 10) || 0 : 0, 
+  upinumber: formData.upinumber || '',      
+  assistance: formData.assistance || ''   
   };
 
   if (formData.planted === 'yego') {
-     payload.farm_age = formData.yearPlanted ?  parseInt(formData.treecount, 10) || 0 : 0; // If yearPlanted exists, parse it; otherwise, set to empty string
+     payload.farm_age = formData.yearPlanted ? parseInt(formData.treecount, 10) || 0 : 0;
      payload.avocadotype = formData.avocadotype || '';
      payload.mixedpercentage = formData.mixedpercentage || '';
   }
