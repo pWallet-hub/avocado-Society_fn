@@ -28,7 +28,7 @@ export default function Register() {
     firstname: '',
     lastname: '',
     telephone: '',
-    dateOfBirth: '',
+    age: '',
     idnumber: '',
     village: '',
     cell: '',
@@ -145,7 +145,7 @@ export default function Register() {
       ...(name === 'cell' && { village: '' })
     }));
   };
-  if (name === 'dateOfBirth') {
+  if (name === 'age') {
     const birthDate = new Date(value);
     const today = new Date();
     const age = today.getFullYear() - birthDate.getFullYear();
@@ -169,7 +169,7 @@ export default function Register() {
   }
 
   const validateStep1 = (formData) => {
-    const requiredFields = ['firstname', 'lastname', 'telephone', 'dateOfBirth', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
+    const requiredFields = ['firstname', 'lastname', 'telephone', 'age', 'idnumber', 'province', 'district', 'sector', 'cell', 'village'];
     return requiredFields.every(field => formData[field].trim() !== '');
   };
 
@@ -239,31 +239,34 @@ export default function Register() {
     setLoading(true);
     setError('');
 
-    // Construct the payload with the required API format
-    const payload = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      telephone: formData.telephone,
-      idnumber: formData.idnumber,
-      province: formData.province,
-      district: formData.district,
-      sector: formData.sector,
-      cell: formData.cell,
-      village: formData.village,
-      farm_province: step2Data.province,
-      farm_district: step2Data.district,
-      farm_sector: step2Data.sector,
-      farm_cell: step2Data.cell,
-      farm_village: step2Data.village,
-      planted: formData.planted,
-      avocadotype: formData.avocadotype,
-      mixedpercentage: formData.mixedpercentage,
-      yearPlanted: formData.yearPlanted,
-      farmsize: formData.farmsize,
-      treecount: parseInt(formData.treecount, 10),
-      upinumber: formData.upinumber,
-      assistance: formData.assistance
-    };
+   const payload = {
+    firstname: formData.firstname,
+    lastname: formData.lastname,
+    telephone: formData.telephone,
+    age: calculateAge(formData.age),
+    idnumber: formData.idnumber,
+    province: formData.province,
+    district: formData.district,
+    sector: formData.sector,
+    cell: formData.cell,
+    village: formData.village,
+    farm_province: step2Data.province,
+    farm_district: step2Data.district,
+    farm_sector: step2Data.sector,
+    farm_cell: step2Data.cell,
+    farm_village: step2Data.village,
+    planted: formData.planted === 'yego',
+    farmsize: formData.farmsize,
+    treecount: formData.treecount ? parseInt(formData.treecount, 10) : null,
+    upinumber: formData.upinumber,
+    assistance: formData.assistance
+  };
+
+  if (formData.planted === 'yego') {
+    payload.farm_age = formData.yearPlanted ? parseInt(formData.yearPlanted, 10) : null;
+    payload.avocadotype = formData.avocadotype;
+    payload.mixedpercentage = formData.mixedpercentage;
+  }
 
 
     try {
@@ -272,10 +275,27 @@ export default function Register() {
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
-      setError('Submission failed. Please try again.');
+      if (error.response) {
+        console.log('Response data:', error.response.data);
+        console.log('Response status:', error.response.status);
+        console.log('Response headers:', error.response.headers);
+        setError(`Submission failed: ${error.response.data.message || 'Please try again.'}`);
+      } else {
+        setError('Submission failed. Please check your internet connection and try again.');
+      }
     } finally {
       setLoading(false);
     }
+  };
+  const calculateAge = (dateOfBirth) => {
+    const today = new Date();
+    const birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   };
 
 
@@ -352,7 +372,7 @@ export default function Register() {
                 <input
                   className="form-input"
                   type="date"
-                  name="dateOfBirth"
+                  name="age"
                   value={formData.age}
                   onChange={handleChange}
                   max={new Date().toISOString().split('T')[0]} 
