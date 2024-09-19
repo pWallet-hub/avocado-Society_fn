@@ -156,13 +156,13 @@ export default function Register() {
     }
   }
   if (name === 'idnumber' && value.length > 16) {
-    return; // Don't update state if ID number exceeds 16 digits
+    return; 
   }
   if (name === 'telephone' && value.length > 10) {
-    return; // Don't update state if phone number exceeds 10 digits
+    return;
   }
   if (name === 'farmsize' && value.length > 10) {
-    return; // Don't update state if farm size exceeds 10 digits
+    return; 
   }
   if (name === 'treecount' && value.length > 10) {
     return; // Don't update state if tree count exceeds 10 digits
@@ -242,8 +242,8 @@ export default function Register() {
    const payload = {
    firstname: formData.firstname || '',
    lastname: formData.lastname || '',  
-  telephone: formData.telephone || '',  
-  age: formData.age ? calculateAge(formData.age) : '', 
+   telephone: formData.telephone || '',  
+   age: formData.age || '', 
   idnumber: formData.idnumber || '',
   province: formData.province || '',    
   district: formData.district || '',
@@ -257,13 +257,13 @@ export default function Register() {
   farm_village: step2Data.village || '',   
   planted: formData.planted === 'yego',
   farmsize: formData.farmsize || '',       
-  treecount: formData.treecount ? parseInt(formData.treecount, 10) || 0 : 0, 
+  treecount: formData.treecount || 0 , 
   upinumber: formData.upinumber || '',      
   assistance: formData.assistance || ''   
   };
 
   if (formData.planted === 'yego') {
-     payload.farm_age = formData.yearPlanted ? parseInt(formData.treecount, 10) || 0 : 0;
+     payload.farm_age = formData.yearPlanted || 0 ;
      payload.avocadotype = formData.avocadotype || '';
      payload.mixedpercentage = formData.mixedpercentage || '';
   }
