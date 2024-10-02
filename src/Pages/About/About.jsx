@@ -121,19 +121,19 @@ function About() {
             <div className='image1'>
               <img src={nopic} alt="Felix Bikorimana" />
               <h3>Felix Bikorimana</h3>
-              <h4>corresponding avocado-society rwanda</h4>
+              <h4>corresponding real green gold</h4>
               <p>Senior Digitization Officer</p>
             </div>
             <div className='image1'>
               <img src={nopic} alt="Kevin Ishimwe" />
               <h3>Kevin Ishimwe</h3>
-              <h4>corresponding avocado-society rwanda</h4>
+              <h4>corresponding real green gold</h4>
               <p>Back-End Lead</p>
             </div>
             <div className='image1'>
               <img src={nopic} alt="Umutoni Doreen" />
               <h3>Umutoni Doreen</h3>
-              <h4>corresponding avocado-society rwanda</h4>
+              <h4>corresponding real green gold</h4>
               <p>UI/UX Lead</p>
             </div>
           </div>
