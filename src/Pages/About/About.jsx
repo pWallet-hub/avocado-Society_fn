@@ -97,11 +97,11 @@ function About() {
                 <h3>Mugeni Euphrosine NIYIDUKUNDA</h3>
                 <p>Value Addition Advisor</p>
               </div>
-              <div className='image1'>
+              {/* <div className='image1'>
                 <img src={nopic} alt="Renovat NITUNGA" />
                 <h3>Renovat NITUNGA</h3>
                 <p>Member</p>
-              </div>
+              </div> */}
               <div className='image1'>
                 <img src={nopic} alt="ALEXANDRE NSHIMIYIMANA" />
                 <h3>ALEXANDRE NSHIMIYIMANA</h3>
