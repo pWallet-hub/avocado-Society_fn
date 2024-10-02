@@ -9,6 +9,8 @@ import pacific from '../../assets/pacific.jpg';
 import omar from '../../assets/omar.jpg';
 import renovat from '../../assets/renovat.jpg';
 import euprosine from '../../assets/euprosine.jpg';
+import musangamfura from '../../assets/musangamfura.jpg'
+import butera from '../../assets/butera.jpg'
 import agape from '../../assets/agape.jpg';
 import React from 'react';
 import './About.css';
@@ -79,12 +81,12 @@ function About() {
                 <p>Partnership & Trade Manager</p>
               </div>
               <div className='image1'>
-                <img src={nopic} alt="Jean Damascéne MUSANGAMFURA" />
+                <img src={musangamfura} alt="Jean Damascéne MUSANGAMFURA" />
                 <h3>Jean Damascéne MUSANGAMFURA</h3>
                 <p>Secretary</p>
               </div>
               <div className='image1'>
-                <img src={nopic} alt="Aime Chance BUTERA" />
+                <img src={butera} alt="Aime Chance BUTERA" />
                 <h3>Aime Chance BUTERA</h3>
                 <p>Youth Inclusion Advisor</p>
               </div>
@@ -113,21 +115,25 @@ function About() {
             <div className='image1'>
               <img src={agape} alt="Agape Nduwamungu" />
               <h3>Agape Nduwamungu</h3>
+              <h4>corresponding alliance for science</h4>
               <p>Administrative Officer</p>
             </div>
             <div className='image1'>
               <img src={nopic} alt="Felix Bikorimana" />
               <h3>Felix Bikorimana</h3>
+              <h4>corresponding avocado-society rwanda</h4>
               <p>Senior Digitization Officer</p>
             </div>
             <div className='image1'>
               <img src={nopic} alt="Kevin Ishimwe" />
               <h3>Kevin Ishimwe</h3>
+              <h4>corresponding avocado-society rwanda</h4>
               <p>Back-End Lead</p>
             </div>
             <div className='image1'>
               <img src={nopic} alt="Umutoni Doreen" />
               <h3>Umutoni Doreen</h3>
+              <h4>corresponding avocado-society rwanda</h4>
               <p>UI/UX Lead</p>
             </div>
           </div>
