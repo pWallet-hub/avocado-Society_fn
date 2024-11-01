@@ -369,6 +369,15 @@ function Membeship() {
             resilience of the avocado industry.</p>
         </div>
       </div>
+      <div className='member-type'> <h2>membership </h2> <h1>Type</h1>
+      
+      </div>
+      <div className='member-type-para'>
+      <p>The Avocado pWallet offers tailored benefits like market access,
+         communal harvesting, and compliance support. Higher-tier members enjoy
+          extras such as priority booking, 
+        financial services, and irrigation financing.</p>
+        </div>
     <div className="interactive-form-container">
       <div className="left-section">
         <div className="info-box">
