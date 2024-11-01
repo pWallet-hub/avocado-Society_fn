@@ -310,25 +310,27 @@ function Membeship() {
           <h3>MEMBERSHIP</h3>
         </div>
       </div>
+      <div className='member-container'>
       <div className='membership'>
         <h1>Membership</h1>
         <h2>Benefits</h2>
       </div>
+      <div className='member-topic'>
       <div className='membership-content'>
         <div className='membericon'>
           <FaCheckCircle />
         </div>
         <div className='member-text'>
           <h1>Market Access</h1>
-          <p>Ensuring market access for avocado farmers is crucial for the growth and <br />
-            sustainability of the avocado industry. By opening new markets and expanding <br />
-            existing ones, farmers can increase their revenue, reduce waste, and enhance the <br />
-            overall economic stability of their communities. Access to international markets can <br />
-            be particularly beneficial, providing opportunities to meet the growing global demand <br />
-            for avocados. To achieve this, it is essential to address trade barriers, improve supply <br />
-            chain logistics, and adhere to stringent quality standards. Investing in marketing <br />
-            initiatives, establishing fair trade practices, and leveraging technology for better <br />
-            market intelligence can further empower avocado farmers, enabling them to compete <br />
+          <p>Ensuring market access for avocado farmers is crucial for the growth and 
+            sustainability of the avocado industry. By opening new markets and expanding 
+            existing ones, farmers can increase their revenue, reduce waste, and enhance the 
+            overall economic stability of their communities. Access to international markets can 
+            be particularly beneficial, providing opportunities to meet the growing global demand 
+            for avocados. To achieve this, it is essential to address trade barriers, improve supply 
+            chain logistics, and adhere to stringent quality standards. Investing in marketing 
+            initiatives, establishing fair trade practices, and leveraging technology for better 
+            market intelligence can further empower avocado farmers, enabling them to compete 
             effectively and sustainably in the global marketplace.</p>
         </div>
       </div>
@@ -339,15 +341,15 @@ function Membeship() {
         <div className='member-text'>
           <h1>Extension Service</h1>
           <p>Our comprehensive extension services are designed
-            to support avocado farmers in <br /> every aspect of their operations,
-            ensuring optimal productivity and sustainability. We <br /> offer expert pest
-            management solutions tailored to protect your crops from harmful <br /> pests
+            to support avocado farmers in  every aspect of their operations,
+            ensuring optimal productivity and sustainability. We  offer expert pest
+            management solutions tailored to protect your crops from harmful  pests
             while minimizing environmental impact. Our harvesting support ensures
-            that you <br /> employ the best practices for maximum yield and quality, aligning
-            with market <br /> standards. Additionally, our farm property evaluation service
-            provides a thorough <br /> assessment of your land, identifying areas for improvement
-            and opportunities for <br /> growth. By integrating these services, we help you enhance
-            your farming practices, <br /> boost your harvest, and achieve greater market success.</p>
+            that you  employ the best practices for maximum yield and quality, aligning
+            with market  standards. Additionally, our farm property evaluation service
+            provides a thorough  assessment of your land, identifying areas for improvement
+            and opportunities forgrowth. By integrating these services, we help you enhance
+            your farming practices,  boost your harvest, and achieve greater market success.</p>
         </div>
       </div>
       <div className='membership-content'>
@@ -356,18 +358,20 @@ function Membeship() {
         </div>
         <div className='member-text'>
           <h1>Access to Finance</h1>
-          <p>Access to finance is a critical component for the advancement and sustainability <br />
-            of avocado farming. By securing funding, farmers can invest in high-quality inputs, <br />
-            modern equipment, and innovative technologies that boost productivity and <br />
-            efficiency. Financial resources enable farmers to adopt best practices in pest <br />
-            management, optimize harvesting techniques, and improve overall farm <br />
-            infrastructure. Moreover, access to finance facilitates expansion, allowing farmers to <br />
-            scale their operations and explore new market opportunities. We are committed to <br />
-            connecting farmers with financial institutions and resources, providing guidance on <br />
-            loan applications, and offering financial literacy programs. By empowering farmers <br />
-            with the necessary financial tools, we help ensure the long-term success and <br />
+          <p>Access to finance is a critical component for the advancement and sustainability 
+            of avocado farming. By securing funding, farmers can invest in high-quality inputs, 
+            modern equipment, and innovative technologies that boost productivity and 
+            efficiency. Financial resources enable farmers to adopt best practices in pest 
+            management, optimize harvesting techniques, and improve overall farm
+            infrastructure. Moreover, access to finance facilitates expansion, allowing farmers to 
+            scale their operations and explore new market opportunities. We are committed to 
+            connecting farmers with financial institutions and resources, providing guidance on 
+            loan applications, and offering financial literacy programs. By empowering farmers
+            with the necessary financial tools, we help ensure the long-term success and 
             resilience of the avocado industry.</p>
         </div>
+      </div>
+      </div>
       </div>
       <div className='member-type'> <h2>membership </h2> <h1>Type</h1>
       
@@ -379,7 +383,7 @@ function Membeship() {
         financial services, and irrigation financing.</p>
         </div>
     <div className="interactive-form-container">
-      {/* <div className="left-section">
+      <div className="left-section">
         <div className="info-box">
           <h1>Avocado Society of Rwanda</h1>
           <p>
@@ -398,7 +402,7 @@ function Membeship() {
             </p>
           </div>
         </div>
-      </div> */}
+      </div>
 
       <div className="right-section">
         {submitted ? (

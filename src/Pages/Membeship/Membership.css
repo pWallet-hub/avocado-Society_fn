@@ -2,14 +2,21 @@
     display: flex;
     gap: 1rem;
     margin-left: 2rem;
+    align-items: center;
+}
+.member-container{
+  display: flex;
 }
 
 .membership h1 {
     font-size: 25px;
     font-family: 'Poppins';
     color: #000;
-    display: flex;
-    align-items: center;
+   
+}
+.member-topic{
+  margin-top: 4rem;
+  margin-left: 1.5rem;
 }
 
 .membership h2 {
@@ -35,6 +42,7 @@
     font-family: 'Poppins';
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     gap: 1rem;
     line-height: 1.8rem;
     font-size: 18px;
@@ -46,11 +54,12 @@
 }
 
 .member-text p {
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'Poppins';
     color: #000;
     display: flex;
     align-items: center;
+    text-align: justify;
 }
 
 .active-content img {
@@ -161,9 +170,9 @@
     /* min-height: 100vh; */
     background-color: white;
     font-family: 'Poppins';
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
-    align-items: center; 
+    /* align-items: center;  */
 }
 
 .right-section {
@@ -388,6 +397,10 @@ button:hover {
 @media (max-width: 768px) {
     .active-content h3 {
         font-size: 40px;
+    }
+    .member-container{
+      flex-direction: column;
+        align-items: center;
     }
 
     .membership h1 {
