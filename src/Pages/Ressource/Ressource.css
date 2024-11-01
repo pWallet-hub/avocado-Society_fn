@@ -1,6 +1,5 @@
 /* General Container */
 .resources-container {
-  padding: 20px;
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
   max-width: 1200px;
@@ -9,11 +8,14 @@
 
 /* PDF Section */
 .pdf-section h2,
-.news-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.news-section h2{
+  text-align: left;
+  margin-bottom: 30px;
   font-size: 24px;
-  color: #333;
+  color: #416a12;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+
 }
 
 /* PDF Grid */
@@ -59,6 +61,9 @@
 }
 
 /* News Section */
+.news-section{
+  background-color: white;
+}
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -69,7 +74,7 @@
 .news-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   padding: 20px;
   transition: transform 0.3s ease;
 }
@@ -115,11 +120,114 @@
   background-color: #1f6b2d;
 }
 
+section{
+  padding: 40px 20px;
+}
+.tutotials-section{
+  background-color: white;
+}
+.tutotials-section h2{
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #416a12;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+.tutorials-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-content: left;
+  gap: 20px;
+}
+.tutorials-card{
+  transition: all .4s;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+.tutorials-card:hover {
+  transform: translateY(-5px);
+}
+.tutorial-cover{
+  width: 100%;
+  height: 45vh;
+  background-position: center;
+  background-size: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.tutorial-cover.one{
+  background-image: url('../../assets/avocado1.jpg');
+}
+.tutorial-cover.two{
+  background-image: url('../../assets/avocado2.jpg');
+}
+.tutorial-cover.three{
+  background-image: url('../../assets/avocado3.jpg');
+}
+.tutorial-description{
+  margin: 0;
+  margin-top: 10px;
+  text-align: left;
+  padding: 15px;
+  width: 80%;
+}
+
+.tutorial-footer{
+  display : flex;
+  padding: 15px;
+}
+.tutorial-user{
+  width: 50px;
+  height: 50px;
+  background-image: url('../../assets/image2.jpeg');
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.tutorial-footer-names{
+  display : block;
+  margin-top: 7px;
+}
+.tutorial-footer-names h5{
+  margin-left: 20px;
+  opacity: 0.7;
+  font-weight: 300;
+}
+.tutorial-footer-names h3{
+  opacity: 1;
+  font-weight: 500;
+}
+.tutotials-section button{
+  display: block;
+  width: fit-content;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #2d8a3e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.tutotials-section button:hover {
+  background-color: #1f6b2d;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .pdf-grid,
-  .news-grid {
+  .news-grid
+   {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .tutorials-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .resources-container {
@@ -133,6 +241,9 @@
 }
 
 @media (max-width: 480px) {
+  .tutorials-grid {
+    grid-template-columns: 1fr;
+  }
   .pdf-grid,
   .news-grid {
     grid-template-columns: 1fr;

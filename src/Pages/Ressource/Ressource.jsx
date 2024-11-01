@@ -1,5 +1,7 @@
 import React from 'react';
 import './Ressource.css';
+import avca from '../../assets/avca.jpg';
+import image2 from '../../assets/image2.jpeg';
 
 // Import PDF and image files
 import pdf1 from '../../assets/docs/Avocado Society of Rwanda - pWallet Info Booklet avocado.pdf';
@@ -23,7 +25,59 @@ const news = [
 
 export default function Ressource() {
   return (
+    <>
+    <div className='active-hub'>
+        <div className='active-content'>
+          <img className='active-img' src={avca} alt="Description of image" />
+          <h3>RESOURCES</h3>
+        </div>
+      </div>
     <div className="resources-container">
+      <section className='tutotials-section'>
+        <h2>Tutorials</h2>
+        <div className="tutorials-grid">
+          <div className='tutorials-card'>
+            <div className='tutorial-cover one'></div>
+            <div className='tutorial-description'>
+              How to grow an avocado from seed to fruit
+            </div>
+            <div className='tutorial-footer'>
+              <div className="tutorial-user"></div>
+              <div className='tutorial-footer-names'>
+                <h3>John Doe</h3>
+                <h5>November 1,2024</h5>
+              </div>
+            </div>
+          </div>
+          <div className='tutorials-card'>
+            <div className='tutorial-cover two'></div>
+            <div className='tutorial-description'>
+              How to grow an avocado from seed to fruit
+            </div>
+            <div className='tutorial-footer'>
+              <div className="tutorial-user"></div>
+              <div className='tutorial-footer-names'>
+                <h3>John Doe</h3>
+                <h5>November 1,2024</h5>
+              </div>
+            </div>
+          </div>
+          <div className='tutorials-card'>
+            <div className='tutorial-cover three'></div>
+            <div className='tutorial-description'>
+              How to grow an avocado from seed to fruit
+            </div>
+            <div className='tutorial-footer'>
+              <div className="tutorial-user"></div>
+              <div className='tutorial-footer-names'>
+                <h3>John Doe</h3>
+                <h5>November 1,2024</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button>See More</button>
+      </section>
       <section className="pdf-section">
         <h2>Documents and Books</h2>
         <div className="pdf-grid">
@@ -49,5 +103,7 @@ export default function Ressource() {
         <button className="view-all-button">View All News</button>
       </section>
     </div>
+    </>
   );
+
 }
