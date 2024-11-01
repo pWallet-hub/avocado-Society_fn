@@ -379,7 +379,7 @@ function Membeship() {
         financial services, and irrigation financing.</p>
         </div>
     <div className="interactive-form-container">
-      <div className="left-section">
+      {/* <div className="left-section">
         <div className="info-box">
           <h1>Avocado Society of Rwanda</h1>
           <p>
@@ -398,7 +398,7 @@ function Membeship() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="right-section">
         {submitted ? (
