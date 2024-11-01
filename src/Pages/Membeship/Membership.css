@@ -72,6 +72,88 @@
     font-size: 0.875em;
     font-family: 'Poppins';
     margin-top: 5px;
+  }
+.comment input{
+    width: 95.5%;
+    height: 100px;
+    padding: 30px;
+    margin-left: 2rem;
+    border: none;
+    border-radius: 4px;
+    flex: 1;
+}
+.member-form h3{
+    margin-top: 2rem;
+    font-family: poppins;
+    font-size: 18px;
+    color: #000000;
+}
+.member-form label{
+    color: #FFFFFF;
+    font-size: 20px;
+    font-family: poppins;
+}
+.member-form  input{
+    font-size: 18px;
+}
+.radio{
+    display: flex;
+    gap: 5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-bottom: 4rem;
+}
+.radio input{
+    width: 18px;
+    height: 18px;
+    accent-color: #1F310A;
+    color: green;
+}
+.member-type{
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 1rem;
+   
+}
+.member-type h2{
+  font-size: 28px;
+    font-family: Viga;
+    color: #000000;
+    text-transform: capitalize;
+}
+.member-type h1{
+  font-size: 55px;
+    font-family: Just Another Hand;
+    color: #EECF39;
+    text-transform: capitalize;
+}
+.member-type-para p{
+  font-size: 16px;
+ padding-left: 2rem;
+ padding-right: 2rem;
+ 
+  text-align: justify;
+    font-family: poppins;
+    color: #000000;
+    text-transform: capitalize;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.buto{
+    display: flex;
+    align-items: flex-end;
+
+}
+.buto button{
+    width: 8rem;
+    background: #1F310A;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    margin-left: 1rem; 
 }
 
 .interactive-form-container {

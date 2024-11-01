@@ -115,6 +115,20 @@
     text-align: justify;
     margin: 1.2rem
    }
+   .social{
+    margin-left: 1rem;
+     margin-top: 1rem;
+     display: flex;
+     gap: 1rem;
+   }
+   .vision {
+    /* width: 100%;; */
+   }
+   .mission p{
+    padding-right: -1rem;
+    margin-left: 12rem;
+   }
+   
 
    .about h3{
     color: #599217;
@@ -149,14 +163,19 @@
     font-family: 'Poppins', sans-serif;
    }
    .about-content{
-    margin-left: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* Add spacing between the columns if needed */
+    padding: 20px;
+   
    }
    .about-content p{
     color: black;
     font-family: Poppins;
     line-height: 1.5rem;
     font-size: 18px;
-    margin-right: 4rem;
+    /* margin-right: -1rem; */
    }
    .about-content ul{
     margin-bottom: 2rem;
