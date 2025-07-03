@@ -12,6 +12,7 @@ import euprosine from '../../assets/euprosine.jpg';
 import musangamfura from '../../assets/musangamfura.jpg'
 import butera from '../../assets/butera.jpg'
 import agape from '../../assets/agape.jpg';
+import minagri from '../../assets/MINAGRI Logo.png';
 import React from 'react';
 import './About.css';
 
@@ -153,7 +154,7 @@ function About() {
             <img src={gnf} alt='GNF' />
             <img src={rgg} alt='RGG' />
             <img src={soris} alt='Soris' />
-            <img src={ryaf} alt='RYAF' />
+            <img src={minagri} alt='minagri' />
           </div>
         </div>
       </div>
