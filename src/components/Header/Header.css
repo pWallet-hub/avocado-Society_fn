@@ -5,13 +5,12 @@
     justify-content: space-between;
     padding: 1rem 2rem;
     font-family: 'Poppins', sans-serif;
-    /* margin-bottom: 0.3rem; */
     align-items: center;
     z-index: 100;
      background: linear-gradient(135deg, #4cba4e, #5bb345);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .logo-container {
