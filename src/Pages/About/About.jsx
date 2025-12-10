@@ -1,5 +1,6 @@
 import avocados from '../../assets/avocados.jpeg';
 import nopic from '../../assets/nopic.jpg';
+import rugangazi from '../../assets/rugangazi.jpg'
 import gnf from '../../assets/gfn.jpg';
 import rgg from '../../assets/rgg.png';
 import ryaf from '../../assets/ryaf.jpg';
@@ -129,7 +130,7 @@ function About() {
               <p>Administrative Officer</p>
             </div>
             <div className='image1'>
-              <img src={nopic} alt="Felix Bikorimana" />
+              <img src={rugangazi} alt="Felix Bikorimana" />
               <h3>Felix Bikorimana</h3>
               <h4>corresponding real green gold</h4>
               <p>Senior Digitization Officer</p>
@@ -140,12 +141,12 @@ function About() {
               <h4>corresponding real green gold</h4>
               <p>Back-End Lead</p>
             </div>
-            <div className='image1'>
+            {/* <div className='image1'>
               <img src={nopic} alt="Umutoni Doreen" />
               <h3>Umutoni Doreen</h3>
               <h4>corresponding real green gold</h4>
               <p>UI/UX Lead</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className='partners'>
