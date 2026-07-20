@@ -1,365 +1,490 @@
-@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
 
+/* ────────────────────────────────────────────────
+   Design tokens — unchanged avocado palette:
+   pale flesh background, deep skin/forest ink,
+   muted olive accent, warm pit-brown, soft gold.
+   ──────────────────────────────────────────────── */
+.asr-about {
+  --color-bg: #F4F2E6;
+  --color-bg-alt: #EAE7D4;
+  --color-ink: #1E2419;
+  --color-forest: #223423;
+  --color-forest-deep: #172619;
+  --color-olive: #7C9A45;
+  --color-olive-deep: #5E7A33;
+  --color-pit: #5B3B22;
+  --color-gold: #C79A44;
+  --color-line: rgba(30, 36, 25, 0.12);
 
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 
-
-.active-hub {
-    display: grid;
-    position: relative;
-     z-index: 0;
-     font-family: poppins;
-   }
-   .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 2rem;
-    margin-bottom: 2rem; */
-    height: 100%;
-    background-color: white;
-  }
-  .container h2 {
-    font-family: poppins, sans-serif;
-    font-size: 2.5rem;
-    color: #599217;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form {
-    background-color: rgb(227, 224, 224);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 700px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-   
-    gap: 0.5rem;
-  }
-  
-  .label {
-    display: block;
-   
-    margin-bottom: 5px;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .input, .select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    color: black;
-    background-color: white;
-  }
-  
-  .submit-button {
-    width: 40%;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: green;
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    margin-left: 12rem;
-    
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 5px;
-  }
-  
-  
-   .active-img{
-       width: 100%;
-       height: 60vh;
-       object-fit: cover;
-   }
-   .active-content h3{
-     font-size: 3rem;
-     font-family: 'Poppins', sans-serif;
-     margin-top: -200px;
-     position: absolute;
-     margin-left: 5rem;
-     color: white;
-   }
-   .about{
-    
-    margin-left: 2rem;
-    margin-top: 1rem;
-   }
-   .about h2{
-    color: #599217;
-    font-family: Just Another Hand;
-    font-size: 2rem;
-    text-align: center;
-   }
-
-   .about p{
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-    text-align: justify;
-    margin: 1.2rem
-   }
-
-   .about h3{
-    color: #599217;
-    font-family: Just Another Hand;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    
-   }
-
-   .about ul{
-    margin-left: 2rem;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.4rem;
-    list-style-type: none;
-   }
-
-  .about   ul li::before {
-  content: "\2713\0020"; 
-  color: #599217;
-  font-weight: bold; 
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-   .about-content h1{
-   color: #599217;
-   font-family: Just Another Hand;
-   text-align: center;
-   font-size: 2.4rem;
 
-   }
-   .about-content h5{
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-   }
-   .about-content{
-    margin-left: 1rem;
-   }
-   .about-content p{
-    color: black;
-    font-family: Poppins;
-    line-height: 1.5rem;
-    font-size: 18px;
-    margin-right: 4rem;
-   }
-   .about-content ul{
-    margin-bottom: 2rem;
-    margin-left: 1rem;
-    line-height: 1.4rem;
-   }
-   .team1{
+.asr-about * { box-sizing: border-box; }
+
+.asr-about h1,
+.asr-about h2,
+.asr-about h3,
+.asr-about h4 {
+  font-family: var(--font-display);
+  color: var(--color-forest);
+  font-weight: 600;
+  margin: 0;
+}
+
+.asr-about p {
+  font-family: var(--font-body);
+  line-height: 1.75;
+  color: rgba(30, 36, 25, 0.82);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asr-about * { transition: none !important; animation: none !important; }
+}
+
+/* ── Shared badge / eyebrow ─────────────────────── */
+.asr-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-olive-deep);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  margin-bottom: 1.1rem;
+}
+
+.asr-badge--light {
+  color: #EFE7CE;
+  background: rgba(244, 242, 230, 0.1);
+  border-color: rgba(244, 242, 230, 0.22);
+}
+
+.asr-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.asr-eyebrow--light { color: #D8CB98; }
+
+/* ── HERO BAND ─────────────────────────────────── */
+.asr-hero {
+  position: relative;
+  background: var(--color-forest-deep);
+  padding: 3.6rem 2rem 3.2rem;
+  overflow: hidden;
+}
+
+.asr-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.asr-blob--a {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle at 30% 30%, var(--color-olive), transparent 70%);
+  top: -90px;
+  right: -60px;
+}
+
+.asr-blob--b {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 60% 40%, var(--color-gold), transparent 70%);
+  bottom: -80px;
+  left: 8%;
+  opacity: 0.22;
+}
+
+.asr-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.asr-hero-inner h1 {
+  color: #fff;
+  font-size: clamp(2.1rem, 4.5vw, 2.8rem);
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 0.6rem;
+}
+
+/* ── SHARED WIDTH ─────────────────────────────────── */
+.asr-main { max-width: 1040px; margin: 0 auto; }
+
+/* ── WHO WE ARE ──────────────────────────────────── */
+.asr-who {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3.5rem;
+  align-items: center;
+  padding: 4.5rem 2rem;
+}
+
+.asr-who-media img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+  box-shadow: 0 22px 50px rgba(30, 36, 25, 0.18);
+}
+
+.asr-who-content h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.asr-who-content p { max-width: 52ch; }
+
+.asr-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.asr-stat { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.asr-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--color-olive-deep);
+}
+
+.asr-stat-label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(30, 36, 25, 0.6);
+}
+
+/* ── PARTNERS STRIP ───────────────────────────────── */
+.asr-partners-strip {
+  padding: 2.6rem 2rem 3.4rem;
+  text-align: center;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.asr-strip-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-olive-deep);
+  margin-bottom: 1.6rem;
+}
+
+.asr-logo-row {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-   }
-   .team1 h2{
-    font-family: Just Another Hand;
-    font-size: 40px;
-    color: #599217;
-    text-transform: capitalize;
-   }
-   .team1 h1{
-    color: black;
-    font-family: poppins;
-    font-size: 20px;
-   }
-   .board-director{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-   }
-   .board{
-    display: flex;
-   justify-content: space-around;
-   margin-right: 2rem;
-   gap: 1rem;
-   } 
-   .image1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-   
-   }
-   .image1 img{
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.asr-logo-row img {
+    height: auto;
     width: 100%;
+    max-width: 140px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.asr-logo-row img:hover { filter: grayscale(0%); opacity: 1; }
+
+/* ── SOCIAL ENTERPRISE MODEL BAND ─────────────────── */
+.asr-model-band {
+  position: relative;
+  background: var(--color-forest-deep);
+  padding: 4.5rem 2rem;
+  margin: 0 -2rem;
+  overflow: hidden;
+}
+
+.asr-blob--c {
+  width: 320px;
   height: 320px;
-    object-fit: contain;
-    border-radius: 10px;
-   }
-   .image1 h3{
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 0.5rem;
-    color: #000000;
-    text-transform: capitalize;
-   }
-   .image1 h4{
-    color: #599217;
-    text-transform: capitalize;
-    text-align: center;
-   }
-   .image1 p{
-    font-size: 1rem;
-   font-family: 'Poppins', sans-serif;
-    color: #000000;
-    text-transform: capitalize;
-   }
- 
-   
-   .partner{
-    background: #599217AB;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    margin-right: 2rem;
-    padding-bottom: 1rem;
-   }
-  
-   
-
-   .partner h2{
-    font-family: Just Another Hand;
-    font-size: 40px;
-    color: #599217;
-    text-transform: capitalize;
-  
-   }
-   .partner-img{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-   }
-   .partner-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-   }
-   .partner-img img:hover{
-    transform: scale(1.1);
-    transition: 0.5s;
-   }
-   .partner-img img:not(:hover){
-    transform: scale(1);
-    transition: 0.5s;
-   }
-   .partner-img h3{
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
-   }
-.log-image{
-    display: flex;
-    justify-content: space-evenly;
-    margin: 2rem;
-
+  background: radial-gradient(circle at 40% 40%, var(--color-olive), transparent 70%);
+  top: -140px;
+  left: -80px;
+  opacity: 0.25;
 }
 
-.log-image img{
-    width: 33%;
-    height: 10rem;
-    object-fit:contain;
-    border-radius: 10%;
+.asr-model-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto;
 }
-  @media (max-width: 768px){
 
-    .active-img{
-        height: 30vh;
-    }
-    
-    .about{
-        display: flex;
-        flex-direction: column;
-    }
-    .about h4{
-        align-items: center;
-        display: flex;
-        font-size: 35px;
-    }
-    .about-content{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-right: 0rem;
-    }
-    .about-content h1{
-        font-size: 30px;
-    }
-    .about-content h5{
-        font-size: 30px;
-    }
-    .about-content p{
-        font-size: 16px;
-        text-align: justify;
-    }
-    .team1 h2{
-        font-size: 50px;
-        margin: 1rem;
-    }
-    .board{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .image1{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        object-fit: cover;
-    }
-    .image1 img{
-        width: 90%;
-        height: 50vh;
-        object-fit: contain;
-    }
-    .image1 h3{
-        font-size: 25px;
-        text-transform: capitalize;
-        text-align: center;
-    }
-    .image1 h4{
-      font-size: 22px;
-    }
-    .image1 p{
-        font-size: 21px;
-        text-transform: capitalize;
-
-    }
-    .team1 h1{
-        font-size: 28px;
-        text-transform: capitalize;
-    }
-    .log-image{
-        flex-direction:column;
-    }
-    .log-image img{
-    width: 100%;
-    object-fit: contain;
+.asr-model-band h2 {
+  color: #fff;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  font-style: italic;
+  margin-bottom: 1.2rem;
 }
-  }
-  
+
+.asr-model-band p {
+  color: rgba(244, 242, 230, 0.72);
+  max-width: 68ch;
+  margin-bottom: 2.6rem;
+}
+
+.asr-goal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.asr-goal-card {
+  background: rgba(244, 242, 230, 0.05);
+  border: 1px solid rgba(244, 242, 230, 0.14);
+  border-radius: 14px;
+  padding: 1.5rem 1.35rem;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.asr-goal-card:hover {
+  background: rgba(244, 242, 230, 0.09);
+  border-color: var(--color-olive);
+  transform: translateY(-3px);
+}
+
+.asr-goal-number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-gold);
+  margin-bottom: 0.8rem;
+}
+
+.asr-goal-card h3 {
+  color: #F4F2E6;
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* ── VISION & MISSION ──────────────────────────────── */
+.asr-vm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  padding: 4.5rem 2rem;
+}
+
+.asr-vm-card {
+  position: relative;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  padding: 2.5rem 2.25rem 2.25rem;
+}
+
+.asr-quote-mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-olive);
+  margin-bottom: 0.5rem;
+}
+
+.asr-vm-card h3 {
+  font-size: 0.78rem;
+  font-style: normal;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-olive-deep);
+  margin-bottom: 0.9rem;
+}
+
+.asr-vm-card p { font-size: 1.02rem; color: var(--color-forest); }
+
+/* ── MILESTONES ────────────────────────────────────── */
+.asr-milestones {
+  padding: 1rem 2rem 4.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.asr-milestones h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  font-style: italic;
+  margin-bottom: 2.6rem;
+}
+
+.asr-timeline {
+  position: relative;
+  padding-left: 2.1rem;
+  border-left: 1px solid var(--color-line);
+}
+
+.asr-timeline-item {
+  position: relative;
+  padding-bottom: 2.75rem;
+}
+
+.asr-timeline-item:last-child { padding-bottom: 0; }
+
+.asr-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.35rem;
+  top: 0.3rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-olive);
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-olive);
+}
+
+.asr-timeline-year {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--color-olive-deep);
+  margin-bottom: 0.5rem;
+}
+
+.asr-timeline-content h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 0.55rem;
+}
+
+.asr-timeline-content p { max-width: 56ch; }
+
+/* ── TEAM ──────────────────────────────────────────── */
+.asr-team { padding: 1rem 2rem 4.5rem; }
+
+.asr-section-title {
+  font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.asr-section-title--spaced { margin-top: 4.5rem; }
+
+.asr-people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.asr-people-grid--support { grid-template-columns: repeat(4, 1fr); }
+
+.asr-person-card {
+  margin: 0;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.asr-person-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(30, 36, 25, 0.14);
+  border-color: transparent;
+}
+
+.asr-person-photo {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--color-forest);
+}
+
+.asr-person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.asr-person-card:hover .asr-person-photo img {
+  transform: scale(1.045);
+  filter: grayscale(0%);
+}
+
+.asr-person-card figcaption { padding: 1.1rem 1.15rem 1.35rem; }
+
+.asr-person-card h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-transform: capitalize;
+  margin-bottom: 0.2rem;
+}
+
+.asr-person-card h4 {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: var(--color-olive-deep);
+  margin-bottom: 0.3rem;
+}
+
+.asr-person-card p {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-pit);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 860px) {
+  .asr-who { grid-template-columns: 1fr; gap: 2.25rem; padding: 3.5rem 1.5rem; }
+  .asr-goal-grid { grid-template-columns: repeat(2, 1fr); }
+  .asr-vm { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; }
+  .asr-people-grid,
+  .asr-people-grid--support { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .asr-hero { padding: 2.75rem 1.5rem 2.5rem; }
+  .asr-stats { flex-direction: column; gap: 1.1rem; }
+  .asr-model-band { padding: 3.5rem 1.25rem; margin: 0 -1.25rem; }
+  .asr-goal-grid { grid-template-columns: 1fr; }
+  .asr-milestones { padding: 0.5rem 1.5rem 3.5rem; }
+  .asr-team { padding: 0.5rem 1.5rem 3.5rem; }
+  .asr-people-grid,
+  .asr-people-grid--support { grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+}

@@ -1,334 +1,177 @@
-.membership{
-    display: flex;
-    gap: 1rem;
-    margin-left: 2rem;
-}
-.membership h2{
-    color: #EECF39;
-    font-size: 60px;
-    font-family: Just Another Hand;
-}
-.active-content img{
-width: 100%;
-height: 95vh;
-object-fit: cover;
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
-}
-.active-content h3{
-    font-size: 25px;
-    font-family: poppins;
-    color: #ffff;
-    display: flex;
-    align-items: center;
-}
-.active-content p{
-    font-size: 20px;
-    font-family: poppins;
-    color: #000000;
-    display: flex;
-    align-items: center;
-}
-.active-content img{
-    width: 100%;
-    /* height: 95vh; */
-    object-fit: cover;
+/* ────────────────────────────────────────────────
+   Design tokens — same avocado palette used across
+   the site (About page, etc.)
+   ──────────────────────────────────────────────── */
+:root {
+  --mem-bg: #F4F2E6;
+  --mem-bg-alt: #EAE7D4;
+  --mem-ink: #1E2419;
+  --mem-forest: #223423;
+  --mem-forest-deep: #172619;
+  --mem-olive: #7C9A45;
+  --mem-olive-deep: #5E7A33;
+  --mem-pit: #5B3B22;
+  --mem-gold: #C79A44;
+  --mem-line: rgba(30, 36, 25, 0.12);
+
+  --mem-font-display: 'Fraunces', 'Georgia', serif;
+  --mem-font-body: 'Inter', 'Segoe UI', sans-serif;
+  --mem-font-mono: 'IBM Plex Mono', monospace;
 }
 
-.membership h1{
-    font-size: 25px;
-    font-family: poppins;
-    color: #000000;
-    display: flex;
-    align-items: center;
-}
-.membership-content{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 2rem;
-    margin-bottom: 1.5rem;
-}
-.membericon{
-    color: #EECF39;
-    padding-right: 2rem;
-    font-size: 25px;
-}
-.member-text{
-    font-family: poppins;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    line-height: 1.8rem;
-    font-size: 18px;
-}
-.member{
-    text-align: center;
-    font-size: 20px;
-    font-family: poppins;
-    color: #23370B;
-    padding: 1rem;
-}
-.member-logo{
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    background: #1F310A;
-    margin-bottom: 0rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-.member-logo img{
-    width: 9%;
-    object-fit: cover;
-    border-radius: 50%;
-    padding: 1rem;
-
-}
-.members-text{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    color: white;
-   
-}
-.members-text h1{
-    margin-top: 0rem;
-    font-size: 30px;
-    font-family: poppins;
-}
-.members-text h4{
-    font-size: 30px;
-    font-family: poppins;
-    line-height: 1.5rem;
-}
-.member-form{
-    background:#599217AB;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    justify-content: space-around;
+/* ── HERO ─────────────────────────────────────────── */
+.mem-hero {
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  font-family: var(--mem-font-body);
 }
 
-.member-form h3{
-    margin-left: 2rem;
-    margin-right: 2rem;
-
-}
-.member-form-content{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-
-}
-.member-form-content label{
-    font-size: 1.5rem;
-}
-.member-form-content input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 10rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content1{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content1 label{
-    font-size: 20px;
-}
-.member-form-content1 input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 10rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content2{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content2 label{
-    font-size: 20px;
-}
-.member-form-content2 input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 11rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content3{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content3 label{
-    font-size: 20px;
-}
-.member-form-content3 input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 12.7rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content4{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content4 label{
-    font-size: 20px;
-}
-.member-form-content4 input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 6.7rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content5{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content5 label{
-    font-size: 20px;
-}
-.member-form-content5 input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 14rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content6{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content6 label{
-    font-size: 20px;
-}
-.member-form-content6 input{
-    width: 55%;
-    padding: 20px;
-    height: 3rem;
-    margin-left: 5.3rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form-content7{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    display: flex;
-    gap: 1rem;
-    text-align: left;
-}
-.member-form-content7 label{
-    font-size: 20px;
-}
-.member-form-content7 select{
-    width: 55%;
-    height: 3rem;
-    padding:0 20px;
-    margin-left: 10.2rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-    font-size: 18px;
-    opacity: .9;
+.mem-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.error {
-    color: rgb(197, 51, 51);
-    font-size: 0.875em;
-    font-family: poppins;
-    margin-top: 5px;
+.mem-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 38, 25, 0.35) 0%, rgba(23, 38, 25, 0.55) 55%, rgba(20, 32, 21, 0.92) 100%);
+}
+
+.mem-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2.5rem 2.75rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mem-eyebrow {
+  display: inline-block;
+  font-family: var(--mem-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #D8CB98;
+  margin-bottom: 0.7rem;
+}
+
+.mem-hero-inner h1 {
+  font-family: var(--mem-font-display);
+  color: #fff;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 0.6rem;
+}
+
+.mem-hero-tag {
+  display: inline-block;
+  font-family: var(--mem-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mem-gold);
+  border: 1px solid rgba(199, 154, 68, 0.5);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+}
+
+/* ── BENEFITS ─────────────────────────────────────── */
+.mem-benefits {
+  /* background: var(--mem-bg); */
+  padding: 4rem 2.5rem 1rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  font-family: var(--mem-font-body);
+  color: var(--mem-ink);
+}
+
+.mem-benefit {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--mem-line);
+}
+
+.mem-benefit:last-child { border-bottom: none; }
+
+.mem-benefit--reverse { grid-template-columns: 1.15fr 0.85fr; }
+.mem-benefit--reverse .mem-benefit-media { order: 2; }
+.mem-benefit--reverse .mem-benefit-content { order: 1; }
+
+.mem-benefit-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  box-shadow: 0 20px 46px rgba(30, 36, 25, 0.16);
+}
+
+.mem-benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--mem-bg-alt);
+  color: var(--mem-olive-deep);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.mem-benefit-content h2 {
+  font-family: var(--mem-font-display);
+  color: var(--mem-forest);
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+  margin: 0 0 0.9rem;
+}
+
+.mem-benefit-content p {
+  font-family: var(--mem-font-body);
+  line-height: 1.75;
+  font-size: 0.98rem;
+  color: rgba(30, 36, 25, 0.78);
+  max-width: 58ch;
+  white-space: pre-line;
+}
+
+@media (max-width: 860px) {
+  .mem-benefit,
+  .mem-benefit--reverse {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 2.5rem 0;
   }
-.comment input{
-    width: 95.5%;
-    height: 100px;
-    padding: 30px;
-    margin-left: 2rem;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
-}
-.member-form h3{
-    margin-top: 2rem;
-    font-family: poppins;
-    font-size: 18px;
-    color: #000000;
-}
-.member-form label{
-    color: #FFFFFF;
-    font-size: 20px;
-    font-family: poppins;
-}
-.member-form  input{
-    font-size: 18px;
-}
-.radio{
-    display: flex;
-    gap: 5rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    padding-bottom: 4rem;
-}
-.radio input{
-    width: 18px;
-    height: 18px;
-    accent-color: #1F310A;
-    color: green;
+  .mem-benefit--reverse .mem-benefit-media,
+  .mem-benefit--reverse .mem-benefit-content {
+    order: initial;
+  }
 }
 
-.buto{
-    display: flex;
-    align-items: flex-end;
+@media (max-width: 560px) {
+  .mem-hero { min-height: 38vh; }
+  .mem-hero-inner { padding: 2.25rem 1.5rem 2rem; }
+  .mem-benefits { padding: 2.75rem 1.5rem 0.5rem; }
+}
 
-}
-.buto button{
-    width: 8rem;
-    background: #1F310A;
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-    margin-left: 1rem; 
-}
+/* ────────────────────────────────────────────────────
+   Everything below is the existing multi-step
+   registration form — left exactly as is.
+   ──────────────────────────────────────────────────── */
 
 .interactive-form-container {
     display: flex;
@@ -605,107 +448,8 @@ object-fit: cover;
   .checkbox-group input[type="checkbox"] {
     margin-right: 10px;
   }
+
 @media (max-width: 768px){
-    .active-content h3{
-        font-size: 40px;
-    }
-    .membership h1{
-        font-size: 20px;
-    }
-    .membership  h2{
-        font-size: 55px;
-    }
-    .member-text h1{
-        font-size: 25px;
-    }
-    .member-text p{
-        font-size: 16px;
-        padding-right: 5px;
-    }
-    .member h1{
-        font-size: 27px;
-    }
-    .member-form {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .member-form h3 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .member-form-content,
-  .member-form-content1,
-  .member-form-content2,
-  .member-form-content3,
-  .member-form-content4,
-  .member-form-content5,
-  .member-form-content6,
-  .member-form-content7 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .member-form-content label,
-  .member-form-content1 label,
-  .member-form-content2 label,
-  .member-form-content3 label,
-  .member-form-content4 label,
-  .member-form-content5 label,
-  .member-form-content6 label,
-  .member-form-content7 label {
-    font-size: 1.2rem;
-  }
-
-  .member-form-content input,
-  .member-form-content1 input,
-  .member-form-content2 input,
-  .member-form-content3 input,
-  .member-form-content4 input,
-  .member-form-content5 input,
-  .member-form-content6 input {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .member-form-content7 select {
-    width: 100%;
-    padding: 20px;
-    margin-left: 0;
-  }
-  .error {
-    color: rgb(197, 51, 51);
-    font-size: 0.875em;
-    margin-top: 5px;
-  }
-
-  .comment input {
-    width: 92%;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  .member-logo{
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  .member-logo img{
-    display: none;
-  }
-
-  .radio {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .buto {
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
   .interactive-form-container {
     flex-direction: column;
   }
@@ -721,5 +465,4 @@ object-fit: cover;
   .form-content {
     padding: 20px;
   }
-    
 }

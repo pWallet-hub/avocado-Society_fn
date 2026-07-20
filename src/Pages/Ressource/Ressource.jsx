@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import './Ressource.css';
 
 // Import PDF and image files
@@ -24,6 +25,14 @@ const news = [
 export default function Ressource() {
   return (
     <div className="resources-container">
+      <Helmet>
+        <title>Resources | Avocado Society of Rwanda</title>
+        <meta name="description" content="Access documents, guides, and the latest news on avocado farming in Rwanda. Download the Pwallet Info Booklet and stay updated on avocado market trends." />
+        <link rel="canonical" href="https://avocado-society-rwanda.netlify.app/Resources" />
+        <meta property="og:title" content="Resources | Avocado Society of Rwanda" />
+        <meta property="og:description" content="Access documents, guides, and the latest news on avocado farming in Rwanda from the Avocado Society of Rwanda." />
+        <meta property="og:url" content="https://avocado-society-rwanda.netlify.app/Resources" />
+      </Helmet>
       <section className="pdf-section">
         <h2>Documents and Books</h2>
         <div className="pdf-grid">

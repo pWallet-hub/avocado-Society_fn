@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 import './Register.css';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Provinces, Districts, Sectors, Cells, Villages } from 'rwanda';
@@ -304,6 +305,15 @@ export default function Register() {
 
   return (
     <div className="interactive-form-container">
+      <Helmet>
+        <title>Register as a Member | Avocado Society of Rwanda</title>
+        <meta name="description" content="Register as an avocado farmer with the Avocado Society of Rwanda. Join hundreds of producers benefiting from market access, extension services, and financial support." />
+        <link rel="canonical" href="https://avocado-society-rwanda.netlify.app/Register" />
+        <meta property="og:title" content="Register as a Member | Avocado Society of Rwanda" />
+        <meta property="og:description" content="Join the Avocado Society of Rwanda. Register your farm and start benefiting from our support network." />
+        <meta property="og:url" content="https://avocado-society-rwanda.netlify.app/Register" />
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
       <div className="left-section">
         <div className="info-box">
           <h1>Avocado Society of Rwanda</h1>

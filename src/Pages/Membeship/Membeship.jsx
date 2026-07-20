@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 import avocado5 from '../../assets/DSC_2210.jpg'
 import logo from '../../assets/LOGO - Avocado Society of Rwanda.png'
 import avoca from '../../assets/avica.webp'
@@ -8,6 +9,59 @@ import { FaCheckCircle } from "react-icons/fa";
 
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Provinces, Districts, Sectors, Cells, Villages } from 'rwanda';
+
+// Licensed stock photo (Unsplash License — free for commercial use, no
+// attribution required): "Young Hass avocado in our orchard near Malaga"
+// by John Cameron. https://unsplash.com/photos/zmbzKaJ3C1w
+const heroStockPhoto = 'https://images.unsplash.com/photo-1726177551991-270f9e79b65e?auto=format&fit=crop&w=1800&q=80';
+
+const benefits = [
+  {
+    icon: FaCheckCircle,
+    title: 'Market Access',
+    img: avoca,
+    text: `Ensuring market access for avocado farmers is crucial for the growth and
+      sustainability of the avocado industry. By opening new markets and expanding
+      existing ones, farmers can increase their revenue, reduce waste, and enhance the
+      overall economic stability of their communities. Access to international markets can
+      be particularly beneficial, providing opportunities to meet the growing global demand
+      for avocados. To achieve this, it is essential to address trade barriers, improve supply
+      chain logistics, and adhere to stringent quality standards. Investing in marketing
+      initiatives, establishing fair trade practices, and leveraging technology for better
+      market intelligence can further empower avocado farmers, enabling them to compete
+      effectively and sustainably in the global marketplace.`,
+  },
+  {
+    icon: FaCheckCircle,
+    title: 'Extension Service',
+    img: avocado5,
+    text: `Our comprehensive extension services are designed to support avocado farmers in
+      every aspect of their operations, ensuring optimal productivity and sustainability. We
+      offer expert pest management solutions tailored to protect your crops from harmful
+      pests while minimizing environmental impact. Our harvesting support ensures that you
+      employ the best practices for maximum yield and quality, aligning with market
+      standards. Additionally, our farm property evaluation service provides a thorough
+      assessment of your land, identifying areas for improvement and opportunities for
+      growth. By integrating these services, we help you enhance your farming practices,
+      boost your harvest, and achieve greater market success.`,
+  },
+  {
+    icon: FaCheckCircle,
+    title: 'Access to Finance',
+    img: avoca,
+    text: `Access to finance is a critical component for the advancement and sustainability
+      of avocado farming. By securing funding, farmers can invest in high-quality inputs,
+      modern equipment, and innovative technologies that boost productivity and
+      efficiency. Financial resources enable farmers to adopt best practices in pest
+      management, optimize harvesting techniques, and improve overall farm
+      infrastructure. Moreover, access to finance facilitates expansion, allowing farmers to
+      scale their operations and explore new market opportunities. We are committed to
+      connecting farmers with financial institutions and resources, providing guidance on
+      loan applications, and offering financial literacy programs. By empowering farmers
+      with the necessary financial tools, we help ensure the long-term success and
+      resilience of the avocado industry.`,
+  },
+];
 
 const FormStep = ({ title, children }) => (
   <div className="form-step">
@@ -304,71 +358,45 @@ function Membeship() {
   };
   return (
     <>
-      <div className='active-hub'>
-        <div className='active-content'>
-          <img className='active-img' src={avoca} alt="Description of image" />
-          <h3>MEMBERSHIP</h3>
+      <Helmet>
+        <title>Membership Benefits | Avocado Society of Rwanda</title>
+        <meta name="description" content="Join the Avocado Society of Rwanda. Get access to global markets, extension services, finance, and the Pwallet digital platform. Register as a member today." />
+        <link rel="canonical" href="https://avocado-society-rwanda.netlify.app/Membership" />
+        <meta property="og:title" content="Membership Benefits | Avocado Society of Rwanda" />
+        <meta property="og:description" content="Join the Avocado Society of Rwanda and gain market access, extension services, and financial support for your avocado farm." />
+        <meta property="og:url" content="https://avocado-society-rwanda.netlify.app/Membership" />
+      </Helmet>
+
+      {/* ── HERO ── */}
+      <header className='mem-hero'>
+        <img className='mem-hero-img' src={heroStockPhoto} alt="Avocados ripening on the tree" />
+        <div className='mem-hero-scrim' />
+        <div className='mem-hero-inner'>
+          <span className='mem-eyebrow'>Avocado Society of Rwanda</span>
+          <h1>Membership</h1>
+          <span className='mem-hero-tag'>Benefits</span>
         </div>
-      </div>
-      <div className='membership'>
-        <h1>Membership</h1>
-        <h2>Benefits</h2>
-      </div>
-      <div className='membership-content'>
-        <div className='membericon'>
-          <FaCheckCircle />
-        </div>
-        <div className='member-text'>
-          <h1>Market Access</h1>
-          <p>Ensuring market access for avocado farmers is crucial for the growth and <br />
-            sustainability of the avocado industry. By opening new markets and expanding <br />
-            existing ones, farmers can increase their revenue, reduce waste, and enhance the <br />
-            overall economic stability of their communities. Access to international markets can <br />
-            be particularly beneficial, providing opportunities to meet the growing global demand <br />
-            for avocados. To achieve this, it is essential to address trade barriers, improve supply <br />
-            chain logistics, and adhere to stringent quality standards. Investing in marketing <br />
-            initiatives, establishing fair trade practices, and leveraging technology for better <br />
-            market intelligence can further empower avocado farmers, enabling them to compete <br />
-            effectively and sustainably in the global marketplace.</p>
-        </div>
-      </div>
-      <div className='membership-content'>
-        <div className='membericon'>
-          <FaCheckCircle />
-        </div>
-        <div className='member-text'>
-          <h1>Extension Service</h1>
-          <p>Our comprehensive extension services are designed
-            to support avocado farmers in <br /> every aspect of their operations,
-            ensuring optimal productivity and sustainability. We <br /> offer expert pest
-            management solutions tailored to protect your crops from harmful <br /> pests
-            while minimizing environmental impact. Our harvesting support ensures
-            that you <br /> employ the best practices for maximum yield and quality, aligning
-            with market <br /> standards. Additionally, our farm property evaluation service
-            provides a thorough <br /> assessment of your land, identifying areas for improvement
-            and opportunities for <br /> growth. By integrating these services, we help you enhance
-            your farming practices, <br /> boost your harvest, and achieve greater market success.</p>
-        </div>
-      </div>
-      <div className='membership-content'>
-        <div className='membericon'>
-          <FaCheckCircle />
-        </div>
-        <div className='member-text'>
-          <h1>Access to Finance</h1>
-          <p>Access to finance is a critical component for the advancement and sustainability <br />
-            of avocado farming. By securing funding, farmers can invest in high-quality inputs, <br />
-            modern equipment, and innovative technologies that boost productivity and <br />
-            efficiency. Financial resources enable farmers to adopt best practices in pest <br />
-            management, optimize harvesting techniques, and improve overall farm <br />
-            infrastructure. Moreover, access to finance facilitates expansion, allowing farmers to <br />
-            scale their operations and explore new market opportunities. We are committed to <br />
-            connecting farmers with financial institutions and resources, providing guidance on <br />
-            loan applications, and offering financial literacy programs. By empowering farmers <br />
-            with the necessary financial tools, we help ensure the long-term success and <br />
-            resilience of the avocado industry.</p>
-        </div>
-      </div>
+      </header>
+
+      {/* ── BENEFITS ── */}
+      <section className='mem-benefits'>
+        {benefits.map((benefit, i) => {
+          const Icon = benefit.icon;
+          return (
+            <div className={`mem-benefit${i % 2 === 1 ? ' mem-benefit--reverse' : ''}`} key={benefit.title}>
+              <div className='mem-benefit-media'>
+                <img src={benefit.img} alt={benefit.title} />
+              </div>
+              <div className='mem-benefit-content'>
+                <span className='mem-benefit-icon'><Icon /></span>
+                <h2>{benefit.title}</h2>
+                <p>{benefit.text}</p>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
     <div className="interactive-form-container">
       <div className="left-section">
         <div className="info-box">
@@ -382,10 +410,10 @@ function Membeship() {
           <div className="additional-info">
             <h3>Impamvu ibi ari ingenzi:</h3>
             <p>
-              {step === 1 && "Amakuru yawe ni ingenzi kuko atuma tubasha kugufasha no kugukurirana neza."}
-              {step === 2 && "Ushobora kuba udatuye aho uhinga ntacyo bitwaye. Amakuru y' ubutaka, ubunini bw' umurima n' ibiwuranga bizadufasha kumenya uko wahitamo abafashanyumvire, ntese no ku gutegurana igihe cyo kubasura."}
+              {step === 1 && "Amakuru yawe ni ingenzi kuko atuma tubasha kugufasha no kugukurirana neza."}
+              {step === 2 && "Ushobora kuba udatuye aho uhinga ntacyo bitwaye. Amakuru y' ubutaka, ubunini bw' umurima n' ibiwuranga bizadufasha kumenya uko wahitamo abafashanyumvire, ntese no ku gutegurana igihe cyo kubasura."}
               {step === 3 && "Ibisobanuro by'umurima bituma dushobora gutanga ubufasha bukwiye."}
-              {step === 4 && "Ubufasha tuvuga aha umuhinzi bumugeraho bivuye ku mukoranire n' abafatanyabikwa b' ihuriro. Ni ingenzi ko tubimenya kare kugirango duhurize hamwe n' abafatanyabikorwa bateganije mu ngengo y' imari baduha. Murakoze!"}
+              {step === 4 && "Ubufasha tuvuga aha umuhinzi bumugeraho bivuye ku mukoranire n' abafatanyabikwa b' ihuriro. Ni ingenzi ko tubimenya kare kugirango duhurize hamwe n' abafatanyabikorwa bateganije mu ngengo y' imari baduha. Murakoze!"}
             </p>
           </div>
         </div>
@@ -580,7 +608,7 @@ function Membeship() {
                           <option value="Hass Ingana na 50-70%
                            ">Hass Ingana na 50-70%
                           </option>
-                          <option value="Fuerte ingana na 50%">Fuerte ingana na 50%</option>
+                          <option value="Fuerte ingana na 50%">Fuerte ingana na 50%</option>
                         </select>
                         
                       </>
@@ -634,7 +662,7 @@ function Membeship() {
                       checked={formData.assistance.includes('Imihingire')}
                       onChange={handleCheckboxChange}
                     />
-                    Imihingire: Guhabwa umukozi wahuguwe kandi umenyereye akakubera Umuhuzabikorwa w' umurima (Farm Manager). Cyangwa se kuguhugura muri rusange ariko wagaragaje umukozi umwe wishakiye uzaba ashinzwe gushyira mu bikorwa amabwiriza y' ubuhinzi bwa avoka.
+                    Imihingire: Guhabwa umukozi wahuguwe kandi umenyereye akakubera Umuhuzabikorwa w' umurima (Farm Manager). Cyangwa se kuguhugura muri rusange ariko wagaragaje umukozi umwe wishakiye uzaba ashinzwe gushyira mu bikorwa amabwiriza y' ubuhinzi bwa avoka.
 
                   </label>
 
@@ -658,7 +686,7 @@ function Membeship() {
                       checked={formData.assistance.includes('Inguzanyo')}
                       onChange={handleCheckboxChange}
                     />
-                    Serivise z' inguzanyo (Access to Finance): Guhabwa ubufasha mu kugera ku gishoro gikoreshwa ku bikoresho, ingemwe, ifumbire, imiti, n' ibindi byifashishwa mu buhinzi bwa avoka nk' imiziga y' inzuki, ibikoresho byo kuhira, n' abakozi.
+                    Serivise z' inguzanyo (Access to Finance): Guhabwa ubufasha mu kugera ku gishoro gikoreshwa ku bikoresho, ingemwe, ifumbire, imiti, n' ibindi byifashishwa mu buhinzi bwa avoka nk' imiziga y' inzuki, ibikoresho byo kuhira, n' abakozi.
                   </label>
 
                 </div>
