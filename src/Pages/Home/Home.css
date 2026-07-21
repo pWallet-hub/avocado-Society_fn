@@ -1,432 +1,299 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
-:root {
-  --home-bg: #F4F2E6;
-  --home-bg-alt: #EAE7D4;
-  --home-ink: #1E2419;
-  --home-forest: #223423;
-  --home-forest-deep: #172619;
-  --home-olive: #7C9A45;
-  --home-olive-deep: #5E7A33;
-  --home-pit: #5B3B22;
-  --home-gold: #C79A44;
-  --home-line: rgba(30, 36, 25, 0.12);
+.agrigo-home {
+  --green-solid: #006430;      
+  --green-dark: #004621;       
+  --green-lime: #8bc34a;       
+  --green-forest: #101c15;     
+  --white-flesh: #f7fbf8;      
+  --text-dark: #16221b;        
+  --text-grey: #556259;        
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
-  --home-font-display: 'Fraunces', 'Georgia', serif;
-  --home-font-body: 'Inter', 'Segoe UI', sans-serif;
-  --home-font-mono: 'IBM Plex Mono', monospace;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── SLIDESHOW OVERLAY TEXT ─────────────────────────
-   Structure is unchanged (owned by the Slide component);
-   only the type treatment is refreshed. */
-.style {
-  color: #fff;
-  background-color: rgba(23, 38, 25, 0.55);
-  height: 100vh;
+.agrigo-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.agrigo-section { padding: 6.5rem 0; }
+.info-flesh-bg { background-color: var(--white-flesh); }
+.dark-forest-bg { background-color: var(--green-forest); }
+
+.agrigo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+.agrigo-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.agrigo-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.align-center { align-items: center; }
+
+/* ── SLIDESHOW COMPONENT ── */
+.agrigo-slide-layer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
   text-align: center;
-  font-family: var(--home-font-body);
+  background: rgba(16, 28, 21, 0.65);
+  padding: 0 10%;
 }
 
-.story-head {
-  font-family: var(--home-font-display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.story-content {
-  text-align: center;
-  font-size: 1.3rem;
-  padding-left: 15%;
-  padding-right: 15%;
-  font-family: var(--home-font-body);
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-.slide-button {
-  background-color: var(--home-gold);
-  color: var(--home-forest-deep);
-  text-align: center;
-  width: fit-content;
-  padding: 0.65rem 1.6rem;
-  border-radius: 999px;
-  font-family: var(--home-font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+.agrigo-slide-badge {
+  font-family: var(--font-heading);
+  color: var(--green-lime);
+  font-weight: 700;
   text-transform: uppercase;
-  margin: 2.25rem auto 0;
-  transition: transform 0.25s ease, background 0.25s ease;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
 }
 
-.slide-button:hover { transform: translateY(-2px); }
-
-.about-style {
-  text-decoration: none;
-  color: inherit;
+.agrigo-slide-layer h1 {
+  font-family: var(--font-heading);
+  color: #ffffff;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin: 1rem 0 1.5rem 0;
+  max-width: 22ch;
 }
 
-/* ── PAGE WRAPPER ──────────────────────────────────── */
-.home-page {
-  background: var(--home-bg);
-  color: var(--home-ink);
-  font-family: var(--home-font-body);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+.agrigo-slide-layer p {
+  color: #e5ece8;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 65ch;
+  margin-bottom: 2.5rem;
 }
 
-.home-page h1,
-.home-page h2,
-.home-page h3 {
-  font-family: var(--home-font-display);
-  color: var(--home-forest);
-  font-weight: 600;
-  margin: 0;
-}
-
-.home-page p {
-  font-family: var(--home-font-body);
-  line-height: 1.75;
-  color: rgba(30, 36, 25, 0.8);
-  margin: 0;
-}
-
-.home-badge {
+/* ── BUTTON UTILITIES ── */
+.btn-agrigo {
   display: inline-flex;
   align-items: center;
-  font-family: var(--home-font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--home-olive-deep);
-  background: var(--home-bg-alt);
-  border: 1px solid var(--home-line);
-  border-radius: 999px;
-  padding: 0.42rem 0.95rem;
-  margin-bottom: 1.1rem;
-}
-
-.home-badge--light {
-  color: #EFE7CE;
-  background: rgba(244, 242, 230, 0.1);
-  border-color: rgba(244, 242, 230, 0.22);
-}
-
-/* ── INTRO ──────────────────────────────────────────── */
-.home-intro {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4.5rem 2rem;
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.home-intro-left h1 {
-  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
-  font-style: italic;
-  margin-bottom: 0.9rem;
-}
-
-.home-intro-tag {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.home-cta-ghost {
-  display: inline-block;
-  font-family: var(--home-font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--home-forest);
-  border: 1px solid var(--home-forest);
-  border-radius: 999px;
-  padding: 0.6rem 1.4rem;
-  cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.home-cta-ghost:hover {
-  background: var(--home-forest);
-  color: #fff;
-}
-
-.home-intro-right h2 {
-  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
-  font-style: italic;
-  line-height: 1.4;
-  margin-bottom: 1.1rem;
-}
-
-.home-intro-right p { max-width: 56ch; }
-
-/* ── GALLERY ────────────────────────────────────────── */
-.home-gallery {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem 4.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.home-gallery-item {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-}
-
-.home-gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.home-gallery-item:hover img { transform: scale(1.06); }
-
-.home-gallery-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(23, 38, 25, 0.75) 100%);
-}
-
-.home-gallery-label {
-  position: absolute;
-  left: 1.25rem;
-  bottom: 1rem;
-  z-index: 1;
-  color: #fff;
-  font-family: var(--home-font-display);
-  font-style: italic;
-  font-size: 1.3rem;
-}
-
-/* ── PWALLET FEATURE BAND ─────────────────────────────── */
-.home-feature-band {
-  background: var(--home-forest-deep);
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 3rem;
-  align-items: center;
-  padding: 4.5rem 2rem;
-}
-
-.home-feature-media {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.home-feature-media img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 18px;
-  display: block;
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
-}
-
-.home-feature-content {
-  max-width: 620px;
-}
-
-.home-feature-content h2 {
-  color: #fff;
-  font-style: italic;
-  font-size: clamp(1.7rem, 3vw, 2.2rem);
-  line-height: 1.3;
-  margin-bottom: 1.1rem;
-}
-
-.home-feature-content p {
-  color: rgba(244, 242, 230, 0.72);
-  margin-bottom: 2.2rem;
-}
-
-.home-icon-grid {
-  display: flex;
-  gap: 1.75rem;
-  flex-wrap: wrap;
-}
-
-.home-icon-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  max-width: 140px;
-}
-
-.home-icon {
-  color: var(--home-gold);
-  font-size: 1.3rem;
-}
-
-.home-icon-card p {
-  color: #EFE7CE;
-  font-size: 0.88rem;
-  line-height: 1.4;
-}
-
-/* ── PWALLET SPLIT ─────────────────────────────────────── */
-.home-split {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4.5rem 2rem;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.home-split-content h2 {
-  font-size: clamp(1.7rem, 3vw, 2.2rem);
-  font-style: italic;
-  margin-bottom: 1.1rem;
-}
-
-.home-split-content p {
-  max-width: 52ch;
-  margin-bottom: 1.5rem;
-}
-
-.home-check-list {
-  list-style: none;
-  margin: 0 0 2rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.home-check-list li {
-  position: relative;
-  padding-left: 1.6rem;
-  font-family: var(--home-font-body);
-  font-size: 0.98rem;
-  color: var(--home-forest);
-}
-
-.home-check-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.5em;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--home-olive);
-}
-
-.home-cta-solid {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--home-forest);
-  color: #fff;
-  font-family: var(--home-font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 0.75rem 1.9rem;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.home-cta-solid:hover {
-  background: var(--home-olive-deep);
-  transform: translateY(-2px);
-}
-
-.home-split-media img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 18px;
-  display: block;
-  box-shadow: 0 20px 46px rgba(30, 36, 25, 0.18);
-}
-
-/* ── CONTACT ───────────────────────────────────────────── */
-.home-contact {
-  background: var(--home-bg-alt);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
-  margin-top: 1rem;
-}
-
-.home-contact-info {
-  padding: 4rem 3rem;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  padding: 1.05rem 2.2rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
 }
 
-.home-contact-welcome {
-  font-size: 1.05rem;
-  max-width: 42ch;
-  margin-bottom: 2.25rem;
+.btn-hero-solid { background-color: var(--green-solid); color: #ffffff; }
+.btn-hero-solid:hover { background-color: var(--green-dark); transform: translateY(-2px); }
+.btn-outline-dark { border: 2px solid var(--green-solid); color: var(--green-solid); background: transparent; }
+.btn-outline-dark:hover { background-color: var(--green-solid); color: #ffffff; }
+.btn-solid-forest { background-color: var(--green-solid); color: #ffffff; }
+.btn-solid-forest:hover { background-color: var(--green-dark); transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0, 100, 48, 0.15); }
+.btn-hero-lime { background-color: var(--green-lime); color: var(--green-dark); font-weight: 800; }
+.btn-hero-lime:hover { background-color: #ffffff; color: var(--green-solid); transform: scale(1.03); }
+
+/* ── BADGES & HEADLINES ── */
+.agrigo-badge-pill {
+  display: inline-block;
+  color: var(--green-solid);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  background-color: #e6f4ed;
+  padding: 0.45rem 1.1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
 }
 
-.home-contact-rows {
+.agrigo-badge-pill.badge-pill-light { background-color: rgba(255, 255, 255, 0.08); color: var(--green-lime); }
+.agrigo-headline-main { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; color: var(--text-dark); margin-bottom: 1.5rem; }
+.agrigo-headline-main.text-white { color: #ffffff; }
+.agrigo-center-header { text-align: center; margin-bottom: 4rem; }
+.agrigo-subtitle-tag { font-size: 1.15rem; font-weight: 600; line-height: 1.4; color: var(--green-solid); margin-bottom: 1.25rem; }
+.agrigo-body-paragraph { color: var(--text-grey); line-height: 1.75; font-size: 1rem; margin-bottom: 2rem; }
+.agrigo-body-paragraph.text-muted-white { color: #b2c4b8; }
+
+/* ── INTRO SCENARIOS ── */
+.agrigo-intro-media-box { position: relative; }
+.agrigo-intro-img { width: 100%; height: 490px; object-fit: cover; border-radius: 12px; }
+.agrigo-year-experience-badge {
+  position: absolute;
+  bottom: -20px; right: -20px;
+  background-color: var(--green-solid);
+  color: #ffffff;
+  padding: 1.8rem 2.2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 100, 48, 0.25);
+}
+.agrigo-year-experience-badge h3 { font-size: 0.85rem; letter-spacing: 2px; color: var(--green-lime); margin: 0; }
+.agrigo-year-experience-badge h2 { font-size: 2.5rem; font-weight: 900; font-family: var(--font-heading); margin: 0; }
+
+/* ── DISPLAY IMAGES OVERLAYS ── */
+.agrigo-gallery-card { background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #ebf3ee; }
+.agrigo-gallery-img-wrap { position: relative; width: 100%; height: 290px; overflow: hidden; }
+.agrigo-gallery-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.agrigo-gallery-card:hover .agrigo-gallery-img-wrap img { transform: scale(1.06); }
+.agrigo-gallery-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(16, 28, 21, 0.5)); }
+.agrigo-gallery-meta { padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.agrigo-gallery-meta h3 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-dark); }
+.agrigo-gallery-arrow { color: var(--green-lime); font-size: 1.3rem; font-weight: bold; transition: transform 0.3s ease; }
+.agrigo-gallery-card:hover .agrigo-gallery-arrow { transform: translate(3px, -3px); }
+
+/* ── PWALLET FARMER ECOSYSTEM ── */
+.agrigo-pwallet-img { width: 100%; height: 560px; object-fit: cover; border-radius: 16px; box-shadow: 0 25px 55px rgba(0,0,0,0.4); }
+.agrigo-icon-features-grid { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
+.agrigo-icon-feature-card { display: flex; gap: 1.5rem; align-items: flex-start; }
+.agrigo-icon-circle-avatar {
+  background-color: rgba(255, 255, 255, 0.05); color: var(--green-lime);
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.agrigo-icon-feature-card:hover .agrigo-icon-circle-avatar { background-color: var(--green-lime); color: var(--green-dark); }
+.agrigo-feature-text-block h4 { font-family: var(--font-heading); color: #ffffff; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.35rem 0; }
+.agrigo-feature-text-block p { color: #a1b2a7; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+/* ── STATISTICS BAR ── */
+.statistics-accent-bg { background-color: var(--green-solid); padding: 5rem 0; text-align: center; color: #ffffff; }
+.agrigo-stat-block-card h2 { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 900; color: #ffffff; margin: 0; line-height: 1; }
+.agrigo-stat-block-card p { font-size: 0.95rem; font-weight: 600; color: var(--green-lime); text-transform: uppercase; letter-spacing: 1px; margin: 0.5rem 0 0 0; }
+
+/* ── SPLIT ROW SECTIONS ── */
+.agrigo-split-img-frame img { width: 100%; height: 460px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+.agrigo-premium-bullet-list { list-style: none; padding: 0; margin: 0 0 2.5rem 0; display: flex; flex-direction: column; gap: 1rem; }
+.agrigo-premium-bullet-list li { display: flex; gap: 1rem; align-items: center; }
+.bullet-checkmark { width: 22px; height: 22px; border-radius: 50%; background-color: #e6f4ed; color: var(--green-solid); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 900; flex-shrink: 0; }
+.agrigo-premium-bullet-list p { font-size: 0.98rem; font-weight: 600; color: var(--text-dark); margin: 0; }
+
+/* ── HIGH VISIBILITY HEADQUARTERS CONTACT SECTION ── */
+.asr-contact-section {
+  background-color: #101c15; 
+  padding: 6.5rem 0;
+  width: 100%;
+}
+
+.asr-contact-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; 
+  gap: 5rem; 
+  align-items: center;
+}
+
+.asr-contact-content-block {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  align-items: flex-start;
 }
 
-.home-contact-row h3 {
-  font-family: var(--home-font-mono);
-  font-style: normal;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+.asr-mini-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #8bc34a; 
   text-transform: uppercase;
-  color: var(--home-olive-deep);
-  margin-bottom: 0.3rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.25rem;
+  background: rgba(139, 195, 74, 0.08);
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
 }
 
-.home-contact-row p {
-  color: var(--home-forest);
-  font-size: 1rem;
+.asr-main-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff; 
+  letter-spacing: -1px;
+  margin: 0 0 1.25rem 0;
 }
 
-.home-contact-map img {
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  object-fit: cover;
+.asr-description-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: #cce0d4; /* Restored ultra-visible soft mint contrast color token */
+  max-width: 48ch;
+  margin: 0 0 3rem 0;
+}
+
+.asr-info-meta-box {
+  border-left: 3px solid #8bc34a;
+  padding-left: 1.25rem;
+}
+
+.asr-meta-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #8bc34a;
   display: block;
+  margin-bottom: 0.4rem;
 }
 
-/* ── RESPONSIVE ────────────────────────────────────────── */
-@media (max-width: 980px) {
-  .home-feature-band { grid-template-columns: 1fr; }
-  .home-feature-content { max-width: none; }
+.asr-meta-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
 }
 
-@media (max-width: 860px) {
-  .home-intro { grid-template-columns: 1fr; gap: 2.25rem; padding: 3.5rem 1.5rem; }
-  .home-gallery { grid-template-columns: 1fr 1fr; }
-  .home-split { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; }
-  .home-split-media { order: -1; }
-  .home-contact { grid-template-columns: 1fr; }
-  .home-contact-info { padding: 3rem 1.75rem; }
+.asr-contact-map-block { width: 100%; }
+
+.asr-map-wrapper {
+  width: 100%;
+  height: 420px; 
+  border-radius: 16px; 
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35); 
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (max-width: 560px) {
-  .story-head { font-size: 2.1rem; }
-  .story-content { font-size: 1.05rem; padding-left: 6%; padding-right: 6%; }
-  .home-gallery { grid-template-columns: 1fr; padding: 0 1.5rem 3.5rem; }
-  .home-feature-band { padding: 3.25rem 1.5rem; }
-  .home-icon-grid { gap: 1.25rem; }
-  .home-contact-map img { min-height: 220px; }
+.asr-map-wrapper img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.asr-map-wrapper:hover img { transform: scale(1.04); }
+
+/* ── ECO REVOLUTION LOWER STRIP ── */
+.agrigo-eco-footer-action { background-color: var(--green-dark); padding: 3.5rem 0; }
+.footer-flex-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+.agrigo-eco-footer-action h2 { font-family: var(--font-heading); font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 800; color: #ffffff; margin: 0; max-width: 25ch; }
+
+/* ── RESPONSIVE SCALING ADAPTABILITY ── */
+@media (max-width: 1024px) {
+  .agrigo-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .agrigo-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+}
+
+@media (max-width: 960px) {
+  .asr-contact-container { grid-template-columns: 1fr; gap: 3.5rem; padding: 1rem 1.5rem; }
+  .asr-contact-section { padding: 4.5rem 0; }
+  .asr-map-wrapper { height: 320px; }
+  .agrigo-grid-2 { grid-template-columns: 1fr; gap: 3.5rem; }
+  .agrigo-pwallet-media-preview { order: -1; }
+}
+
+@media (max-width: 640px) {
+  .agrigo-grid-3, .agrigo-grid-4 { grid-template-columns: 1fr; }
+  .footer-flex-wrap { flex-direction: column; text-align: center; }
+  .agrigo-slide-layer h1 { font-size: 2rem; }
+  .agrigo-intro-img { height: 350px; }
 }

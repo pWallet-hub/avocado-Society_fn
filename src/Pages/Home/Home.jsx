@@ -1,162 +1,243 @@
-import "./Home.css"
-import { Helmet } from 'react-helmet-async'
-import avocado1 from '../../assets/avocado1.jpg'
-import avocado2 from '../../assets/avocado2.jpg'
-import avocado3 from '../../assets/avocado3.jpg'
-import info1 from '../../assets/info1.jpg'
-import info2 from '../../assets/info2.jpg'
-import info3 from '../../assets/info3.jpg'
-import map from '../../assets/map1.jpg'
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { FaSprayCan, FaBasketShopping, FaMountainSun } from "react-icons/fa6";
 import SlideShow from "../../components/Slide/Slide";
-import { FaSprayCan } from "react-icons/fa";
-import { FaBasketShopping } from "react-icons/fa6";
-import { FaMountainSun } from "react-icons/fa6";
-import { Link } from "react-router-dom"
+import './Home.css';
 
-
-const text = (
-  <div className='style' >
-    <div className='story-head'>
-      <h3 >Avocado Society of Rwanda </h3>
-    </div>
-    <div className='story-content'>
-      <p>Empowering Avocado producers for Sustainable Growth.
- Cultivating Green Delights Through Community and Knowledge.
-      </p>
-    </div>
-    <div className='slide-button'>
-      <Link className="about-style" to="/About">Discover</Link></div>
-  </div>
-);
-
-const images = [
-  { url: avocado1, text: text },
-  { url: avocado2, text: text },
-  { url: avocado3, text: text },
-];
-
-const galleryItems = [
-  { img: info1, label: 'Harvesting' },
-  { img: info2, label: 'Marketing' },
-  { img: info3, label: 'Quality' },
-];
+// Asset Imports
+import avocado1 from '../../assets/avocado1.jpg';
+import avocado2 from '../../assets/avocado2.jpg';
+import avocado3 from '../../assets/avocado3.jpg';
+import info1 from '../../assets/info1.jpg';
+import info3 from '../../assets/info3.jpg';
+import map from '../../assets/map1.jpg';
 
 const pwalletFeatures = [
-  { Icon: FaSprayCan, label: 'Collective Pest Management' },
-  { Icon: FaBasketShopping, label: 'Farm Harvesting Management' },
-  { Icon: FaMountainSun, label: 'Farm Property Evaluation' },
+  { 
+    Icon: FaSprayCan, 
+    title: 'Collective Pest Management', 
+    text: 'Localized digital spraying intervals and community crop health updates engineered to scale security parameters.' 
+  },
+  { 
+    Icon: FaBasketShopping, 
+    title: 'Farm Harvesting Management', 
+    text: 'Communal harvest logging, tracking frameworks, and smart distribution algorithms built into your wallet layers.' 
+  },
+  { 
+    Icon: FaMountainSun, 
+    title: 'Farm Property Evaluation', 
+    text: 'Thorough, accurate topographical mapping and property diagnostic evaluation tools to secure finance access.' 
+  },
 ];
 
 const pwalletList = [
-  'Farm financial modeling',
-  'Extension Services',
-  'Contract Farming Agreements',
+  'Advanced farm financial modeling metrics',
+  'Digitized, premium agricultural extension services',
+  'Automated and highly secure contract farming agreements',
+];
+
+const galleryItems = [
+  { img: info1, label: 'Harvesting Protocols' },
+  { img: info3, label: 'Global Marketing' },
+  { img: map, label: 'Quality Verification' },
 ];
 
 function Home() {
+  const slideshowText = (
+    <div className='agrigo-slide-layer'>
+      <span className='agrigo-slide-badge'>Premium Agriculture Services</span>
+      <h1>SMART AGRICULTURE FOR MODERN WORLD</h1>
+      <p>Empowering Rwandan small-scale avocado producers for premium global market access, consistent quality standards, and automated financial modeling.</p>
+      <div className='agrigo-slide-actions'>
+        <Link className="btn-agrigo btn-hero-solid" to="/About">Discover ASR</Link>
+      </div>
+    </div>
+  );
+
+  const images = [
+    { url: avocado1, text: slideshowText },
+    { url: avocado2, text: slideshowText },
+    { url: avocado3, text: slideshowText },
+  ];
+
   return (
-    <>
+    <div className="agrigo-home">
       <Helmet>
-        <title>Avocado Society of Rwanda | Home</title>
-        <meta name="description" content="Empowering Rwandan avocado producers for sustainable growth, quality standards, and global market access through the Pwallet digital platform. Based in Kigali, Rwanda." />
+        <title>Avocado Society of Rwanda | Modern Farming Excellence</title>
+        <meta name="description" content="Empowering Rwandan avocado producers for sustainable growth, quality standards, and global market access through the Pwallet digital platform." />
         <link rel="canonical" href="https://avocado-society-rwanda.netlify.app/" />
-        <meta property="og:title" content="Avocado Society of Rwanda | Home" />
-        <meta property="og:description" content="Empowering Rwandan avocado producers for sustainable growth, quality standards, and global market access through the Pwallet digital platform." />
-        <meta property="og:url" content="https://avocado-society-rwanda.netlify.app/" />
       </Helmet>
 
-      <SlideShow images={images} />
+      {/* ── INTERACTIVE SLIDESHOW BANNER ── */}
+      <section className="agrigo-hero-wrapper">
+        <SlideShow images={images} />
+      </section>
 
-      <div className="home-page">
-        {/* ── INTRO ── */}
-        <section className="home-intro">
-          <div className="home-intro-left">
-            <span className="home-badge">Who We Are</span>
-            <h1>The Beauty of Avocado Society</h1>
-            <p className="home-intro-tag">We take care and give value to your avocado orchards</p>
-            <span className="home-cta-ghost">Explore More</span>
-          </div>
-          <div className="home-intro-right">
-            <h2>Empowering Rwandan small scale avocado producers for the Global market access, quality standards, and tailored financial modeling.</h2>
-            <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size. This is accomplished through tailored finance models, extension services, information sharing, and contract farming agreements.</p>
-          </div>
-        </section>
-
-        {/* ── GALLERY ── */}
-        <section className="home-gallery">
-          {galleryItems.map((item) => (
-            <div className="home-gallery-item" key={item.label}>
-              <img src={item.img} alt={item.label} />
-              <span className="home-gallery-label">{item.label}</span>
+      {/* ── INTRO SUMMARY GRID ── */}
+      <section className="agrigo-section info-flesh-bg">
+        <div className="agrigo-container agrigo-grid-2">
+          <div className="agrigo-intro-media-box">
+            <img src={info1} alt="ASR High Quality Yields" className="agrigo-intro-img" />
+            <div className="agrigo-year-experience-badge">
+              <h3>EST.</h3>
+              <h2>2020</h2>
             </div>
-          ))}
-        </section>
-
-        {/* ── PWALLET FEATURE BAND ── */}
-        <section className="home-feature-band">
-          <div className="home-feature-media">
-            <img src={info1} alt="info1" />
           </div>
-          <div className="home-feature-content">
-            <span className="home-badge home-badge--light">Farmer Service Center</span>
-            <h2>Access this though <br />our Society&apos;s Pwallet App.</h2>
-            <p>The society supports all avocado producers by helping them meet quality standards and access markets, regardless of farm size and means. This is accomplished through tailored and digitized farm financial modeling, extension services, and information sharing.</p>
-            <div className="home-icon-grid">
-              {pwalletFeatures.map(({ Icon, label }) => (
-                <div className="home-icon-card" key={label}>
-                  <Icon className="home-icon" />
-                  <p>{label}</p>
+          
+          <div className="agrigo-intro-text-box">
+            <span className='agrigo-badge-pill'>Who We Are</span>
+            <h2 className="agrigo-headline-main">The Beauty of Avocado Society Innovation</h2>
+            <h4 className="agrigo-subtitle-tag"> We take strategic care and inject real asset value directly into your avocado orchards.</h4>
+            <p className="agrigo-body-paragraph">
+              The society supports all avocado producers by helping them meet stringent global quality standards and securely access international commercial markets, regardless of farm size or baseline capital. This is systematically accomplished through predictive analytics, contract farming frameworks, and targeted support.
+            </p>
+            <Link to="/About" className="btn-agrigo btn-outline-dark">Explore More Features</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── THREE-COLUMN SHOWCASE GALLERY ── */}
+      <section className="agrigo-section">
+        <div className="agrigo-container">
+          <div className="agrigo-center-header">
+            <span className='agrigo-badge-pill'>Strategic Pillars</span>
+            <h2 className="agrigo-headline-main">Portfolio of Modern Agricultural Operations</h2>
+          </div>
+          <div className="agrigo-grid-3">
+            {galleryItems.map((item, index) => (
+              <div className="agrigo-gallery-card" key={index}>
+                <div className="agrigo-gallery-img-wrap">
+                  <img src={item.img} alt={item.label} />
+                  <div className="agrigo-gallery-gradient" />
+                </div>
+                <div className="agrigo-gallery-meta">
+                  <span className="agrigo-gallery-arrow">↗</span>
+                  <h3>{item.label}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PWALLET DEEP FOREST DIGITAL REVOLUTION BAND ── */}
+      <section className="agrigo-section dark-forest-bg">
+        <div className="agrigo-container agrigo-grid-2 align-center">
+          <div className="agrigo-pwallet-content">
+            <span className='agrigo-badge-pill badge-pill-light'>Farmer Service Center</span>
+            <h2 className="agrigo-headline-main text-white">Access Global Ecosystems via our Society&apos;s pWallet App</h2>
+            <p className="agrigo-body-paragraph text-muted-white">
+              Unlock a comprehensive suite of digital utilities custom-tailored for regional producers. From automated tracking to agronomic inspections, the pWallet application bridges the gap between field outputs and macro markets.
+            </p>
+            <div className="agrigo-icon-features-grid">
+              {pwalletFeatures.map(({ Icon, title, text }, idx) => (
+                <div className="agrigo-icon-feature-card" key={idx}>
+                  <div className="agrigo-icon-circle-avatar">
+                    <Icon />
+                  </div>
+                  <div className="agrigo-feature-text-block">
+                    <h4>{title}</h4>
+                    <p>{text}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+          
+          <div className="agrigo-pwallet-media-preview">
+            <img src={info3} alt="ASR pWallet Analytics Integration" className="agrigo-pwallet-img" />
+          </div>
+        </div>
+      </section>
 
-        {/* ── PWALLET SPLIT ── */}
-        <section className="home-split">
-          <div className="home-split-content">
-            <span className="home-badge">Know more about Pwallet</span>
-            <h2>We do Creative things for Success</h2>
-            <p>The society supports all avocado producers and other value chain actors by helping them meet consistency in quality standards, growth of production, and predictive analytics tools for markets. This is accomplished through:</p>
-            <ul className="home-check-list">
-              {pwalletList.map((item) => (
-                <li key={item}>{item}</li>
+      {/* ── STRATEGIC STATISTICS SECTION ── */}
+      <section className="agrigo-section statistics-accent-bg">
+        <div className="agrigo-container agrigo-grid-4">
+          <div className="agrigo-stat-block-card">
+            <h2>84%</h2>
+            <p>Export Fulfillment</p>
+          </div>
+          <div className="agrigo-stat-block-card">
+            <h2>20%</h2>
+            <p>Increase in Yields</p>
+          </div>
+          <div className="agrigo-stat-block-card">
+            <h2>95%</h2>
+            <p>Farmer Retention</p>
+          </div>
+          <div className="agrigo-stat-block-card">
+            <h2>8+</h2>
+            <p>Trusted Logistics Hubs</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TWO-COLUMN VALUE SPLIT INFOGRAPHIC ── */}
+      <section className="agrigo-section">
+        <div className="agrigo-container agrigo-grid-2 align-center">
+          <div className="agrigo-split-img-frame">
+            <img src={info1} alt="Precision Harvesting Processes" />
+          </div>
+          <div className="agrigo-split-text-frame">
+            <span className='agrigo-badge-pill'>Platform Execution</span>
+            <h2 className="agrigo-headline-main">We Implement Creative Frameworks for Success</h2>
+            <p className="agrigo-body-paragraph">
+              The society reliably guides all certified avocado producers and downstream actors by preserving consistency across processing intervals, international shipping pipelines, and agricultural security layers. This is efficiently delivered through:
+            </p>
+            <ul className="agrigo-premium-bullet-list">
+              {pwalletList.map((item, idx) => (
+                <li key={idx}>
+                  <span className="bullet-checkmark">✓</span>
+                  <p>{item}</p>
+                </li>
               ))}
             </ul>
-            <Link to="/Membership" className="home-cta-solid">Explore</Link>
+            <Link to="/Membership" className="btn-agrigo btn-solid-forest">Become an Active Member</Link>
           </div>
-          <div className="home-split-media">
-            <img src={info3} alt="info3" />
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── CONTACT ── */}
-        <section className="home-contact">
-          <div className="home-contact-info">
-            <span className="home-badge home-badge--light">Get in Touch</span>
-            <p className="home-contact-welcome">Welcome to the Avocado Society of Rwanda. Join us in our mission to feed the world.</p>
-            <div className="home-contact-rows">
-              <div className="home-contact-row">
-                <h3>Location</h3>
-                <p>1 KN 78 St, Kigali</p>
-              </div>
-              <div className="home-contact-row">
-                <h3>Phone</h3>
-                <p>+250788481560</p>
-              </div>
-              <div className="home-contact-row">
-                <h3>Email</h3>
-                <p>avocadosocietyofrwanda@gmail.com</p>
-              </div>
+      {/* ── GEOGRAPHICAL HEADQUARTERS HUB ── */}
+      <section className="asr-contact-section">
+        <div className="asr-contact-container">
+          
+          {/* Left Side: Content & Highly Visible Headings */}
+          <div className="asr-contact-content-block">
+            <span className="asr-mini-badge">Get In Touch</span>
+            <h2 className="asr-main-heading">
+              Connect with the <br />
+              Society Headquarters Today
+            </h2>
+            <p className="asr-description-text">
+              Join us in mapping a highly profitable, sustainable landscape for Rwandan agri-tech solutions.
+            </p>
+            
+            <div className="asr-info-meta-box">
+              <span className="asr-meta-label">Location</span>
+              <p className="asr-meta-value">1 KN 78 St, Kigali, Rwanda</p>
             </div>
           </div>
-          <div className="home-contact-map">
-            <img src={map} alt="info2" />
+
+          {/* Right Side: Aligned, Elevated Map Frame */}
+          <div className="asr-contact-map-block">
+            <div className="asr-map-wrapper">
+              <img src={map} alt="ASR Interactive Location Map at Norrsken House" />
+            </div>
           </div>
-        </section>
-      </div>
-    </>
-  )
+
+        </div>
+      </section>
+
+      {/* ── FULL-BLEED BOTTOM ECO BANNER ── */}
+      <footer className="agrigo-eco-footer-action">
+        <div className="agrigo-container footer-flex-wrap">
+          <h2>Build an Eco-Friendly, High-Yield Farm Infrastructure Today</h2>
+          <Link to="/Membership" className="btn-agrigo btn-hero-lime">Get Started Now</Link>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

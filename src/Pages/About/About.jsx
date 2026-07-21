@@ -1,5 +1,11 @@
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import './About.css';
+
+// Asset Imports
 import avocados from '../../assets/avocados.jpeg';
 import nopic from '../../assets/nopic.jpg';
+import rugangazi from '../../assets/rugangazi.jpg';
 import gnf from '../../assets/gfn.jpg';
 import rgg from '../../assets/rgg.png';
 import ryaf from '../../assets/ryaf.jpg';
@@ -9,12 +15,10 @@ import pacific from '../../assets/pacific.jpg';
 import omar from '../../assets/omar.jpg';
 import renovat from '../../assets/renovat.jpg';
 import euprosine from '../../assets/euprosine.jpg';
-import musangamfura from '../../assets/musangamfura.jpg'
-import butera from '../../assets/butera.jpg'
+import musangamfura from '../../assets/musangamfura.jpg';
+import butera from '../../assets/butera.jpg';
 import agape from '../../assets/agape.jpg';
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import './About.css';
+import minagri from '../../assets/MINAGRI Logo.png';
 
 const boardDirectors = [
   { img: pacific, name: 'Pacifique NSHIMIYIMANA', role: 'Chair Person' },
@@ -24,15 +28,14 @@ const boardDirectors = [
   { img: musangamfura, name: 'Jean Damascéne MUSANGAMFURA', role: 'Secretary' },
   { img: butera, name: 'Aime Chance BUTERA', role: 'Youth Inclusion Advisor' },
   { img: euprosine, name: 'Mugeni Euphrosine NIYIDUKUNDA', role: 'Value Addition Advisor' },
-  { img: nopic, name: 'Renovat NITUNGA', role: 'Member' },
   { img: nopic, name: 'ALEXANDRE NSHIMIYIMANA', role: 'Member' },
 ];
 
 const supportingTeam = [
-  { img: agape, name: 'Agape Nduwamungu', tag: 'corresponding alliance for science', role: 'Administrative Officer' },
-  { img: nopic, name: 'Felix Bikorimana', tag: 'corresponding real green gold', role: 'Senior Digitization Officer' },
-  { img: nopic, name: 'Kevin Ishimwe', tag: 'corresponding real green gold', role: 'Back-End Lead' },
-  { img: nopic, name: 'Umutoni Doreen', tag: 'corresponding real green gold', role: 'UI/UX Lead' },
+  { img: agape, name: 'Agape Nduwamungu', tag: 'Alliance for Science', role: 'Administrative Officer' },
+  { img: rugangazi, name: 'Felix Bikorimana', tag: 'Real Green Gold', role: 'Senior Digitization Officer' },
+  { img: nopic, name: 'Kevin Ishimwe', tag: 'Real Green Gold', role: 'Back-End Lead' },
+  { img: nopic, name: 'Umutoni Doreen', tag: 'Real Green Gold', role: 'UI/UX Lead' },
 ];
 
 const partnerLogos = [
@@ -40,177 +43,213 @@ const partnerLogos = [
   { img: rgg, alt: 'RGG' },
   { img: soris, alt: 'Soris' },
   { img: ryaf, alt: 'RYAF' },
+  { img: minagri, alt: 'MINAGRI' }
 ];
 
 const goals = [
-  'Goal 1: No Poverty',
-  'Goal 2: Zero Hunger',
-  'Goal 3: Good Health and Well-being',
-  'Goal 8: Decent Work and Economic Growth',
+  { num: '01', title: 'No Poverty', text: 'Alleviating rural constraints for localized families.' },
+  { num: '02', title: 'Zero Hunger', text: 'Securing value loops for continuous crop output.' },
+  { num: '03', title: 'Good Health', text: 'Promoting nutritional security through healthy yields.' },
+  { num: '08', title: 'Decent Work', text: 'Generating sustainable farming livelihoods.' },
 ];
 
-const milestones = [
+const testimonials = [
   {
-    year: '2018–2024',
-    title: 'Agriculture & Livestock Strategic Transformation Plan',
-    text: 'Registered with the Rwanda Development Board (RDB) under the framework of sustainable development goals and the Agriculture and Livestock Strategic Transformation Plan (PST4).',
+    quote: "ASR has completely shifted how we handle regional exports. Their farm financial modeling provided clarity we never had before.",
+    author: "Jean de Dieu Temahagari",
+    role: "Avocado Cooperative Lead, Eastern Province"
   },
   {
-    year: '2020',
-    title: 'Avocado Society of Rwanda Founded',
-    text: "Established on October 28th, 2020, as a social enterprise dedicated to empowering Rwandan avocado producers — reinvesting all profits into the country's avocado sector.",
-  },
+    quote: "Through their extension services and digital platforms, our small-scale farmers have successfully met stringent global quality standards.",
+    author: "Marie Claire Uwera",
+    role: "Agronomy Consultant"
+  }
 ];
 
 function About() {
   return (
-    <div className='asr-about'>
+    <div className='agrigo-about'>
       <Helmet>
         <title>About Us | Avocado Society of Rwanda</title>
-        <meta name="description" content="Learn about the Avocado Society of Rwanda (ASR) — founded in 2020, a social enterprise empowering small-scale avocado producers with extension services, market access, and sustainable development." />
-        <link rel="canonical" href="https://avocado-society-rwanda.netlify.app/About" />
-        <meta property="og:title" content="About Us | Avocado Society of Rwanda" />
-        <meta property="og:description" content="The Avocado Society of Rwanda — established 2020. Empowering small-scale avocado producers across Rwanda." />
-        <meta property="og:url" content="https://avocado-society-rwanda.netlify.app/About" />
+        <meta name="description" content="Learn about the Avocado Society of Rwanda (ASR) — a social enterprise empowering small-scale avocado producers with modern farming solutions." />
       </Helmet>
 
-      {/* ── HERO BAND ── */}
-      <header className='asr-hero'>
-        <span className='asr-blob asr-blob--a' aria-hidden='true' />
-        <span className='asr-blob asr-blob--b' aria-hidden='true' />
-        <div className='asr-hero-inner'>
-          <span className='asr-eyebrow asr-eyebrow--light'>Avocado Society of Rwanda</span>
-          <h1>About</h1>
+      {/* ── HERO BANNER ── */}
+      <header className='agrigo-hero'>
+        <div className='agrigo-hero-overlay' />
+        <div className='agrigo-hero-inner'>
+          <span className='agrigo-eyebrow'>Avocado Society of Rwanda</span>
+          <h1>ABOUT US</h1>
+          <div className='agrigo-breadcrumbs'>Home <span>//</span> About Us</div>
         </div>
       </header>
 
-      <main className='asr-main'>
-        {/* ── WHO WE ARE ── */}
-        <section className='asr-who'>
-          <div className='asr-who-media'>
-            <img src={avocados} alt="Avocados" />
-          </div>
-          <div className='asr-who-content'>
-            <span className='asr-badge'>Who We Are</span>
-            <h2>Avocado Society of Rwanda</h2>
-            <p>
-              The Avocado Society of Rwanda was established on October 28th, 2020, as a social enterprise dedicated to empowering Rwandan avocado producers. Organized with the primary aim of creating a sustainable and prosperous avocado industry, the society reinvests all profits back into the development of Rwanda's avocado sector. This reinvestment focuses on supporting small-scale farmers, enhancing quality standards, and refinancing avocado collection infrastructure.
-            </p>
-            <div className='asr-stats'>
-              <div className='asr-stat'>
-                <span className='asr-stat-num'>est. 2020</span>
-                <span className='asr-stat-label'>A social enterprise</span>
-              </div>
-              <div className='asr-stat'>
-                <span className='asr-stat-num'>100%</span>
-                <span className='asr-stat-label'>Profits reinvested, no dividends</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── PARTNERS STRIP ── */}
-        <section className='asr-partners-strip'>
-          <p className='asr-strip-label'>Our Partners</p>
-          <div className='asr-logo-row'>
+      {/* ── PARTNERS LOGO STRIP ── */}
+      <section className='agrigo-partners-strip'>
+        <div className='agrigo-container'>
+          <div className='agrigo-logo-row'>
             {partnerLogos.map((logo, i) => (
-              <img key={i} src={logo.img} alt={logo.alt} />
+              <img key={i} src={logo.img} alt={logo.alt} className="agrigo-partner-img" />
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── SOCIAL ENTERPRISE MODEL + SDGs (dark feature grid) ── */}
-        <section className='asr-model-band'>
-          <span className='asr-blob asr-blob--c' aria-hidden='true' />
-          <div className='asr-model-inner'>
-            <span className='asr-badge asr-badge--light'>Social Enterprise Model</span>
-            <h2>Sustainable Development Goals</h2>
-            <p>
-              As a social enterprise, the Avocado Society of Rwanda operates with a commitment to reinvesting profits into social and environmental initiatives. Shareholders do not receive dividends; instead, all earnings are used to support the Rwandan avocado industry. The society was registered with the Rwanda Development Board (RDB) under the framework of sustainable development goals and the Agriculture and Livestock Strategic Transformation Plan (PST4) 2018-2024, aligning with several key goals:
-            </p>
-            <div className='asr-goal-grid'>
-              {goals.map((goal) => {
-                const [label, ...rest] = goal.split(': ');
-                return (
-                  <div className='asr-goal-card' key={goal}>
-                    <span className='asr-goal-number'>{label.replace('Goal ', '')}</span>
-                    <h3>{rest.join(': ')}</h3>
-                  </div>
-                );
-              })}
+      {/* ── INTRO / HISTORY SECTION WITH HIGHLIGHT CARDS ── */}
+      <section className='agrigo-intro-section'>
+        <div className='agrigo-container agrigo-intro-grid'>
+          <div className='agrigo-intro-media'>
+            <img src={avocados} alt="Modern Farming Solutions" className='agrigo-main-img' />
+            <div className='agrigo-experience-badge'>
+              <h3>EST.</h3>
+              <h2>2020</h2>
             </div>
           </div>
-        </section>
+          
+          <div className='agrigo-intro-content'>
+            <span className='agrigo-section-badge'>About Society</span>
+            <h2 className='agrigo-section-title'>From Humble Beginnings to a Leader in Modern Farming Solutions</h2>
+            <p className='agrigo-lead-text'>
+              The Avocado Society of Rwanda was established on October 28th, 2020, as a social enterprise dedicated to empowering small-scale producers.
+            </p>
+            <p className='agrigo-body-text'>
+              Organized with the primary aim of creating a sustainable and prosperous avocado industry, the society reinvests all profits back into the development of Rwanda's avocado sector, focusing on enhancing quality standards and infrastructure.
+            </p>
 
-        {/* ── VISION & MISSION (quote-style cards) ── */}
-        <section className='asr-vm'>
-          <div className='asr-vm-card'>
-            <span className='asr-quote-mark' aria-hidden='true'>&ldquo;</span>
-            <h3>Vision</h3>
+            {/* Template Highlight Badges */}
+            <div className='agrigo-highlight-cards'>
+              <div className='agrigo-mini-card'>
+                <div className='agrigo-card-icon'>✓</div>
+                <div>
+                  <h4>100% Reinvested</h4>
+                  <p>Zero shareholder dividends paid out.</p>
+                </div>
+              </div>
+              <div className='agrigo-mini-card'>
+                <div className='agrigo-card-icon'>✓</div>
+                <div>
+                  <h4>RDB Registered</h4>
+                  <p>Aligned with PST4 strategic frameworks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TWO-COLUMN PANORAMIC STORY SECTION ── */}
+      <section className='agrigo-panoramic-section' style={{ backgroundImage: `url(${avocados})` }}>
+        <div className='agrigo-panoramic-overlay' />
+        <div className='agrigo-container agrigo-story-grid'>
+          <div className='agrigo-panoramic-card'>
+            <span className='agrigo-card-tag'>ASR Origins</span>
+            <h2>Our Foundational Social Enterprise Model</h2>
             <p>
-              To transform Rwanda's avocado industry into a globally recognized leader by empowering small-scale producers with access to quality standards, global markets, and innovative financial solutions.
+              As a dedicated social enterprise, our structural priorities focus completely on sector advancement rather than investor payouts. By re-allocating assets toward small-scale farming collection centers, we help secure regional value chains throughout Rwanda.
             </p>
           </div>
-          <div className='asr-vm-card'>
-            <span className='asr-quote-mark' aria-hidden='true'>&ldquo;</span>
-            <h3>Mission</h3>
+          <div className='agrigo-panoramic-card'>
+            <span className='agrigo-card-tag'>ASR Excellence</span>
+            <h2>Empowering Growth Through Innovation</h2>
             <p>
-              Working in partnership with public and private stakeholders, the Avocado Society of Rwanda provides innovative services that transform agriculture and empower small-scale avocado producers. Our focus is on helping these farmers sustainably increase productivity and meet market demands through our digital platforms and farm financial modeling, ultimately improving their livelihoods.
+              Working in partnership with public and private stakeholders, we provide services that transform agriculture. Through our digital platforms and farm financial modeling, smallholders sustainably increase productivity and access global markets.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── MILESTONES ── */}
-        <section className='asr-milestones'>
-          <span className='asr-badge'>Milestones</span>
-          <h2>Our Foundations</h2>
-          <div className='asr-timeline'>
-            {milestones.map((m) => (
-              <div className='asr-timeline-item' key={m.year}>
-                <div className='asr-timeline-year'>{m.year}</div>
-                <div className='asr-timeline-content'>
-                  <h3>{m.title}</h3>
-                  <p>{m.text}</p>
+      {/* ── SUSTAINABLE GOALS GRID ── */}
+      <section className='agrigo-goals-section'>
+        <div className='agrigo-container'>
+          <div className='agrigo-center-header'>
+            <span className='agrigo-section-badge'>Framework Alignment</span>
+            <h2 className='agrigo-section-title'>Sustainable Development Goals</h2>
+          </div>
+          
+          <div className='agrigo-goals-grid'>
+            {goals.map((g, i) => (
+              <div className='agrigo-goal-card' key={i}>
+                <div className='agrigo-goal-icon-wrap'>✓</div>
+                <div className='agrigo-goal-count'>{g.num}</div>
+                <h3>{g.title}</h3>
+                <p>{g.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HIGH VISIBILITY VISION & MISSION CARDS ── */}
+      <section className='agrigo-vision-section'>
+        <div className='agrigo-container agrigo-vision-grid'>
+          <div className='agrigo-vision-card agrigo-clear-vision'>
+            <div className='agrigo-vm-badge'>Our Vision</div>
+            <h3>To transform Rwanda's avocado industry into a globally recognized leader by empowering small-scale producers with access to quality standards, global markets, and innovative financial solutions.</h3>
+          </div>
+          <div className='agrigo-vision-card agrigo-clear-mission'>
+            <div className='agrigo-vm-badge'>Our Mission</div>
+            <h3>Providing innovative services that transform agriculture and empower small-scale avocado producers to sustainably meet market demands and dramatically improve their livelihoods.</h3>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS SECTION ── */}
+      <section className='agrigo-testimonials-section'>
+        <div className='agrigo-container'>
+          <div className='agrigo-center-header'>
+            <span className='agrigo-section-badge'>Voice of Impact</span>
+            <h2 className='agrigo-section-title'>What Our Partners Say</h2>
+          </div>
+          <div className='agrigo-testimonials-grid'>
+            {testimonials.map((t, i) => (
+              <div className='agrigo-testimonial-card' key={i}>
+                <div className='agrigo-testimonial-quote'>“{t.quote}”</div>
+                <div className='agrigo-testimonial-author'>
+                  <h4>{t.author}</h4>
+                  <p>{t.role}</p>
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── TEAM ── */}
-        <section className='asr-section asr-team'>
-          <h2 className='asr-section-title'>Board of Directors ASR</h2>
-          <div className='asr-people-grid'>
+      {/* ── LEADERSHIP & TEAM SECTION ── */}
+      <section className='agrigo-team-section'>
+        <div className='agrigo-container'>
+          <div className='agrigo-center-header'>
+            <span className='agrigo-section-badge'>Expertise</span>
+            <h2 className='agrigo-section-title'>Leading Agriculture with Expertise and Innovation</h2>
+          </div>
+
+          <h3 className='agrigo-team-subtitle'>Board of Directors ASR</h3>
+          <div className='agrigo-team-grid directors-grid'>
             {boardDirectors.map((person, i) => (
-              <figure className='asr-person-card' key={i}>
-                <div className='asr-person-photo'>
+              <div className='agrigo-team-member' key={i}>
+                <div className='agrigo-member-photo-wrapper'>
                   <img src={person.img} alt={person.name} />
                 </div>
-                <figcaption>
-                  <h3>{person.name}</h3>
-                  <p>{person.role}</p>
-                </figcaption>
-              </figure>
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
             ))}
           </div>
 
-          <h2 className='asr-section-title asr-section-title--spaced'>Supporting Team ASR</h2>
-          <div className='asr-people-grid asr-people-grid--support'>
+          <h3 className='agrigo-team-subtitle subtitle-spaced'>Supporting Team ASR</h3>
+          <div className='agrigo-team-grid support-grid'>
             {supportingTeam.map((person, i) => (
-              <figure className='asr-person-card' key={i}>
-                <div className='asr-person-photo'>
+              <div className='agrigo-team-member' key={i}>
+                <div className='agrigo-member-photo-wrapper'>
                   <img src={person.img} alt={person.name} />
                 </div>
-                <figcaption>
-                  <h3>{person.name}</h3>
-                  <h4>{person.tag}</h4>
-                  <p>{person.role}</p>
-                </figcaption>
-              </figure>
+                <h3>{person.name}</h3>
+                <span className='agrigo-member-tag'>{person.tag}</span>
+                <p>{person.role}</p>
+              </div>
             ))}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
     </div>
   );
 }

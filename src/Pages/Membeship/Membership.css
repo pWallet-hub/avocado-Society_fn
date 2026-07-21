@@ -1,34 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
-/* ────────────────────────────────────────────────
-   Design tokens — same avocado palette used across
-   the site (About page, etc.)
-   ──────────────────────────────────────────────── */
-:root {
-  --mem-bg: #F4F2E6;
-  --mem-bg-alt: #EAE7D4;
-  --mem-ink: #1E2419;
-  --mem-forest: #223423;
-  --mem-forest-deep: #172619;
-  --mem-olive: #7C9A45;
-  --mem-olive-deep: #5E7A33;
-  --mem-pit: #5B3B22;
-  --mem-gold: #C79A44;
-  --mem-line: rgba(30, 36, 25, 0.12);
+.agrigo-membership {
+  --green-solid: #006430;      
+  --green-dark: #004621;       
+  --green-lime: #8bc34a;       
+  --green-forest: #101c15;     
+  --white-flesh: #f7fbf8;      
+  --text-dark: #16221b;        
+  --text-grey: #556259;        
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
-  --mem-font-display: 'Fraunces', 'Georgia', serif;
-  --mem-font-body: 'Inter', 'Segoe UI', sans-serif;
-  --mem-font-mono: 'IBM Plex Mono', monospace;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── HERO ─────────────────────────────────────────── */
+.mem-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── EDITORIAL GLOBAL UTILITIES ── */
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.center-max-width {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── PROGRESSIVE FADE IN ANIMATION ── */
+.fade-in-element {
+  animation: formRevealSmooth 0.45s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+}
+
+@keyframes formRevealSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── HERO BANNER ── */
 .mem-hero {
   position: relative;
-  min-height: 46vh;
+  min-height: 45vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
-  font-family: var(--mem-font-body);
 }
 
 .mem-hero-img {
@@ -42,427 +73,454 @@
 .mem-hero-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(23, 38, 25, 0.35) 0%, rgba(23, 38, 25, 0.55) 55%, rgba(20, 32, 21, 0.92) 100%);
+  background: linear-gradient(to bottom, rgba(0, 50, 24, 0.8), rgba(0, 30, 14, 0.92));
+  z-index: 1;
 }
 
 .mem-hero-inner {
   position: relative;
-  z-index: 1;
-  padding: 3rem 2.5rem 2.75rem;
-  max-width: 1040px;
-  margin: 0 auto;
-  width: 100%;
+  z-index: 2;
+  padding: 2rem;
 }
 
 .mem-eyebrow {
-  display: inline-block;
-  font-family: var(--mem-font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-family: var(--font-heading);
+  color: var(--green-lime);
+  font-weight: 700;
   text-transform: uppercase;
-  color: #D8CB98;
-  margin-bottom: 0.7rem;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
 }
 
 .mem-hero-inner h1 {
-  font-family: var(--mem-font-display);
-  color: #fff;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  font-style: italic;
-  font-weight: 500;
-  margin: 0 0 0.6rem;
+  font-family: var(--font-heading);
+  color: #ffffff;
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  margin: 0.5rem 0;
 }
 
 .mem-hero-tag {
   display: inline-block;
-  font-family: var(--mem-font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--mem-gold);
-  border: 1px solid rgba(199, 154, 68, 0.5);
-  border-radius: 999px;
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 1.25rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* ── BENEFITS ─────────────────────────────────────── */
-.mem-benefits {
-  /* background: var(--mem-bg); */
-  padding: 4rem 2.5rem 1rem;
-  max-width: 1040px;
-  margin: 0 auto;
-  font-family: var(--mem-font-body);
-  color: var(--mem-ink);
+/* ── BENEFITS SCENARIOS ── */
+.mem-benefits-section {
+  padding: 6.5rem 0;
+  background-color: #ffffff;
 }
 
-.mem-benefit {
+.mem-benefit-row {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
   align-items: center;
-  padding: 3rem 0;
-  border-bottom: 1px solid var(--mem-line);
+  padding: 4rem 0;
+  border-bottom: 1px solid #ebf3ee;
 }
 
-.mem-benefit:last-child { border-bottom: none; }
+.mem-benefit-row:last-child {
+  border-bottom: none;
+}
 
-.mem-benefit--reverse { grid-template-columns: 1.15fr 0.85fr; }
-.mem-benefit--reverse .mem-benefit-media { order: 2; }
-.mem-benefit--reverse .mem-benefit-content { order: 1; }
+.mem-benefit-row--reverse {
+  grid-template-columns: 1.1fr 1fr;
+}
 
-.mem-benefit-media img {
+.mem-benefit-row--reverse .mem-benefit-media-box { order: 2; }
+.mem-benefit-row--reverse .mem-benefit-content-box { order: 1; }
+
+.mem-benefit-media-box img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 380px;
   object-fit: cover;
-  border-radius: 18px;
-  display: block;
-  box-shadow: 0 20px 46px rgba(30, 36, 25, 0.16);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 100, 48, 0.06);
 }
 
-.mem-benefit-icon {
+.mem-benefit-icon-span {
+  width: 46px;
+  height: 46px;
+  background-color: #e6f4ed;
+  color: var(--green-solid);
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--mem-bg-alt);
-  color: var(--mem-olive-deep);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.mem-benefit-content-box h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 1rem 0;
+}
+
+.mem-benefit-content-box p {
+  color: var(--text-grey);
+  line-height: 1.75;
+  font-size: 0.98rem;
+}
+
+/* ── MEMBERSHIP TYPE DISPLAY HEADER ── */
+.member-type {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.member-type h2 {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--green-solid);
+  margin-bottom: 0.2rem;
+  font-weight: 800;
+}
+
+.member-type h1 {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 900;
+}
+
+.member-type-para {
+  max-width: 720px;
+  margin: 1rem auto 4.5rem auto;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.member-type-para p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-grey);
+}
+
+/* ── PLACED FORM STEPS CENTERING FLOW ── */
+.interactive-form-section {
+  background-color: var(--white-flesh);
+  padding: 6.5rem 0;
+  border-top: 1px solid #ebf3ee;
+}
+
+.interactive-form-centered-flow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1300px; 
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2.5rem;
+}
+
+/* Left Guidance Panel Centered Transformation */
+.left-section-centered {
+  background-color: var(--green-solid);
+  padding: 3.5rem;
+  border-radius: 12px;
+  color: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 100, 48, 0.15);
+  width: 100%;
+  text-align: center;
+}
+
+.left-section-centered .info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-box-pill {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--green-lime);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.left-section-centered h1 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+}
+
+.step-desc-kiga {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #e6f4ed;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.additional-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.additional-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-lime);
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.additional-info p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #b2c4b8;
+}
+
+/* Right Interactive Stepper Form Content */
+.right-section-centered {
+  width: 100%;
+}
+
+.form-content {
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+  border: 1px solid #ebf3ee;
+}
+
+.progress-bar-wrapper {
+  background-color: #ebf3ee;
+  border-radius: 4px;
+  height: 6px;
+  margin-bottom: 2.5rem;
+}
+
+.progress-bar-fill {
+  background-color: var(--green-solid);
+  height: 100%;
+  border-radius: 4px;
+}
+
+.form-step h2 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.form-step-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.45rem;
+}
+
+.required {
+  color: #ff4d4d;
+  margin-left: 2px;
+}
+
+.form-input {
+  width: 100%;
+  font-family: var(--font-body);
+  background-color: var(--white-flesh);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #dce6e1;
+  border-radius: 4px;
+  font-size: 0.98rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+
+.form-input:focus {
+  border-color: var(--green-solid);
+  background-color: #ffffff;
+}
+
+select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316221b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1.1rem center;
+  background-size: 14px;
+  padding-right: 2.5rem;
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   margin-bottom: 1rem;
 }
 
-.mem-benefit-content h2 {
-  font-family: var(--mem-font-display);
-  color: var(--mem-forest);
-  font-style: italic;
-  font-size: clamp(1.5rem, 2.6vw, 1.9rem);
-  margin: 0 0 0.9rem;
+.checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-grey);
+  cursor: pointer;
 }
 
-.mem-benefit-content p {
-  font-family: var(--mem-font-body);
-  line-height: 1.75;
-  font-size: 0.98rem;
-  color: rgba(30, 36, 25, 0.78);
-  max-width: 58ch;
-  white-space: pre-line;
+.checkbox-group input[type="checkbox"] {
+  margin-top: 0.25rem;
+  margin-right: 0.85rem;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--green-solid);
+  flex-shrink: 0;
 }
 
-@media (max-width: 860px) {
-  .mem-benefit,
-  .mem-benefit--reverse {
+.check-label-bold {
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-right: 0.25rem;
+}
+
+/* Messages */
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0 0;
+}
+
+.success-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #e6f4ed;
+  border-radius: 8px;
+  border: 1px solid #c2e7d4;
+}
+
+.success-icon svg {
+  width: 48px;
+  height: 48px;
+  color: var(--green-solid);
+  margin-bottom: 1rem;
+}
+
+.success-message h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--green-dark);
+  margin-bottom: 0.75rem;
+}
+
+.success-message p {
+  color: var(--text-grey);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons System */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.form-buttons button {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  padding: 0.9rem 1.5rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  height: 46px;
+}
+
+.btn-icon { width: 16px; height: 16px; }
+
+.prev-button {
+  background-color: transparent;
+  color: var(--green-solid);
+  border: 2px solid var(--green-solid);
+  width: 35%;
+}
+
+.prev-button:hover { background-color: var(--green-solid); color: #ffffff; }
+
+.next-button {
+  background-color: var(--green-solid);
+  color: #ffffff;
+  width: 40%;
+  margin-left: auto;
+}
+
+.next-button:hover { background-color: var(--green-dark); }
+
+.submits-button, .back-home-button {
+  background-color: var(--green-lime);
+  color: var(--green-dark);
+  width: 45%;
+  margin-left: auto;
+  font-weight: 800;
+}
+
+.submits-button:hover, .back-home-button:hover { background-color: var(--green-solid); color: #ffffff; }
+
+/* ── RESPONSIVE SCALING BREAKPOINTS ── */
+@media (max-width: 960px) {
+  .mem-benefit-row, .mem-benefit-row--reverse {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 2.5rem;
     padding: 2.5rem 0;
   }
-  .mem-benefit--reverse .mem-benefit-media,
-  .mem-benefit--reverse .mem-benefit-content {
+  .mem-benefit-row--reverse .mem-benefit-media-box,
+  .mem-benefit-row--reverse .mem-benefit-content-box {
     order: initial;
   }
+  .mem-benefit-media-box img { height: 280px; }
+  .interactive-form-centered-flow { padding: 0 1rem; }
 }
 
-@media (max-width: 560px) {
-  .mem-hero { min-height: 38vh; }
-  .mem-hero-inner { padding: 2.25rem 1.5rem 2rem; }
-  .mem-benefits { padding: 2.75rem 1.5rem 0.5rem; }
-}
-
-/* ────────────────────────────────────────────────────
-   Everything below is the existing multi-step
-   registration form — left exactly as is.
-   ──────────────────────────────────────────────────── */
-
-.interactive-form-container {
-    display: flex;
-    min-height: 100vh;
-    background-color: #f0f8ff;
-    font-family: 'poppins';
-  }
-  
-  
-  .left-section {
-    width: 50%;
-    padding: 40px;
-    background: linear-gradient(135deg, #4cba4e, #5bb345);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .info-box {
-    max-width: 400px;
-    text-align: left;
-  }
-  
-  .info-box h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #fff;
-  }
-  
-  .info-box p {
-    font-size: 18px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
-  
-  .additional-info {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
-  .additional-info h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .additional-info p {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: justify;
-  }
-  .right-section {
-    width: 50%;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .form-content {
-    width: 100%;
-    max-width: 600px;
-    background-color: white;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .progress-bar-wrapper {
-    background-color: #e0e0e0;
-    border-radius: 50px;
-    height: 10px;
-    margin-bottom: 30px;
-    overflow: hidden;
-  }
-  .required {
-    color: red;
-    margin-left: 5px;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .success-message {
-    text-align: center;
-    padding: 40px;
-    background-color: #f0f9f0;
-    border: 1px solid #d4edda;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  
-  .success-icon {
-    margin-bottom: 20px;
-  }
-  
-  .success-icon svg {
-    width: 50px;
-    height: 50px;
-    color: #28a745;
-  }
-  
-  .success-message h2 {
-    color: #155724;
-    margin-bottom: 20px;
-  }
-  
-  .success-message p {
-    color: #155724;
-    margin-bottom: 10px;
-  }
-  
-  .success-message a {
-    color: #155724;
-    text-decoration: underline;
-  }
-  
-  .back-home-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .back-home-button:hover {
-    background-color: #218838;
-  }
-  
-  
-  .progress-bar-fill {
-    background-color: #4caf50;
-    height: 100%;
-    width: 0%;
-    transition: width 0.5s ease-in-out;
-  }
-  
-  .form-step h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #4caf50;
-    padding-bottom: 10px;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-input:focus {
-    border-color: #4caf50;
-    outline: none;
-  }
-  
-  label {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-    display: block;
-  }
-  
-  /* Navigation Buttons */
-  .navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .nav-button, .submit-button {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s;
-    justify-content: space-between;
-  }
-  
-  .nav-button:hover, .submit-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }/* Register.css */
-  
-  /* General button styling */
-  button {
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-  }
-  
-  button:hover {
-    opacity: 0.9;
-  }
-  
-  
-  .prev-button {
-    background-color: #4CAF50;
-    color: white; 
-    width: 40%;
-    height: 40px;
-  }
-  
-  .prev-button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Next button styling */
-  .next-button {
-    background-color: #2196F3; /* Blue background */
-    color: white; /* White text */
-    width: 40%;
-    /* height: 40px; */
-  }
-  
-  .next-button:hover {
-    background-color: #053f79; 
-  }
-  
-  
-  .submits-button {
-    background-color: #154d06; 
-    color: white; 
-    width: 40%; 
-  }
-  
-  .submits-button:hover {
-    background-color: rgb(116, 169, 136); 
-  }
-  
-  /* Form buttons container */
-  .form-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  .checkbox-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .checkbox-group label {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .checkbox-group input[type="checkbox"] {
-    margin-right: 10px;
-  }
-
-@media (max-width: 768px){
-  .interactive-form-container {
-    flex-direction: column;
-  }
-
-  .left-section, .right-section {
-    width: 100%;
-  }
-
-  .info-box h1 {
-    font-size: 20px;
-  }
-
-  .form-content {
-    padding: 20px;
-  }
+@media (max-width: 640px) {
+  .mem-hero { min-height: 35vh; }
+  .mem-benefits-section { padding: 4rem 0; }
+  .form-content, .left-section-centered { padding: 2rem; }
+  .member-type h1 { font-size: 2rem; }
 }
