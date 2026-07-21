@@ -9,7 +9,7 @@ import './Home.css';
 import avocado1 from '../../assets/avocado1.jpg';
 import avocado2 from '../../assets/avocado2.jpg';
 import avocado3 from '../../assets/avocado3.jpg';
-import info1 from '../../assets/info1.jpg';
+import info1 from '../../assets/connect.jpg';
 import info3 from '../../assets/info3.jpg';
 import map from '../../assets/map1.jpg';
 

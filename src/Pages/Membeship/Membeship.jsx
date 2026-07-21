@@ -6,8 +6,9 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Provinces, Districts, Sectors, Cells, Villages } from 'rwanda';
 
 // Asset Imports
-import avocado5 from '../../assets/DSC_2210.jpg';
-import avoca from '../../assets/avica.webp';
+import avocado5 from '../../assets/symposium.jpg';
+import avoca from '../../assets/member.jpg';
+import audience from '../../assets/audience.jpg'
 import './Membership.css';
 
 const heroStockPhoto = 'https://images.unsplash.com/photo-1726177551991-270f9e79b65e?auto=format&fit=crop&w=1800&q=80';
@@ -16,7 +17,7 @@ const benefits = [
   {
     icon: FaCheckCircle,
     title: 'Market Access',
-    img: avoca,
+    img: audience,
     text: `Ensuring market access for avocado farmers is crucial for the growth and sustainability of the avocado industry. By opening new markets and expanding existing ones, farmers can increase their revenue, reduce waste, and enhance the overall economic stability of their communities. Access to international markets can be particularly beneficial, providing opportunities to meet the growing global demand for avocados.`,
   },
   {

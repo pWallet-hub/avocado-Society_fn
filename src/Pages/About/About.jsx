@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import './About.css';
 
 // Asset Imports
-import avocados from '../../assets/avocados.jpeg';
+import avocados from '../../assets/presantation.jpg';
 import nopic from '../../assets/nopic.jpg';
 import rugangazi from '../../assets/rugangazi.jpg';
 import gnf from '../../assets/gfn.jpg';
