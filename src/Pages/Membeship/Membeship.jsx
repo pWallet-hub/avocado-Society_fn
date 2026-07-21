@@ -8,7 +8,7 @@ import { Provinces, Districts, Sectors, Cells, Villages } from 'rwanda';
 // Asset Imports
 import avocado5 from '../../assets/symposium.jpg';
 import avoca from '../../assets/member.jpg';
-import audience from '../../assets/audience.jpg'
+import audience from '../../assets/audience.jpg';
 import './Membership.css';
 
 const heroStockPhoto = 'https://images.unsplash.com/photo-1726177551991-270f9e79b65e?auto=format&fit=crop&w=1800&q=80';
@@ -54,6 +54,8 @@ function Membeship() {
   const [step, setStep] = useState(1);
   const totalSteps = 4;
 
+  const [formMode, setFormMode] = useState('new'); // 'new' | 'existing'
+
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -94,6 +96,17 @@ function Membeship() {
     cell: '',
     village: ''
   });
+
+  const [existingData, setExistingData] = useState({
+    firstname: '',
+    lastname: '',
+    telephone: '',
+    upinumber: ''
+  });
+  const [existingSubmitted, setExistingSubmitted] = useState(false);
+  const [existingLoading, setExistingLoading] = useState(false);
+  const [existingError, setExistingError] = useState('');
+  const [existingValidationError, setExistingValidationError] = useState('');
 
   useEffect(() => {
     setProvinces(Provinces());
@@ -323,7 +336,46 @@ function Membeship() {
     }
   };
 
-  // Visibility helpers for progressive reveal
+  const handleExistingChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'upinumber' && value.length > 16) return;
+    if (name === 'telephone' && value.length > 10) return;
+    setExistingData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const validateExisting = (data) => {
+    return data.firstname.trim() !== '' &&
+           data.lastname.trim() !== '' &&
+           data.telephone.trim() !== '' &&
+           data.upinumber.trim() !== '';
+  };
+
+  const handleExistingSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateExisting(existingData)) {
+      setExistingValidationError('All fields are required. Please fill in all the information before submitting.');
+      return;
+    }
+    setExistingValidationError('');
+    setExistingLoading(true);
+    setExistingError('');
+
+    try {
+      const response = await axios.post('https://applicanion-api.onrender.com/api/existing-members', existingData);
+      console.log('Existing member submitted successfully:', response.data);
+      setExistingSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting existing member form:', err);
+      if (err.response) {
+        setExistingError(`Submission failed: ${err.response.data.message || 'Please try again.'}`);
+      } else {
+        setExistingError('Submission failed. Please check your internet connection and try again.');
+      }
+    } finally {
+      setExistingLoading(false);
+    }
+  };
+
   const isInitialFourFilled = formData.firstname.trim() && formData.lastname.trim() && formData.telephone.trim() && formData.age.trim();
 
   return (
@@ -356,8 +408,10 @@ function Membeship() {
                   <img src={benefit.img} alt={benefit.title} />
                 </div>
                 <div className='mem-benefit-content-box'>
-                  <span className='mem-benefit-icon-span'><Icon /></span>
-                  <h2>{benefit.title}</h2>
+                  <div className='mem-benefit-title-row'>
+                    <span className='mem-benefit-icon-span'><Icon /></span>
+                    <h2>{benefit.title}</h2>
+                  </div>
                   <p className="justify-text">{benefit.text}</p>
                 </div>
               </div>
@@ -377,312 +431,403 @@ function Membeship() {
 
       {/* ── CENTERED STEPPERS LAYOUT ── */}
       <section className="interactive-form-section">
+        
+        {/* ── CENTERED MODE TOGGLE TABS ── */}
+        <div className="form-mode-tabs-wrapper">
+          <div className="form-mode-tabs">
+            <div
+              className="form-mode-indicator"
+              style={{ transform: formMode === 'new' ? 'translateX(0%)' : 'translateX(100%)' }}
+            ></div>
+            <button
+              type="button"
+              className={`form-mode-tab ${formMode === 'new' ? 'active' : ''}`}
+              onClick={() => setFormMode('new')}
+            >
+              New Member
+            </button>
+            <button
+              type="button"
+              className={`form-mode-tab ${formMode === 'existing' ? 'active' : ''}`}
+              onClick={() => setFormMode('existing')}
+            >
+              Existing Member
+            </button>
+          </div>
+        </div>
+
         <div className="interactive-form-centered-flow">
-          
+
           {/* Centered Intro Guidance Box */}
           <div className="left-section-centered">
             <div className="info-box">
               <span className="info-box-pill">ASR Guidance Hub</span>
               <h1>Avocado Society of Rwanda</h1>
               <p className="step-desc-kiga">
-                {step === 1 && "Umwirondoro w'umuhinzi n'aho utuye. Tell us about yourself."}
-                {step === 2 && "Aho ubutaka buhingwaho buherereye. Let's understand your land."}
-                {step === 3 && "Ibisobanuro by'umurima. Provide details about your farm."}
-                {step === 4 && "Ubufasha n'imikoranire akeneye. How can we assist you?"}
+                {formMode === 'existing'
+                  ? "Umunyamuryango usanzwe. Andika amakuru yawe kugirango tuguhuze n'ubwiyunge bwawe."
+                  : (
+                    <>
+                      {step === 1 && "Umwirondoro w'umuhinzi n'aho utuye. Tell us about yourself."}
+                      {step === 2 && "Aho ubutaka buhingwaho buherereye. Let's understand your land."}
+                      {step === 3 && "Ibisobanuro by'umurima. Provide details about your farm."}
+                      {step === 4 && "Ubufasha n'imikoranire akeneye. How can we assist you?"}
+                    </>
+                  )
+                }
               </p>
-              
+
               <div className="additional-info">
                 <h3>Impamvu ibi ari ingenzi:</h3>
                 <p className="justify-text">
-                  {step === 1 && "Amakuru yawe ni ingenzi kuko atuma tubasha kugufasha no kugukurirana neza."}
-                  {step === 2 && "Ushobora kuba udatuye aho uhinga ntacyo bitwaye. Amakuru y' ubutaka, ubunini bw' umurima n' ibiwuranga bizadufasha kumenya uko wahitamo abafashanyumvire, ntese no ku gutegurana igihe cyo kubasura."}
-                  {step === 3 && "Ibisobanuro by'umurima bituma dushobora gutanga ubufasha bukwiye."}
-                  {step === 4 && "Ubufasha tuvuga aha umuhinzi bumugeraho bivuye ku mukoranire n' abafatanyabikwa b' ihuriro. Ni ingenzi ko tubimenya kare kugirango duhurize hamwe n' abafatanyabikorwa bateganije mu ngengo y' imari baduha. Murakoze!"}
+                  {formMode === 'existing'
+                    ? "Kwandikisha amakuru yawe nk' umunyamuryango usanzwe bituma dushobora kukuranga vuba no kukugezaho serivise zihariye."
+                    : (
+                      <>
+                        {step === 1 && "Amakuru yawe ni ingenzi kuko atuma tubasha kugufasha no kugukurirana neza."}
+                        {step === 2 && "Ushobora kuba udatuye aho uhinga ntacyo bitwaye. Amakuru y' ubutaka, ubunini bw' umurima n' ibiwuranga bizadufasha kumenya uko wahitamo abafashanyumvire, ntese no ku gutegurana igihe cyo kubasura."}
+                        {step === 3 && "Ibisobanuro by'umurima bituma dushobora gutanga ubufasha bukwiye."}
+                        {step === 4 && "Ubufasha tuvuga aha umuhinzi bumugeraho bivuye ku mukoranire n' abafatanyabikwa b' ihuriro. Ni ingenzi ko tubimenya kare kugirango duhurize hamwe n' abafatanyabikorwa bateganije mu ngengo y' imari baduha. Murakoze!"}
+                      </>
+                    )
+                  }
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Centered Form Wizard Card with Progressive Disclosures */}
+          {/* Centered Form Wizard Card */}
           <div className="right-section-centered">
-            {submitted ? (
-              <div className="success-message">
-                <div className="success-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check-circle">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
+
+            {formMode === 'existing' ? (
+              /* ══════════ EXISTING MEMBER FORM ══════════ */
+              existingSubmitted ? (
+                <div className="success-message">
+                  <div className="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check-circle">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
+                  <h2>Thank you! Your details have been submitted.</h2>
+                  <p>We will confirm your membership and get back to you soon.</p>
+                  <button className="back-home-button" onClick={() => window.location.href = '/'}>
+                    Back to Home
+                  </button>
                 </div>
-                <h2>Thank you! Your registration has been successfully submitted.</h2>
-                <p>We will review your information and get back to you soon.</p>
-                <button className="back-home-button" onClick={() => window.location.href = '/'}>
-                  Back to Home
-                </button>
-              </div>
+              ) : (
+                <form onSubmit={handleExistingSubmit} className="form-content">
+                  <FormStep title="Umwirondoro w'umunyamuryango usanzwe">
+                    <div className="reveal-field">
+                      <label htmlFor="ex-firstname">Amazina ya Mbere <span className="required">*</span></label>
+                      <input className="form-input" placeholder="First Name" name="firstname" value={existingData.firstname} onChange={handleExistingChange} />
+                    </div>
+
+                    <div className="reveal-field">
+                      <label htmlFor="ex-lastname">Amazina y'Ahanyuma <span className="required">*</span></label>
+                      <input className="form-input" placeholder="Last Name" name="lastname" value={existingData.lastname} onChange={handleExistingChange} />
+                    </div>
+
+                    <div className="reveal-field">
+                      <label htmlFor="ex-telephone">Telephone <span className="required">*</span></label>
+                      <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={existingData.telephone} onChange={handleExistingChange} />
+                    </div>
+
+                    <div className="reveal-field">
+                      <label htmlFor="ex-upinumber">UPI Number <span className="required">*</span></label>
+                      <input className="form-input" placeholder="UPI Number" type="text" name="upinumber" value={existingData.upinumber} onChange={handleExistingChange} />
+                    </div>
+                  </FormStep>
+
+                  <div className="form-buttons">
+                    <button type="submit" className="submits-button existing-submit-button" disabled={existingLoading}>
+                      {existingLoading ? 'Submitting...' : 'Submit'}
+                    </button>
+                  </div>
+                  {existingValidationError && <p className="error-message">{existingValidationError}</p>}
+                  {existingError && <p className="error-message">{existingError}</p>}
+                </form>
+              )
             ) : (
-              <form onSubmit={handleSubmit} className="form-content">
-                <ProgressBar currentStep={step} totalSteps={totalSteps} />
+              /* ══════════ NEW MEMBER WIZARD ══════════ */
+              submitted ? (
+                <div className="success-message">
+                  <div className="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check-circle">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
+                  <h2>Thank you! Your registration has been successfully submitted.</h2>
+                  <p>We will review your information and get back to you soon.</p>
+                  <button className="back-home-button" onClick={() => window.location.href = '/'}>
+                    Back to Home
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="form-content">
+                  <ProgressBar currentStep={step} totalSteps={totalSteps} />
 
-                {step === 1 && (
-                  <FormStep title="Umwirondoro w'umuhinzi waho utuye">
-                    {/* The Initial 4 Inputs */}
-                    <div className="reveal-field">
-                      <label htmlFor="firstname">Amazina ya Mbere <span className="required">*</span></label>
-                      <input className="form-input" placeholder="First Name" name="firstname" value={formData.firstname} onChange={handleChange} />
-                    </div>
-                    
-                    <div className="reveal-field">
-                      <label htmlFor="lastname">Amazina y'Ahanyuma <span className="required">*</span></label>
-                      <input className="form-input" placeholder="Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
-                    </div>
-                    
-                    <div className="reveal-field">
-                      <label htmlFor="telephone">Telephone <span className="required">*</span></label>
-                      <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
-                    </div>
-                    
-                    <div className="reveal-field">
-                      <label htmlFor="dateOfBirth">Itariki y'amavuko <span className="required">*</span></label>
-                      <input className="form-input" type="date" name="age" value={formData.age} onChange={handleChange} max={new Date().toISOString().split('T')[0]} />
-                    </div>
-                    
-                    {/* Progressively Disclosed Dropdowns / ID Inputs */}
-                    {isInitialFourFilled && (
-                      <div className="reveal-field fade-in-element">
-                        <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
-                        <input className="form-input" placeholder="Indangamuntu" type='text' name="idnumber" value={formData.idnumber} onChange={handleChange} />
+                  {step === 1 && (
+                    <FormStep title="Umwirondoro w'umuhinzi waho utuye">
+                      <div className="reveal-field">
+                        <label htmlFor="firstname">Amazina ya Mbere <span className="required">*</span></label>
+                        <input className="form-input" placeholder="First Name" name="firstname" value={formData.firstname} onChange={handleChange} />
                       </div>
-                    )}
-                    
-                    {isInitialFourFilled && (
-                      <div className="reveal-field fade-in-element">
-                        <label htmlFor="province">Intara <span className="required">*</span></label>
-                        <select className='form-input' name="province" value={formData.province} onChange={handleChange}>
-                          <option value="">-- Select Province --</option>
-                          {provinces.map(prov => (
-                            <option key={prov} value={prov}>{prov}</option>
-                          ))}
-                        </select>
-                      </div>
-                    )}
 
-                    {formData.province && (
-                      <div className="reveal-field fade-in-element">
-                        <label htmlFor="district">Akarere <span className="required">*</span></label>
-                        <select className='form-input' name="district" value={formData.district} onChange={handleChange}>
+                      <div className="reveal-field">
+                        <label htmlFor="lastname">Amazina y'Ahanyuma <span className="required">*</span></label>
+                        <input className="form-input" placeholder="Last Name" name="lastname" value={formData.lastname} onChange={handleChange} />
+                      </div>
+
+                      <div className="reveal-field">
+                        <label htmlFor="telephone">Telephone <span className="required">*</span></label>
+                        <input className="form-input" placeholder="Telephone" type="tel" name="telephone" value={formData.telephone} onChange={handleChange} />
+                      </div>
+
+                      <div className="reveal-field">
+                        <label htmlFor="dateOfBirth">Itariki y'amavuko <span className="required">*</span></label>
+                        <input className="form-input" type="date" name="age" value={formData.age} onChange={handleChange} max={new Date().toISOString().split('T')[0]} />
+                      </div>
+
+                      {isInitialFourFilled && (
+                        <div className="reveal-field fade-in-element">
+                          <label htmlFor="idnumber">Indangamuntu <span className="required">*</span></label>
+                          <input className="form-input" placeholder="Indangamuntu" type='text' name="idnumber" value={formData.idnumber} onChange={handleChange} />
+                        </div>
+                      )}
+
+                      {isInitialFourFilled && (
+                        <div className="reveal-field fade-in-element">
+                          <label htmlFor="province">Intara <span className="required">*</span></label>
+                          <select className='form-input' name="province" value={formData.province} onChange={handleChange}>
+                            <option value="">-- Select Province --</option>
+                            {provinces.map(prov => (
+                              <option key={prov} value={prov}>{prov}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
+                      {formData.province && (
+                        <div className="reveal-field fade-in-element">
+                          <label htmlFor="district">Akarere <span className="required">*</span></label>
+                          <select className='form-input' name="district" value={formData.district} onChange={handleChange}>
+                            <option value="">-- Select District --</option>
+                            {filteredDistricts.map(dist => (
+                              <option key={dist} value={dist}>{dist}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
+                      {formData.district && (
+                        <div className="reveal-field fade-in-element">
+                          <label htmlFor="sector">Umurenge <span className="required">*</span></label>
+                          <select className='form-input' name="sector" value={formData.sector} onChange={handleChange}>
+                            <option value="">-- Select Sector --</option>
+                            {filteredSectors.map(sec => (
+                              <option key={sec} value={sec}>{sec}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
+                      {formData.sector && (
+                        <div className="reveal-field fade-in-element">
+                          <label htmlFor="cell">Akagari <span className="required">*</span></label>
+                          <select className='form-input' name="cell" value={formData.cell} onChange={handleChange}>
+                            <option value="">-- Select Cell --</option>
+                            {filteredCells.map(c => (
+                              <option key={c} value={c}>{c}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
+                      {formData.cell && (
+                        <div className="reveal-field fade-in-element">
+                          <label htmlFor="village">Umudugudu <span className="required">*</span></label>
+                          <select className='form-input' name="village" value={formData.village} onChange={handleChange}>
+                            <option value="">-- Select Village --</option>
+                            {filteredVillages.map(v => (
+                              <option key={v} value={v}>{v}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+                    </FormStep>
+                  )}
+
+                  {step === 2 && (
+                    <FormStep title="Amakuru ajyanye n' umurima w' avoka, n' ubwoko bw' ibiti mwateye">
+                      <label>Aho Umurima Uherereye <span className="required">*</span></label>
+
+                      <select className='form-input' name="province" value={step2Data.province} onChange={handleStep2Change}>
+                        <option value="">-- Select Province --</option>
+                        {provinces.map(prov => (
+                          <option key={prov} value={prov}>{prov}</option>
+                        ))}
+                      </select>
+
+                      {step2Data.province && (
+                        <select className='form-input fade-in-element' name="district" value={step2Data.district} onChange={handleStep2Change}>
                           <option value="">-- Select District --</option>
                           {filteredDistricts.map(dist => (
                             <option key={dist} value={dist}>{dist}</option>
                           ))}
                         </select>
-                      </div>
-                    )}
+                      )}
 
-                    {formData.district && (
-                      <div className="reveal-field fade-in-element">
-                        <label htmlFor="sector">Umurenge <span className="required">*</span></label>
-                        <select className='form-input' name="sector" value={formData.sector} onChange={handleChange}>
+                      {step2Data.district && (
+                        <select className='form-input fade-in-element' name="sector" value={step2Data.sector} onChange={handleStep2Change}>
                           <option value="">-- Select Sector --</option>
                           {filteredSectors.map(sec => (
                             <option key={sec} value={sec}>{sec}</option>
                           ))}
                         </select>
-                      </div>
-                    )}
+                      )}
 
-                    {formData.sector && (
-                      <div className="reveal-field fade-in-element">
-                        <label htmlFor="cell">Akagari <span className="required">*</span></label>
-                        <select className='form-input' name="cell" value={formData.cell} onChange={handleChange}>
+                      {step2Data.sector && (
+                        <select className='form-input fade-in-element' name="cell" value={step2Data.cell} onChange={handleStep2Change}>
                           <option value="">-- Select Cell --</option>
                           {filteredCells.map(c => (
                             <option key={c} value={c}>{c}</option>
                           ))}
                         </select>
-                      </div>
-                    )}
+                      )}
 
-                    {formData.cell && (
-                      <div className="reveal-field fade-in-element">
-                        <label htmlFor="village">Umudugudu <span className="required">*</span></label>
-                        <select className='form-input' name="village" value={formData.village} onChange={handleChange}>
+                      {step2Data.cell && (
+                        <select className='form-input fade-in-element' name="village" value={step2Data.village} onChange={handleStep2Change}>
                           <option value="">-- Select Village --</option>
                           {filteredVillages.map(v => (
                             <option key={v} value={v}>{v}</option>
                           ))}
                         </select>
-                      </div>
-                    )}
-                  </FormStep>
-                )}
+                      )}
 
-                {step === 2 && (
-                  <FormStep title="Amakuru ajyanye n' umurima w' avoka, n' ubwoko bw' ibiti mwateye">
-                    <label>Aho Umurima Uherereye <span className="required">*</span></label>
-                    
-                    <select className='form-input' name="province" value={step2Data.province} onChange={handleStep2Change}>
-                      <option value="">-- Select Province --</option>
-                      {provinces.map(prov => (
-                        <option key={prov} value={prov}>{prov}</option>
-                      ))}
-                    </select>
+                      {step2Data.village && (
+                        <div className="fade-in-element" style={{marginTop: '1rem'}}>
+                          <label>Waba waramaze gutera? <span className="required">*</span></label>
+                          <select className="form-input" name="planted" value={formData.planted} onChange={handleChange}>
+                            <option value="">Hitamo</option>
+                            <option value="yego">Yego</option>
+                            <option value="oya">Oya</option>
+                          </select>
+                        </div>
+                      )}
 
-                    {step2Data.province && (
-                      <select className='form-input fade-in-element' name="district" value={step2Data.district} onChange={handleStep2Change}>
-                        <option value="">-- Select District --</option>
-                        {filteredDistricts.map(dist => (
-                          <option key={dist} value={dist}>{dist}</option>
-                        ))}
-                      </select>
-                    )}
+                      {formData.planted === 'yego' && (
+                        <div className="fade-in-element">
+                          <label>Umwaka wateye <span className="required">*</span></label>
+                          <select className="form-input" name="yearPlanted" value={formData.yearPlanted} onChange={handleChange}>
+                            <option value="">Hitamo</option>
+                            {Array.from({ length: new Date().getFullYear() - 1999 }, (_, i) => (
+                              <option key={2000 + i} value={2000 + i}>{2000 + i}</option>
+                            ))}
+                          </select>
 
-                    {step2Data.district && (
-                      <select className='form-input fade-in-element' name="sector" value={step2Data.sector} onChange={handleStep2Change}>
-                        <option value="">-- Select Sector --</option>
-                        {filteredSectors.map(sec => (
-                          <option key={sec} value={sec}>{sec}</option>
-                        ))}
-                      </select>
-                    )}
+                          <label>Ni ubuhe bwoko bwa avoka wateye? <span className="required">*</span></label>
+                          <select className="form-input" name="avocadotype" value={formData.avocadotype} onChange={handleChange}>
+                            <option value="">Hitamo</option>
+                            <option value="hass">Hass</option>
+                            <option value="fuerte">Fuerte</option>
+                            <option value="bivanze">Bivanze</option>
+                          </select>
 
-                    {step2Data.sector && (
-                      <select className='form-input fade-in-element' name="cell" value={step2Data.cell} onChange={handleStep2Change}>
-                        <option value="">-- Select Cell --</option>
-                        {filteredCells.map(c => (
-                          <option key={c} value={c}>{c}</option>
-                        ))}
-                      </select>
-                    )}
-
-                    {step2Data.cell && (
-                      <select className='form-input fade-in-element' name="village" value={step2Data.village} onChange={handleStep2Change}>
-                        <option value="">-- Select Village --</option>
-                        {filteredVillages.map(v => (
-                          <option key={v} value={v}>{v}</option>
-                        ))}
-                      </select>
-                    )}
-
-                    {step2Data.village && (
-                      <div className="fade-in-element" style={{marginTop: '1rem'}}>
-                        <label>Waba waramaze gutera? <span className="required">*</span></label>
-                        <select className="form-input" name="planted" value={formData.planted} onChange={handleChange}>
-                          <option value="">Hitamo</option>
-                          <option value="yego">Yego</option>
-                          <option value="oya">Oya</option>
-                        </select>
-                      </div>
-                    )}
-
-                    {formData.planted === 'yego' && (
-                      <div className="fade-in-element">
-                        <label>Umwaka wateye <span className="required">*</span></label>
-                        <select className="form-input" name="yearPlanted" value={formData.yearPlanted} onChange={handleChange}>
-                          <option value="">Hitamo</option>
-                          {Array.from({ length: new Date().getFullYear() - 1999 }, (_, i) => (
-                            <option key={2000 + i} value={2000 + i}>{2000 + i}</option>
-                          ))}
-                        </select>
-
-                        <label>Ni ubuhe bwoko bwa avoka wateye? <span className="required">*</span></label>
-                        <select className="form-input" name="avocadotype" value={formData.avocadotype} onChange={handleChange}>
-                          <option value="">Hitamo</option>
-                          <option value="hass">Hass</option>
-                          <option value="fuerte">Fuerte</option>
-                          <option value="bivanze">Bivanze</option>
-                        </select>
-
-                        {formData.avocadotype === 'bivanze' && (
-                          <div className="fade-in-element">
-                            <label>Niba waravanze Fuerte na Hass, ni kanganahe ku ijana? <span className="required">*</span></label>
-                            <select className="form-input" name="mixedpercentage" value={formData.mixedpercentage} onChange={handleChange}>
-                              <option value="">Hitamo</option>
-                              <option value="Hass ingana na >80%">Hass ingana na {'>'}80%</option>
-                              <option value="Hass Ingana na 50-70%">Hass Ingana na 50-70%</option>
-                              <option value="Fuerte ingana na 50%">Fuerte ingana na 50%</option>
-                            </select>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </FormStep>
-                )}
-
-                {step === 3 && (
-                  <FormStep title="Ibisobanuro by'umurima">
-                    <label>Ingano y'umurima muri hectare <span className="required">*</span></label>
-                    <select className="form-input" name="farmsize" value={formData.farmsize} onChange={handleChange}>
-                      <option value="">Hitamo</option>
-                      <option value="1/4">¼</option>
-                      <option value="1/2">½</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value=">10">{'>'}10</option>
-                    </select>
-
-                    {formData.farmsize && (
-                      <div className="fade-in-element">
-                        <label htmlFor="treecount">Umubare w'ibiti byatewe <span className="required">*</span></label>
-                        <input className="form-input" placeholder="Umubare w'ibiti" type='number' name="treecount" value={formData.treecount} onChange={handleChange} />
-                      </div>
-                    )}
-                    
-                    {formData.treecount && (
-                      <div className="fade-in-element">
-                        <label htmlFor="upinumber">UPI number</label>
-                        <input className="form-input" placeholder="UPI Number" type='text' name="upinumber" value={formData.upinumber} onChange={handleChange} />
-                      </div>
-                    )}
-                  </FormStep>
-                )}
-
-                {step === 4 && (
-                  <FormStep title="Mu mikoranire yawe na Avocado Society of Rwanda">
-                    <label>Ni ubuhe bufasha wifuza cyane muri ibi bikurikira: <span className="required">*</span></label>
-                    <div className="checkbox-group">
-                      <label>
-                        <input type="checkbox" name="assistance" value="Imihingire" checked={formData.assistance.includes('Imihingire')} onChange={handleCheckboxChange} />
-                        <span className="check-label-bold">Imihingire:</span> Guhabwa umukozi wahuguwe kandi umenyereye akakubera Umuhuzabikorwa w' umurima (Farm Manager).
-                      </label>
-                      <label>
-                        <input type="checkbox" name="assistance" value="Ubujyanama" checked={formData.assistance.includes('Ubujyanama')} onChange={handleCheckboxChange} />
-                        <span className="check-label-bold">Ubujyanama:</span> Guhabwa service zikurikirana uko ushyira mu bikorwa amabwiriza y' ubuziranenge harimo kugusura.
-                      </label>
-                      <label>
-                        <input type="checkbox" name="assistance" value="Inguzanyo" checked={formData.assistance.includes('Inguzanyo')} onChange={handleCheckboxChange} />
-                        <span className="check-label-bold">Serivise z' inguzanyo (Access to Finance):</span> Guhabwa ubufasha mu kugera ku gishoro gikoreshwa ku bikoresho.
-                      </label>
-                    </div>
-                  </FormStep>
-                )}
-
-                <div className="form-buttons">
-                  {step > 1 && (
-                    <button type="button" className="prev-button" onClick={prevStep}>
-                      <ChevronLeft className="btn-icon" /> Back
-                    </button>
+                          {formData.avocadotype === 'bivanze' && (
+                            <div className="fade-in-element">
+                              <label>Niba waravanze Fuerte na Hass, ni kanganahe ku ijana? <span className="required">*</span></label>
+                              <select className="form-input" name="mixedpercentage" value={formData.mixedpercentage} onChange={handleChange}>
+                                <option value="">Hitamo</option>
+                                <option value="Hass ingana na >80%">Hass ingana na {'>'}80%</option>
+                                <option value="Hass Ingana na 50-70%">Hass Ingana na 50-70%</option>
+                                <option value="Fuerte ingana na 50%">Fuerte ingana na 50%</option>
+                              </select>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </FormStep>
                   )}
-                  {step < totalSteps ? (
-                    <button type="button" className='next-button' onClick={nextStep}>
-                      Next <ChevronRight className="btn-icon" />
-                    </button>
-                  ) : (
-                    <button type="submit" className="submits-button" disabled={loading}>
-                      {loading ? 'Submitting...' : 'Submit Form'}
-                    </button>
+
+                  {step === 3 && (
+                    <FormStep title="Ibisobanuro by'umurima">
+                      <label>Ingano y'umurima muri hectare <span className="required">*</span></label>
+                      <select className="form-input" name="farmsize" value={formData.farmsize} onChange={handleChange}>
+                        <option value="">Hitamo</option>
+                        <option value="1/4">¼</option>
+                        <option value="1/2">½</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value=">10">{'>'}10</option>
+                      </select>
+
+                      {formData.farmsize && (
+                        <div className="fade-in-element">
+                          <label htmlFor="treecount">Umubare w'ibiti byatewe <span className="required">*</span></label>
+                          <input className="form-input" placeholder="Umubare w'ibiti" type='number' name="treecount" value={formData.treecount} onChange={handleChange} />
+                        </div>
+                      )}
+
+                      {formData.treecount && (
+                        <div className="fade-in-element">
+                          <label htmlFor="upinumber">UPI number</label>
+                          <input className="form-input" placeholder="UPI Number" type='text' name="upinumber" value={formData.upinumber} onChange={handleChange} />
+                        </div>
+                      )}
+                    </FormStep>
                   )}
-                </div>
-                {validationError && <p className="error-message">{validationError}</p>}
-                {error && <p className="error-message">{error}</p>}
-              </form>
+
+                  {step === 4 && (
+                    <FormStep title="Mu mikoranire yawe na Avocado Society of Rwanda">
+                      <label>Ni ubuhe bufasha wifuza cyane muri ibi bikurikira: <span className="required">*</span></label>
+                      <div className="checkbox-group">
+                        <label>
+                          <input type="checkbox" name="assistance" value="Imihingire" checked={formData.assistance.includes('Imihingire')} onChange={handleCheckboxChange} />
+                          <span className="check-label-bold">Imihingire:</span> Guhabwa umukozi wahuguwe kandi umenyereye akakubera Umuhuzabikorwa w' umurima (Farm Manager).
+                        </label>
+                        <label>
+                          <input type="checkbox" name="assistance" value="Ubujyanama" checked={formData.assistance.includes('Ubujyanama')} onChange={handleCheckboxChange} />
+                          <span className="check-label-bold">Ubujyanama:</span> Guhabwa service zikurikirana uko ushyira mu bikorwa amabwiriza y' ubuziranenge harimo kugusura.
+                        </label>
+                        <label>
+                          <input type="checkbox" name="assistance" value="Inguzanyo" checked={formData.assistance.includes('Inguzanyo')} onChange={handleCheckboxChange} />
+                          <span className="check-label-bold">Serivise z' inguzanyo (Access to Finance):</span> Guhabwa ubufasha mu kugera ku gishoro gikoreshwa ku bikoresho.
+                        </label>
+                      </div>
+                    </FormStep>
+                  )}
+
+                  <div className="form-buttons">
+                    {step > 1 && (
+                      <button type="button" className="prev-button" onClick={prevStep}>
+                        <ChevronLeft className="btn-icon" /> Back
+                      </button>
+                    )}
+                    {step < totalSteps ? (
+                      <button type="button" className='next-button' onClick={nextStep}>
+                        Next <ChevronRight className="btn-icon" />
+                      </button>
+                    ) : (
+                      <button type="submit" className="submits-button" disabled={loading}>
+                        {loading ? 'Submitting...' : 'Submit Form'}
+                      </button>
+                    )}
+                  </div>
+                  {validationError && <p className="error-message">{validationError}</p>}
+                  {error && <p className="error-message">{error}</p>}
+                </form>
+              )
             )}
+
           </div>
 
         </div>

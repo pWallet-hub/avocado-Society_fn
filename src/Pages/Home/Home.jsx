@@ -7,10 +7,10 @@ import './Home.css';
 
 // Asset Imports
 import avocado1 from '../../assets/avocado1.jpg';
-import avocado2 from '../../assets/avocado2.jpg';
+import avocado2 from '../../assets/Hass-Avocado.jpeg';
 import avocado3 from '../../assets/avocado3.jpg';
 import info1 from '../../assets/connect.jpg';
-import info3 from '../../assets/info3.jpg';
+import info3 from '../../assets/speech.jpg';
 import map from '../../assets/map1.jpg';
 
 const pwalletFeatures = [
@@ -88,7 +88,7 @@ function Home() {
           <div className="agrigo-intro-text-box">
             <span className='agrigo-badge-pill'>Who We Are</span>
             <h2 className="agrigo-headline-main">The Beauty of Avocado Society Innovation</h2>
-            <h4 className="agrigo-subtitle-tag"> We take strategic care and inject real asset value directly into your avocado orchards.</h4>
+            <h4 className="agrigo-subtitle-tag">We take strategic care and inject real asset value directly into your avocado orchards.</h4>
             <p className="agrigo-body-paragraph">
               The society supports all avocado producers by helping them meet stringent global quality standards and securely access international commercial markets, regardless of farm size or baseline capital. This is systematically accomplished through predictive analytics, contract farming frameworks, and targeted support.
             </p>

@@ -136,7 +136,7 @@
 .agrigo-goal-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 100, 48, 0.08); }
 .agrigo-goal-icon-wrap { width: 42px; height: 42px; background-color: var(--neutral-flesh); color: var(--green-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 1.5rem; }
 .agrigo-goal-card:hover .agrigo-goal-icon-wrap { background-color: var(--green-primary); color: #ffffff; }
-.agrigo-goal-count { position: absolute; top: 1.5rem; right: 1.8rem; font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; color: rgba(0, 100, 48, 0.06); }
+.agrigo-goal-count { position: absolute; top: 1.5rem; right: 1.8rem; font-family: var(--font-display); font-size: 2.5rem; font-weight: 800;     color: #6ab979; }
 .agrigo-goal-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
 .agrigo-goal-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
 
