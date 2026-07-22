@@ -8,7 +8,6 @@ import nopic from '../../assets/nopic.jpg';
 import rugangazi from '../../assets/rugangazi.jpg';
 import gnf from '../../assets/gfn.jpg';
 import rgg from '../../assets/rgg.png';
-import ryaf from '../../assets/ryaf.jpg';
 import soris from '../../assets/soris.png';
 import mugisha from '../../assets/mugisha.jpg';
 import pacific from '../../assets/pacific.jpg';
@@ -42,7 +41,6 @@ const partnerLogos = [
   { img: gnf, alt: 'GNF' },
   { img: rgg, alt: 'RGG' },
   { img: soris, alt: 'Soris' },
-  { img: ryaf, alt: 'RYAF' },
   { img: minagri, alt: 'MINAGRI' }
 ];
 
