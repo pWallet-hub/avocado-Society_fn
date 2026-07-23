@@ -82,16 +82,7 @@ function About() {
         </div>
       </header>
 
-      {/* ── PARTNERS LOGO STRIP ── */}
-      <section className='agrigo-partners-strip'>
-        <div className='agrigo-container'>
-          <div className='agrigo-logo-row'>
-            {partnerLogos.map((logo, i) => (
-              <img key={i} src={logo.img} alt={logo.alt} className="agrigo-partner-img" />
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ── INTRO / HISTORY SECTION WITH HIGHLIGHT CARDS ── */}
       <section className='agrigo-intro-section'>
@@ -207,6 +198,17 @@ function About() {
                   <p>{t.role}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PARTNERS LOGO STRIP ── */}
+      <section className='agrigo-partners-strip'>
+        <div className='agrigo-container'>
+          <div className='agrigo-logo-row'>
+            {partnerLogos.map((logo, i) => (
+              <img key={i} src={logo.img} alt={logo.alt} className="agrigo-partner-img" />
             ))}
           </div>
         </div>
