@@ -11,7 +11,7 @@ import avocado2 from '../../assets/Hass-Avocado.jpeg';
 import avocado3 from '../../assets/avocado3.jpg';
 import info1 from '../../assets/connect.jpg';
 import info3 from '../../assets/speech.jpg';
-import map from '../../assets/map1.jpg';
+import map from '../../assets/image-map.png';
 
 const pwalletFeatures = [
   { 
@@ -215,7 +215,7 @@ function Home() {
             
             <div className="asr-info-meta-box">
               <span className="asr-meta-label">Location</span>
-              <p className="asr-meta-value">1 KN 78 St, Kigali, Rwanda</p>
+              <p className="asr-meta-value">24X8+GFQ, KG 17 Ave, Kigali</p>
             </div>
           </div>
 
